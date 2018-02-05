@@ -1,0 +1,58 @@
+# Locale.
+d-i debian-installer/language string en
+d-i debian-installer/country string US
+d-i debian-installer/locale string en_US.UTF-8
+d-i localechooser/supported-locales multiselect en_US.UTF-8, ru_RU.UTF-8
+
+# Keyboard selection.
+d-i keyboard-configuration/xkb-keymap select ru
+d-i	keyboard-configuration/toggle select Right Alt (AltGr)
+
+# Network.
+d-i netcfg/choose_interface select auto
+d-i netcfg/get_domain string 
+d-i netcfg/get_hostname string n76vj
+d-i netcfg/get_hostname seen false
+
+# Account.
+d-i passwd/root-login boolean false
+d-i passwd/user-fullname string Nikolay Turpitko
+d-i passwd/username string nick
+#TODO
+# Create the first user with the specified UID instead of the default.
+#d-i passwd/user-uid string 1010
+# The user account will be added to some standard initial groups. To
+# override that, use this.
+#d-i passwd/user-default-groups string audio cdrom video
+
+# Time Zone.
+d-i clock-setup/utc boolean true
+d-i time/zone string Asia/Krasnoyarsk
+d-i clock-setup/ntp boolean true
+
+# Apt.
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+
+# Packages.
+tasksel tasksel/first multiselect standard, ssh-server
+d-i pkgsel/upgrade select safe-upgrade
+
+# Boot loader.
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean true
+
+#TODO
+# Mailer.
+#exim4-config exim4/dc_eximconfig_configtype select no configuration at this time
+## It's a good idea to set this to whatever user account you choose to
+## create. Leaving the value blank results in postmaster mail going to
+## /var/mail/mail.
+#exim4-config exim4/dc_postmaster string 
+#
+
+# Skip some annoying installation status notes.
+d-i finish-install/reboot_in_progress note
+base-config base-config/intro note 
+base-config base-config/login note 
+d-i popularity-contest/participate boolean false

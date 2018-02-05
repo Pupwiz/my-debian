@@ -1,0 +1,1 @@
+run `setupcon` after login to setup cyrillic font in console 

@@ -1,0 +1,12 @@
+Localization in single-user mode console
+Localization in X mode
+Keyboard layout switching and indicator
+Mail and Mutt
+https://wiki.gentoo.org/wiki/X_without_Display_Manager
+https://wiki.archlinux.org/index.php/CDM
+https://github.com/dopsi/console-tdm
+Nvidia, optimus - ?, gltron
+
+Installation asked about locale, keymap and mirror (and something else, don't remember).
+Image check failed due contrib and non-free packages absence.
+Custom extra files were not copied from CD to HDD.
