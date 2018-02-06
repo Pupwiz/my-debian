@@ -1,9 +1,10 @@
 aptitude
-console-cyrillic
+debconf-utils
 feh
 i3
 lynx
 mc
 rofi
 rxvt-unicode
+xinit
 xorg
