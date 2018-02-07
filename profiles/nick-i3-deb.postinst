@@ -1,0 +1,6 @@
+#!/bin/sh
+
+tar -xf /media/cdrom/simple-cdd/host-root.tar || \
+tar -xf /media/hd-media/simple-cdd/host-root.tar
+
+dpkg-reconfigure console-setup

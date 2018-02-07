@@ -43,6 +43,12 @@ install vbox extensions in the guest system.
     # See docs in `/usr/share/doc/simple-cdd` and `man simple-cdd`.
     build-simple-cdd --conf ./my-cdd.conf
 
+## Custom files
+
+- `./custom_extra`: subdirectories of this dir will be `tar`'ed and stored
+  at installation media directory `simple-cdd/`; for example:
+  `./custom_extra/foo/ -> /cdrom/simple-cdd/foo.tar`;
+
 ## Links
 
 1. http://silicone.homelinux.org/2013/06/19/building-a-custom-debian-cd/

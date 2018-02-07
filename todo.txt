@@ -1,5 +1,11 @@
-Localization in single-user mode console
+x 2018-02-07 Localization in single-user mode console
+firewall
+apparmour
+ssh + protection
+ssh keys
+how to store sensetive configs in git?
 Localization in X mode
+i3 and menu
 Keyboard layout switching and indicator
 Mail and Mutt
 https://wiki.gentoo.org/wiki/X_without_Display_Manager
