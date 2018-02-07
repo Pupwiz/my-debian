@@ -138,10 +138,11 @@ for file in $all_extras ; do
   test -r "$file" && cp -f $file $extras_dir/
 done
 
-# TNL: copy dir.
-if [ -d "$custom_extras" ]; then
-    for file in "$custom_extras"/* ; do
-        tar -cf "$extras_dir/$(basename $file).tar" \
+# TNL: pack custom configs to the CD
+if [ -d "$custom_extras/cfg" ]; then
+    mkdir -p "$extras_dir/cfg"
+    for file in "$custom_extras"/cfg/* ; do
+        tar -cf "$extras_dir/cfg/$(basename $file).tar" \
             -C "$file" .
     done
 fi

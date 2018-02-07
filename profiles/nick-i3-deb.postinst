@@ -1,6 +1,15 @@
 #!/bin/sh
 
-tar -xf /media/cdrom/simple-cdd/host-root.tar || \
-tar -xf /media/hd-media/simple-cdd/host-root.tar
+# unpack custom configs (probe cdrom and hd-media)
+unpack_tars(){
+    dir="$1"
+    if [ -d "$dir" ]; then
+        for f in "$dir"/*.tar; do
+            tar -xf $f || echo "WARN: $f failed."
+        done
+    fi
+}
+unpack_tars "/media/cdrom/simple-cdd/cfg"
+unpack_tars "/media/hd-media/simple-cdd/cfg"
 
 dpkg-reconfigure console-setup

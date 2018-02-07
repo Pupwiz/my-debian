@@ -45,9 +45,10 @@ install vbox extensions in the guest system.
 
 ## Custom files
 
-- `./custom_extra`: subdirectories of this dir will be `tar`'ed and stored
-  at installation media directory `simple-cdd/`; for example:
-  `./custom_extra/foo/ -> /cdrom/simple-cdd/foo.tar`;
+- `./custom_extra/cfg`: subdirectories of this dir will be `tar`'ed and stored
+  at installation media directory `simple-cdd/cfg` (for example:
+  `./custom_extra/foo/ -> /cdrom/simple-cdd/foo.tar`) and later unpacked to the
+  target root dir; this is for general configuration (like console, grub, etc);
 
 ## Links
 
