@@ -1,0 +1,27 @@
+#!/bin/sh
+
+wrkdir=$(pwd)
+custom_extras=$wrkdir/custom_extras
+
+if [ -d "$custom_extras/pkg-src" ]; then
+    rm -rf "$custom_extras/pkg"
+    mkdir -p "$custom_extras/pkg"
+    export DEBEMAIL="custom.image.creator@example.com"
+    export DEBFULLNAME="Custom Image Creator"
+    TMP_PKGS=$(mktemp -d "${TMPDIR:-/tmp}"/simple-cdd.custom-pkg.XXXX)
+    for file in "$custom_extras"/pkg-src/* ; do
+        PKG=$(basename $file)
+        mkdir -p $TMP_PKGS/$PKG
+        cd $TMP_PKGS/$PKG
+        dh_make -n -i -y
+        rm $TMP_PKGS/$PKG/debian/*.ex \
+           $TMP_PKGS/$PKG/debian/*.EX \
+           $TMP_PKGS/$PKG/debian/R*
+        cp -r $file $TMP_PKGS
+	dpkg-buildpackage --no-sign
+    done
+    cp $TMP_PKGS/*.deb "$custom_extras/pkg"
+    cd $wrkdir
+fi
+
+build-simple-cdd --conf nick-i3-deb.conf

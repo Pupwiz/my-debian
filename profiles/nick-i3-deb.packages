@@ -1,6 +1,7 @@
 aptitude
 console-setup
 debconf-utils
+dh-make
 feh
 i3
 lynx
@@ -10,3 +11,6 @@ rxvt-unicode
 simple-cdd
 xinit
 xorg
+
+# custom
+etcskel
