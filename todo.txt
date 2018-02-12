@@ -1,11 +1,7 @@
 x 2018-02-07 Localization in single-user mode console
-
-try to populate /etc/skel via package; package required, because finish script invoked after first user creation
-
-https://wiki.gentoo.org/wiki/X_without_Display_Manager
-https://wiki.archlinux.org/index.php/CDM
-https://github.com/dopsi/console-tdm
-x, i3 and themes
+x 2018-02-11 try to populate /etc/skel via package; package required, because finish script invoked after first user creation
+x 2018-02-12 https://wiki.gentoo.org/wiki/X_without_Display_Manager
+x 2018-02-12 x, i3 and themes (without much customizations)
 
 how to make usb stick?
 how to organize project so that sensitive info won't leak into public git?
@@ -14,10 +10,11 @@ apparmour
 ssh + protection
 ssh keys
 Localization in X mode
-i3 and menu
+customize i3 and menu
 Keyboard layout switching and indicator
 Mail and Mutt
 Nvidia, optimus - ?, gltron
+Yota
 
 Cannot preseed location toggle key.
 Image check failed due contrib and non-free packages absence.

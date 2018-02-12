@@ -13,3 +13,9 @@ unpack_tars "/media/cdrom/simple-cdd/cfg"
 unpack_tars "/media/hd-media/simple-cdd/cfg"
 
 dpkg-reconfigure console-setup
+dpkg-reconfigure keyboard-configuration
+
+wrkdir=$(pwd)
+cd /etc/X11/
+Xorg -configure
+cd $wrkdir

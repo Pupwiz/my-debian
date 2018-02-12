@@ -1,16 +1,24 @@
 aptitude
+build-essential
 console-setup
 debconf-utils
 dh-make
 feh
+gtk-chtheme
 i3
+i3status
+lxappearance
 lynx
 mc
+module-assistant
+qt4-qtconfig
 rofi
 rxvt-unicode
 simple-cdd
 xinit
 xorg
+xserver-xorg-input-all
+xserver-xorg-video-all
 
 # custom
 etcskel
