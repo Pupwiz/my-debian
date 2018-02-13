@@ -44,6 +44,11 @@
     # Alternatively, install `git` and use `git clone`.
     ./build
 
+4. It requires several minutes to create an image within VM on my Mac mini.
+   When it finish, the image will be in the `images` subfolder.
+   This image can be used to install VM or can be used to make a bootable USB
+   stick.
+
 ## Custom files
 
 - `./custom_extra/cfg`: subdirectories of this dir will be `tar`'ed and stored
@@ -68,6 +73,44 @@ So, if you cannot login into the first console after OS installation, due X
 errors, use Alt+F2 to login into the second console and run script from there.
 Script should be in the user's home dir: `~/install-vb-guest-additions`.
 
+## Make installation USB stick
+
+Conveniently, `simple-cdd` creates an image suitable to be "burn" to USB drive
+with just terminal tools. I haven't try to do it in Linux yet, only on Mac OS
+X.  (I use Mac mini as a backup computer, so, for me it's currently more
+important to be able to create an installation media with it.)
+
+Both Mac OS X and Linux can use similar method, so if it works on Mac, it
+should work on Linux as well.
+
+    # For Linux:
+    sudo dd bs=4M if=input.iso of=/dev/sdX conv=fdatasync
+    # For Mac OS X:
+    sudo dd if=inputfile.img of=/dev/diskX bs=4m && sync
+
+To check correct device name on Linux, I'd use `lsblk` (and `punmount sdX` to
+unmount it). With Mac OS X it was not so trivial.  When I inserted my USB stick
+into it, it complained that it cannot read it, and gives 3 buttons to choose.
+Correct one was to "Ignore".  My USB had EXT4 partitions, so it could not be
+mounted in Mac OS X. I had to open "Disk Utility" GUI app, to find out correct
+device name.  Console app (`diskutil list`) did not show it, probably, I don't
+know how to use it properly.
+
+Note: `dd` is awfuly slow! I used
+[trick](http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/) to complete
+operation faster (notice `rdisk1` instead of `disk1`):
+
+    sudo dd if=debian-9.3-amd64-CD-1.iso of=/dev/rdisk1 bs=4m && sync
+
+It was a lot faster, than my first attempt with `disk1` (and produced working
+bootable USB stick).  Another hint: `Ctrl+T` in the terminal shows some
+progress of the `dd` command.
+
+[This link](https://askubuntu.com/questions/220652/is-dd-command-taking-too-long)
+suggests, that for Ubuntu (and Debian, I suppose) `dd` is also slow. Answerer
+recommends to use `pv` instead. I've also seen suggestions to use even `cut`,
+but haven't tested them yet.
+
 ## Links
 
 1. http://silicone.homelinux.org/2013/06/19/building-a-custom-debian-cd/
@@ -75,3 +118,11 @@ Script should be in the user's home dir: `~/install-vb-guest-additions`.
 3. https://www.debian.org/releases/stable/i386/apb.html
 4. https://shrimpworks.za.net/2015/03/29/clean-and-lean-debian-install-with-i3/
 5. https://virtualboxes.org/doc/installing-guest-additions-on-debian/
+6. https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
+7. https://askubuntu.com/a/377561
+8. https://askubuntu.com/questions/220652/is-dd-command-taking-too-long
+9. http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/
+
+https://askubuntu.com/questions/542327/how-do-i-preseed-partman-recipe-two-disks
+https://github.com/xobs/debian-installer/blob/master/doc/devel/partman-auto-recipe.txt
+

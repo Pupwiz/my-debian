@@ -1,24 +1,34 @@
 aptitude
-build-essential
 console-setup
-debconf-utils
-dh-make
+lynx
+mc
+vim
+
+# X, i3, themes
 feh
 gtk-chtheme
 i3
 i3status
 lxappearance
-lynx
-mc
-module-assistant
 qt4-qtconfig
 rofi
 rxvt-unicode
-simple-cdd
 xinit
 xorg
 xserver-xorg-input-all
 xserver-xorg-video-all
+
+# for building custom packages and installation images
+build-essential
+debconf-utils
+dh-make
+dosfstools
+fakeroot
+mtools
+simple-cdd
+
+# for vbox guest additions
+module-assistant
 
 # custom
 etcskel
