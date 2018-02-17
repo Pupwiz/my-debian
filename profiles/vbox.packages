@@ -1,0 +1,5 @@
+# for vbox guest additions
+module-assistant
+
+# custom
+etcskelvbox

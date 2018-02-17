@@ -2,6 +2,8 @@
 
 ## Motivation
 
+- not a derivative distro, but a vanilla Debian, but with favorite packages
+  pre-installed and configured;
 - minimal system, starting from netinstall image;
 - i3wm, no gnome/KDE/LXCDE/etc;
 - all my favorite packages included;
@@ -15,9 +17,31 @@
 - build packages from sources during setup?
 - after setup: sync fresh files from backup and ready to go;
 
+## How to use it
+
+This project contains my personal scripts and configuration files to build
+customized Debian image for my own needs. If you like it, you may fork it,
+tailor to your needs and build your own customized image. It'd be cool if
+you update your fork, so that others (including myself) could learn and
+re-use your interesting ideas.
+
+Image contains these profiles:
+
+- `nick-i3-deb`: main profile, required to install custom packages and configs;
+  other profiles are based on it and their installation could be broken without
+  this profile;
+- `vbox`: adds customizations for VirtualBox guest environment, as installation
+  of VirtualBox Guest additions at first login;
+- `laptop`: adds customizations for my laptop, as disk partitioning schema or
+  packages to work with my laptop's hardware;
+
+If no profile is selected during installation, then default netinstall will occur.
+
 ## What's needed
 
-1. Debian on PC or in VM.  I installed it in VirtualBox on Mac OS X.
+1. Debian on PC or in VM.  I installed it (from netinstall image) in VirtualBox
+   on Mac OS X.
+   
    VirtualBox can be installed with 
     
     brew cask install virtualbox
@@ -27,16 +51,17 @@
    enable extension at security page in the system preferences panel. Next 
    attempt was successful.
 
-   It's convenient to install 2 VM - one to build and one to test installation.
+   It's convenient to use 2 VM - one to build and one to test installation.
 
 2. On Debian I installed `mc` (get used to it), one convenient feature of it is
    `F9 > Left > Shell link...` menu, where `sh://nick@10.0.2.2` could be used
    to share folders with the host (with Debian as a VirtualBox guest) - no need
-   to install vbox extensions in the guest system.
+   to install vbox extensions in the guest system (but with them copying is
+   much faster).
 
 3. So, on guest Debian:
 
-    sudo apt-get install mc vim simple-cdd dh-make debconf-utils
+    sudo apt-get install mc vim build-essential debconf-utils dh-make dosfstools fakeroot mtools simple-cdd
     mkdir ~/my-cdd
     cd ~/my-cdd
     # Use mc or scp to copy files into my-cdd from this project.
@@ -51,34 +76,37 @@
 
 ## Custom files
 
-- `./custom_extra/cfg`: subdirectories of this dir will be `tar`'ed and stored
+- `profiles`: contains custom profiles;
+- `images`: is created by `simple-cdd` and contains result image;
+- `tools`: contains customized script (part of the build), which copies custom extras;
+- `build`: builds custom packages and than runs `simple-cdd` to create an image;
+- `nick-i3-deb.conf`: config file for `simple-cdd`;
+- `./custom_extras/cfg`: subdirectories of this dir will be `tar`'ed and stored
   at installation media directory `simple-cdd/cfg` (for example:
-  `./custom_extra/cfg/foo/ -> /cdrom/simple-cdd/foo.tar`) and later unpacked to
+  `./custom_extras/cfg/foo/ -> /cdrom/simple-cdd/foo.tar`) and later unpacked to
   the target root dir; this is for general configuration (like console, grub,
   etc);
-- `./custom_extra/pkg-src`: subdirectories of this dir will be converted to
+- `./custom_extras/pkg-src`: subdirectories of this dir will be converted to
   `deb` packages with `dh-make` and `dpkg-buildpackage` (script will take care
   of this);
-- `./custom_extra/pkg`: temporary dir of packages, built from `pkg-src`, should
+- `./custom_extras/pkg`: temporary dir of packages, built from `pkg-src`, should
   not be put into version control;
 
 ## VirtualBox Guest Additions
 
 In case of executing this image as a VirtualBox guest, I had an issues starting
 Xorg. This is, probably, due xorg trying to load module, requiring vbox
-additions.  At least, it can be cured with installation of guest additions, so
-I put the script to install them into default user's profile.
+additions. I created a script to start vbox guest additions at first login,
+which should run automatically, but if something goes wrong, you may switch to
+the second console with Alt+F2 and use it to install them manually.
 
-So, if you cannot login into the first console after OS installation, due X
-errors, use Alt+F2 to login into the second console and run script from there.
-Script should be in the user's home dir: `~/install-vb-guest-additions`.
+Script will be in `/etc/skel/.bash_profile.postinst`.
 
 ## Make installation USB stick
 
-Conveniently, `simple-cdd` creates an image suitable to be "burn" to USB drive
-with just terminal tools. I haven't try to do it in Linux yet, only on Mac OS
-X.  (I use Mac mini as a backup computer, so, for me it's currently more
-important to be able to create an installation media with it.)
+Conveniently, `simple-cdd` creates an image suitable to be "burn" to the USB
+drive with just terminal tools. I haven't try to do it in Linux yet, only on
+Mac OS X.
 
 Both Mac OS X and Linux can use similar method, so if it works on Mac, it
 should work on Linux as well.
@@ -96,7 +124,7 @@ mounted in Mac OS X. I had to open "Disk Utility" GUI app, to find out correct
 device name.  Console app (`diskutil list`) did not show it, probably, I don't
 know how to use it properly.
 
-Note: `dd` is awfuly slow! I used
+Note: `dd` is awfully slow! I used
 [trick](http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/) to complete
 operation faster (notice `rdisk1` instead of `disk1`):
 
@@ -113,15 +141,16 @@ but haven't tested them yet.
 
 ## Links
 
-1. http://silicone.homelinux.org/2013/06/19/building-a-custom-debian-cd/
-2. https://computermouth.com/tutorials/custom-debian-distro-simple-cdd/
-3. https://www.debian.org/releases/stable/i386/apb.html
-4. https://shrimpworks.za.net/2015/03/29/clean-and-lean-debian-install-with-i3/
-5. https://virtualboxes.org/doc/installing-guest-additions-on-debian/
-6. https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
-7. https://askubuntu.com/a/377561
-8. https://askubuntu.com/questions/220652/is-dd-command-taking-too-long
-9. http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/
+1. file:///usr/share/simple-cdd/README (and profile samples)
+2. http://silicone.homelinux.org/2013/06/19/building-a-custom-debian-cd/
+3. https://computermouth.com/tutorials/custom-debian-distro-simple-cdd/
+4. https://www.debian.org/releases/stable/i386/apb.html
+5. https://shrimpworks.za.net/2015/03/29/clean-and-lean-debian-install-with-i3/
+6. https://virtualboxes.org/doc/installing-guest-additions-on-debian/
+7. https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
+8. https://askubuntu.com/a/377561
+9. https://askubuntu.com/questions/220652/is-dd-command-taking-too-long
+10. http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/
 
 https://askubuntu.com/questions/542327/how-do-i-preseed-partman-recipe-two-disks
 https://github.com/xobs/debian-installer/blob/master/doc/devel/partman-auto-recipe.txt

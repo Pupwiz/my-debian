@@ -1,0 +1,16 @@
+# Script to be executed at first login.
+# Installs VirtualBox guest additions.
+
+dialog \
+    --backtitle "Installing VirtualBox guest additions" \
+    --title "Action required" \
+    --msgbox 'Click "Devices > Insert Guest Additions CD image..." item in VirtualBox menu' 10 30
+dialog --clear
+
+clear
+sudo apt-get update
+sudo apt-get upgrade
+sudo m-a prepare
+
+sudo mount /media/cdrom
+sudo sh /media/cdrom/VBoxLinuxAdditions.run

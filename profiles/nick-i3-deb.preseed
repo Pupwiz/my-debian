@@ -10,28 +10,22 @@ console-setup console-setup/fontface47 select Terminus
 console-setup console-setup/fontsize-text47 select 8x16
 console-setup console-setup/fontsize-fb47 select 8x16
 
+# TNL: doesn't work.
 # Keyboard selection.
 d-i keyboard-configuration/xkb-keymap select ru
 d-i keyboard-configuration/toggle select Right Alt (AltGr)
 keyboard-configuration keyboard-configuration/toggle select Right Alt (AltGr)
-d-i keyboard-configuration/optionscode string grp:toggle,grp_led:scroll
-keyboard-configuration keyboard-configuration/optionscode string grp:toggle,grp_led:scroll
-
-d-i keyboard-configuration/modelcode string pc105
-keyboard-configuration keyboard-configuration/modelcode string pc105
-d-i keyboard-configuration/model select Generic 105-key (Intl) PC
-keyboard-configuration keyboard-configuration/model select Generic 105-key (Intl) PC
 
 # Network.
 d-i netcfg/choose_interface select auto
 d-i netcfg/get_domain string 
-d-i netcfg/get_hostname string n76vj
-d-i netcfg/get_hostname seen false
 
 # Account.
 d-i passwd/root-login boolean false
 d-i passwd/user-fullname string Nikolay Turpitko
+d-i passwd/user-fullname seen false
 d-i passwd/username string nick
+d-i passwd/username seen false
 #d-i passwd/user-default-groups string audio cdrom video
 
 # Time Zone.

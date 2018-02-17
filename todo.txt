@@ -6,11 +6,13 @@ x 2018-02-12 how to make usb stick?
 x 2018-02-14 Image check failed due contrib and non-free packages absence.
 
 Try to add disk partitioning in separate profile and vbox specifics in another one.
-How to organize project so that sensitive info won't leak into public git?
+maunt params for ssd disk
+mount some partitions as read-only
 firewall
 apparmour
 ssh + protection
 ssh keys
+How to organize project so that sensitive info won't leak into public git?
 Localization in X mode
 Customize i3 and menu
 Keyboard layout switching and indicator
@@ -18,5 +20,7 @@ Mail and Mutt
 Nvidia, optimus - ?, gltron
 sound
 Yota modem
+keyboard backlight, special keys
+systemd timers to check mail, security updates
 
 Cannot preseed location toggle key. Try to specify kernel params.

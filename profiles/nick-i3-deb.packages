@@ -1,5 +1,6 @@
 aptitude
 console-setup
+dialog
 lynx
 mc
 vim
@@ -26,9 +27,6 @@ dosfstools
 fakeroot
 mtools
 simple-cdd
-
-# for vbox guest additions
-module-assistant
 
 # custom
 etcskel

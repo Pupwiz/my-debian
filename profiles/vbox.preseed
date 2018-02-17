@@ -1,0 +1,3 @@
+# Network.
+d-i netcfg/get_hostname string vbx
+d-i netcfg/get_hostname seen false
