@@ -1,3 +1,12 @@
 # Network.
 d-i netcfg/get_hostname string n76vj
 d-i netcfg/get_hostname seen false
+
+# Partitioning.
+d-i partman-auto/disk string /dev/sda /dev/sdb
+d-i partman-auto/method string regular
+d-i partman/alignment select optimal
+# - multi:  separate /home, /usr, /var, and /tmp partitions
+#d-i partman-auto/choose_recipe select multy
+d-i partman-auto/expert_recipe_file string /cdrom/simple-cdd/laptop.partman
+#d-i partman-auto/expert_recipe_file string /hd-media/simple-cdd/laptop.partman

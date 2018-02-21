@@ -1,5 +1,6 @@
 .DS_Store
 *.swp
 *.iso
+tmp/
 images/
 custom_extras/pkg
