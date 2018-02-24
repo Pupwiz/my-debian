@@ -3,6 +3,8 @@ console-setup
 dialog
 lynx
 mc
+pmount
+util-linux
 vim
 
 # X, i3, themes

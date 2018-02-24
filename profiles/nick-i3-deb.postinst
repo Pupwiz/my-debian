@@ -12,10 +12,24 @@ unpack_tars(){
 unpack_tars "/media/cdrom/simple-cdd/cfg"
 unpack_tars "/media/hd-media/simple-cdd/cfg"
 
+# configure console locale
 dpkg-reconfigure console-setup
 dpkg-reconfigure keyboard-configuration
 
+# configure X11
 wrkdir=$(pwd)
 cd /etc/X11/
 Xorg -configure
 cd $wrkdir
+
+# enable systemd service for periodical SSD trim (won't affect HDD, so no harm).
+cp /usr/share/doc/util-linux/examples/fstrim.service /etc/systemd/system
+cp /usr/share/doc/util-linux/examples/fstrim.timer /etc/systemd/system
+systemctl enable fstrim.timer
+
+# TNL: may be used instead of `/tmp`, defined in `laptop.partman`, but I'm not
+# yet convinced if this is a right move.
+# # enable tmpfs via systemd
+# cp /usr/share/systemd/tmp.mount /etc/systemd/system/tmp.mount
+# systemctl enable tmp.mount
+

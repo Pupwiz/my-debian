@@ -1,86 +1,100 @@
-ssd-hdd-schema ::
-  1 1 1 free
-    $primary{ }
-    $reusemethod{ }
-    method{ biosgrub }
-    $iflabel{ gpt }
-    device { /dev/sda } .
+two-disks ::
+    1 1 1 free
+            $primary{ }
+            method{ biosgrub } .
+    550 550 550 free
+            $primary{ }
+            method{ efi }
+            format{ } .
+    550 550 550 $default_filesystem
+            $primary{ }
+            $bootable{ }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /boot }
+            options/noatime{ noatime } .
+    1000 1000 -1 $default_filesystem
+            $defaultignore{ }
+            $primary{ }
+            $method{ lvm }
+            device{ /dev/sda }
+            vg_name{ vg00 } .
+    1000 1000 -1 $default_filesystem
+            $defaultignore{ }
+            $primary{ }
+            $method{ lvm }
+            device{ /dev/sdb }
+            vg_name{ vg01 } .
 
-  100 150 200 free
-    $primary{ }
-    $reusemethod{ }
-    method{ efi }
-    format{ }
-    $iflabel{ gpt }
-    device { /dev/sda } .         
+    50000 50000 50000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg00 }
+            lv_name{ root }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ / }
+            options/noatime{ noatime } .
+    1 1 -1 free
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg00 }
+            lv_name{ free0 } .
 
-  40000 10000 50000 ext4
-    $primary{ }
-    $bootable{ }
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ / }
-    device { /dev/sda } .
-
-  100000 10000 -1 free
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    device { /dev/sda } .
-
-  100% 10000 200% linux-swap
-    $primary{ }
-    method{ swap }
-    format{ }
-    $iflabel{ gpt }
-    device { /dev/sda } .
-
-
-  1000 1500 2000 ext4
-    $primary{ }
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ /tmp }
-    device { /dev/sdb } . 
-
-  20000 30000 50000 ext4
-    $primary{ }
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ /var }
-    device { /dev/sdb } . 
-
-  50000 60000 100000 ext4
-    $primary{ }
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ /home }
-    device { /dev/sdb } . 
-
-  200000 200000 300000 ext4
-    $primary{ }
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    use_filesystem{ }
-    filesystem{ ext4 }
-    mountpoint{ /backup }
-    device { /dev/sdb } . 
-
-  1 1000 -1 free
-    method{ format }
-    format{ }
-    $iflabel{ gpt }
-    device { /dev/sdb } .
+    200% 10000 200% linux-swap
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ swap }
+            $primary{ }
+            method{ swap }
+            format{ } .
+    2000 2000 2000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ tmp }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /tmp } .
+    50000 50000 50000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ var }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /var } .
+    100000 100000 100000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ home }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /home } .
+    300000 300000 300000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ backup }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /backup } .
+    1 1 -1 free
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ free1 } .
