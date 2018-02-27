@@ -1,27 +1,40 @@
+# General.
+alsa-utils
 aptitude
 console-setup
 dialog
 lynx
 mc
+mutt
 pmount
+qalc
 util-linux
 vim
+weather-util
+weather-util-data
+xdotool
 
 # X, i3, themes
+adwaita-qt
+adwaita-qt4
 feh
-gtk-chtheme
+gnome-themes-standard
 i3
 i3status
-lxappearance
-qt4-qtconfig
+imagemagick
 rofi
-rxvt-unicode
+rxvt-unicode-256color
 xinit
 xorg
 xserver-xorg-input-all
 xserver-xorg-video-all
 
-# for building custom packages and installation images
+# Needed only to change themes.
+#gtk-chtheme
+#lxappearance
+#qtconfig
+
+# For building custom packages and installation images.
 build-essential
 debconf-utils
 dh-make
@@ -30,5 +43,8 @@ fakeroot
 mtools
 simple-cdd
 
-# custom
+# Custom.
 etcskel
+
+# Development.
+git

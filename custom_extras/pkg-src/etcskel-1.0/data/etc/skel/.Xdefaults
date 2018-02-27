@@ -1,0 +1,11 @@
+URxvt.font:             xft: Dejavu Sans Mono:autohint=true:antialias=true:size=12
+URxvt.background:       black
+URxvt.foreground:       white
+URxvt.scrollBar:        false
+URxvt.tintColor:        #333333
+URxvt.fading:           15
+URxvt.fadeColor:        black
+URxvt.shading:          75
+URxvt.inheritPixmap:    true
+URxvt.pointerColor:     black
+URxvt.pointerColor2:    white

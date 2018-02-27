@@ -1,0 +1,26 @@
+#!/bin/bash
+# shell script to prepend i3status with more stuff
+
+# UUDD - Domodedovo, UNBB - Barnaul
+
+f=2
+
+i3status | while :
+do
+  t=$(weather unbb 2>/dev/null | grep -i temperature | sed -n 's/.*(\(.*\))/\1/p')
+
+  for j in {1..60}
+  do
+    read line
+    if [ $f -gt 0 ]; then
+      f=$((f-1))
+      echo "$line"
+    else
+      line=${line::-1}
+      i=$(xset -q | grep -A 0 'LED' | cut -c59-67);i=$((10#$i&1000));[[ $i = 0 ]] && i="EN" || i="RU";
+      echo "$line,{\"name\":\"lang\",\"instance\":\"lang\",\"color\":\"#00FF00\",\"full_text\":\"$i\"}, \
+{\"name\":\"weather\",\"instance\":\"unbb\",\"color\":\"#FFFFFF\",\"full_text\":\"$t\"}]" || exit 1
+    fi
+  done
+done
+

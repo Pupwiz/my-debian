@@ -8,9 +8,16 @@ dialog \
 dialog --clear
 
 clear
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 sudo m-a prepare
 
 sudo mount /media/cdrom
 sudo sh /media/cdrom/VBoxLinuxAdditions.run
+
+# configure X11
+wrkdir=$(pwd)
+cd /etc/X11/
+Xorg -configure
+cd $wrkdir
+

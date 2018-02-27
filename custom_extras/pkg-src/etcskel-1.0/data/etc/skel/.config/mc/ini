@@ -25,7 +25,7 @@ fast_refresh=0
 drop_menus=0
 wrap_mode=1
 old_esc_mode=1
-old_esc_mode_timeout=1000
+old_esc_mode_timeout=100
 cd_symlinks=1
 show_all_if_ambiguous=0
 max_dirt_limit=10
@@ -81,7 +81,7 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 ignore_ftp_chattr_errors=true
-skin=default
+skin=modarin256-defbg-thin
 
 [Layout]
 message_visible=0
@@ -111,10 +111,12 @@ clipboard_paste=
 
 [Colors]
 base_color=
-linux=
+xterm=
 color_terminals=
 
-rxvt-unicode=
+xterm-256color=
+
+rxvt-unicode-256color=
 
 [Panels]
 show_mini_info=true
