@@ -38,3 +38,7 @@ d-i partman/confirm_nooverwrite boolean true
 d-i preseed/late_command string \
     lvremove -f /dev/vg00/free0 > /dev/null 2>&1; \
     lvremove -f /dev/vg01/free1 > /dev/null 2>&1
+
+# Packages.
+tasksel tasksel/first multiselect standard, ssh-server, laptop
+d-i pkgsel/upgrade select safe-upgrade

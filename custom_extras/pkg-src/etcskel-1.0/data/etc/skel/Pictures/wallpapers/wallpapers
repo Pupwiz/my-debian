@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Downloads feautured photos from unsplash.com by topic.
+function download() {
+    # $1 - dest folder
+    # $2 - number of images to download
+    # $3 - comma-separated keywords
+    keywords=$3
+    subdir="${keywords//,/-}"
+    trgdir="$1/$subdir"
+    mkdir -p "$trgdir"
+    url="https://source.unsplash.com/1920x1080/?$3"
+    for (( i=0; i<$2; i++ )); do
+        # some ineffective settings to decrease duplicates
+        wget -q "$url" -O "$trgdir/$(date +%F-%H%M%S-%N).jpg" --random-wait --no-cache --no-dns-cache
+        sleep 2
+    done
+}
+
+# Downloads images for all the topics.
+function download-topics() {
+    # $1 - dest folder
+    # $2 - number of images to download for each topic
+    # get keyword lines from stdin
+    while read t; do
+        (download "$@" "$t") &
+    done
+}
+
+# Downloads all hardcoded topics.
+function download-all() {
+    # $1 - dest folder
+    # $2 - number of images to download for each topic
+    download-topics "$@" << EOF-TOPICS
+landscape,view,nature
+travel,adventure
+road,offroad
+bicycle,bike
+cycling,sport,travel
+balloon,air,sky
+mountains,view
+air,sky,sea,sun
+space,rocket,launch
+airplane,plane,fly,flight
+bright,colors
+life,happiness,freedom,energy
+EOF-TOPICS
+}
+
+# Creates a symlink for current wallpaper to randomly choosen image file in the folder.
+function sel-rnd() {
+    # $1 - target link path
+    # $2 - src dir with images
+    f=$(find $2 -type f | xargs file --mime-type | grep jpeg | cut -d: -f1 | shuf -n1 -)
+    ln -sf "$f" "$1"
+}
+
+# Usage: wallpapers download|download-topics|download-all|sel-rnd <args>...
+
+"$@"
+wait

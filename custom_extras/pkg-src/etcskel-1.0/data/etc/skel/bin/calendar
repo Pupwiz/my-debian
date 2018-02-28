@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ncal -y -M
+
+#echo
+#weather -i uudd 2>/dev/null
+#echo
+#weather -i unbb 2>/dev/null
+
+echo
+curl wttr.in/barnaul
+
+echo
+echo "Script Finished"

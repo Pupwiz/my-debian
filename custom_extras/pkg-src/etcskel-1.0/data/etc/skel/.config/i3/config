@@ -127,8 +127,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # take a screenshot
-bindsym Print exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/$(date +%F_%H%M%S_%N).png
-bindsym Shift+Print exec --no-startup-id import -window root ~/Pictures/screenshot/$(date +%F_%H%M%S_%N).png
+bindsym Print exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/$(date +%F-%H%M%S-%N).png
+bindsym Shift+Print exec --no-startup-id import -window root ~/Pictures/screenshot/$(date +%F-%H%M%S-%N).png
 
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 5%+
@@ -171,5 +171,5 @@ bar {
 }
 
 # restore wallpapers
-exec_always --no-startup-id "wget -q https://source.unsplash.com/1920x1080/?nature,travel,bike,sky,sea,road -O ~/Pictures/wallpaper.jpg; feh --bg-fill ~/Pictures/wallpaper.jpg"
+exec_always --no-startup-id 'dir=~/Pictures/wallpapers; $dir/wallpapers sel-rnd $dir/current.jpg $dir; feh --bg-fill $dir/current.jpg'
 

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=displays a calendar and the date of Easter
+Exec=x-terminal-emulator -hold -T calendar -e "bin/calendar"
+Name=Calendar
+Type=Application
+Terminal=false

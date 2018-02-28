@@ -14,14 +14,19 @@ weather-util
 weather-util-data
 xdotool
 
-# X, i3, themes
+# X, i3, themes, dbus, notifications
 adwaita-qt
 adwaita-qt4
+dbus
+dbus-user-session
+dex
+dunst
 feh
 gnome-themes-standard
 i3
 i3status
 imagemagick
+libnotify-bin
 rofi
 rxvt-unicode-256color
 xinit
