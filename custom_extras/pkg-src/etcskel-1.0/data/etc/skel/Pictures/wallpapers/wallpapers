@@ -1,10 +1,33 @@
 #!/bin/bash
 
+# Usage: wallpapers [download|download-topics|download-all|sel-rnd <args>...]
+#
+# If arguments are passed to the script, than first argument treated as a
+# function name and other arguments passed to the function.
+# Without arguments script downloads some pictures to the current folder
+# and creates a symlink to some random picture in the current folder.
+# Symlink can be used by other programs to setup it as a current wallpaper.
+
+# Use GNU tools on Mac OS X (install with `brew install coreutils`).
+if [ $(command -v gdate) ]; then
+    function date() { gdate "$@"; }
+    export -f date
+fi
+if [ $(command -v gshuf) ]; then
+    function shuf() { gshuf "$@"; }
+    export -f shuf
+fi
+
+
 # Downloads feautured photos from unsplash.com by topic.
 function download() {
     # $1 - dest folder
     # $2 - number of images to download
     # $3 - comma-separated keywords
+    if [ $# -lt 3 ]; then
+        echo "Usage: download <dest dir> <# of pictures> <comma-separated keywords>"
+        return 1
+    fi
     keywords=$3
     subdir="${keywords//,/-}"
     trgdir="$1/$subdir"
@@ -12,7 +35,9 @@ function download() {
     url="https://source.unsplash.com/1920x1080/?$3"
     for (( i=0; i<$2; i++ )); do
         # some ineffective settings to decrease duplicates
-        wget -q "$url" -O "$trgdir/$(date +%F-%H%M%S-%N).jpg" --random-wait --no-cache --no-dns-cache
+        f="$trgdir/$(date +%F-%H%M%S-%N).jpg"
+        echo "Downloading image from URL $url to file $f"
+        wget -q "$url" -O "$f" --random-wait --no-cache --no-dns-cache
         sleep 2
     done
 }
@@ -22,7 +47,13 @@ function download-topics() {
     # $1 - dest folder
     # $2 - number of images to download for each topic
     # get keyword lines from stdin
+    if [ $# -lt 2 ]; then
+        echo "Usage: download-topics <dest dir> <# of pictures per topic>, keywords on stdin"
+        return 1
+    fi
+    echo "download-topics waits keywords on stdin"
     while read t; do
+        echo "Download topic: $t"
         (download "$@" "$t") &
     done
 }
@@ -31,6 +62,10 @@ function download-topics() {
 function download-all() {
     # $1 - dest folder
     # $2 - number of images to download for each topic
+    if [ $# -lt 2 ]; then
+        echo "Usage: download-all <dest dir> <# of pictures per topic>"
+        return 1
+    fi
     download-topics "$@" << EOF-TOPICS
 landscape,view,nature
 travel,adventure
@@ -39,11 +74,12 @@ bicycle,bike
 cycling,sport,travel
 balloon,air,sky
 mountains,view
-air,sky,sea,sun
-space,rocket,launch
+air,sky,sea
+space,rocket,falcon,launch
 airplane,plane,fly,flight
 bright,colors
 life,happiness,freedom,energy
+sunshine,sunset,sunrise
 EOF-TOPICS
 }
 
@@ -51,11 +87,36 @@ EOF-TOPICS
 function sel-rnd() {
     # $1 - target link path
     # $2 - src dir with images
+    if [ $# -lt 2 ]; then
+        echo "Usage: sel-rnd <target link> <pictures dir>"
+        return 1
+    fi
     f=$(find $2 -type f | xargs file --mime-type | grep jpeg | cut -d: -f1 | shuf -n1 -)
+    echo "Creating symlink $1 pointing to $f."
     ln -sf "$f" "$1"
 }
 
-# Usage: wallpapers download|download-topics|download-all|sel-rnd <args>...
 
-"$@"
-wait
+# Check arguments and invoke functions.
+
+case $1 in
+    "")
+        download-all . 10
+        wait
+        sel-rnd ./current.jpg .
+        ;;
+    download*)
+        "$@"
+        wait
+        ;;
+    sel-rnd)
+        "$@"
+        wait
+        ;;
+    *)
+        echo "Unknown action: $1"
+        echo
+        echo "Usage: wallpapers [download|download-topics|download-all|sel-rnd <args>...]"
+        ;;
+esac
+

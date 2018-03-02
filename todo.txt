@@ -11,8 +11,8 @@ x 2018-02-28 Localization in X mode
 x 2018-03-01 notify-send, notification-daemon, dbus - don't work, tried dunst - the same, should check dbus
 x 2018-03-01 alias for time convertions like `date -d"10:00MSK"`
 x 2018-03-01 rofi won't work with aliases. need a way to execute custom utils via rofi, aliases was an interesting idea
-wallpaper script is cool, but can be done even better - with prefetching some wallpapers at install and any time manually
-wget saves empty files during installation of etcskel
+x 2018-03-01 note: there is a problem with wget in postinst of custom package during OS installation (works OK in installed system), it stores empty files. Won't fix.
+x 2018-03-01 install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login
 
 pass for encrypted passwords (for mutt)
 Mail and Mutt
@@ -36,5 +36,7 @@ keyboard backlight, special keys
 systemd timers to check mail, security updates
 check that no passwords, keys are in the repo
 check that user name is not hardcoded in scripts and configs
+
+vpn/onion/tor transport to be easily switched on, just in case?
 
 Cannot preseed location toggle key. Even with kernel params.

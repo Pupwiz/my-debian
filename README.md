@@ -1,29 +1,25 @@
-# How to prepare custom Debian image
+# Simple-cdd configuration for custom Debian iso image with X11, i3 and software development tools.
 
 ## Motivation
 
-- not a derivative distro, but a vanilla Debian, but with favorite packages
-  pre-installed and configured;
-- minimal system, starting from netinstall image;
-- i3wm, no gnome/KDE/LXCDE/etc;
-- all my favorite packages included;
-- fast install at any PC, laptop or VM and continue my work;
-- firewall, apparmor, ssh protection, other security options included;
-- my personal settings, config files, browser plugins included;
-- my locale and keyboard settings included;
-- printer/scanner drivers;
-- my personal scripts, backup solution;
-- only choose partitions during installation, all other choises provided;
-- build packages from sources during setup?
-- after setup: sync fresh files from backup and ready to go;
+This is my custom configuration of `simple-cdd` Debian tool. It's for my own
+use - to create custom Debian installer iso image tailored for my personal
+needs.  It contains packages, scripts and configs I usually put into any
+freshly installed personal (desktop/laptop/VM) system for everyday use. It
+should produce a completely usable system, ready to use after just adding some
+personal data from backups into it. This is also a place where I'm going to
+store my OS-specific settings under version control. It's not for general
+public, I'm not going to support it via issue tracking etc. But I'm going to
+put it into the public repository, so that anyone could fork it or borrow from
+it. This solutions carefully picked up all over the internet and belong to
+public domain.
+
+[More motivation](MOTIVATION.md), which is mostly random notes for myself and
+should be skipped by other people.
 
 ## How to use it
 
-This project contains my personal scripts and configuration files to build
-customized Debian image for my own needs. If you like it, you may fork it,
-tailor to your needs and build your own customized image. It'd be cool if
-you update your fork, so that others (including myself) could learn and
-re-use your interesting ideas.
+Fork and tailor for your own needs.
 
 Image contains these profiles:
 
