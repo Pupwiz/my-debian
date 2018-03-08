@@ -13,23 +13,37 @@ x 2018-03-01 alias for time convertions like `date -d"10:00MSK"`
 x 2018-03-01 rofi won't work with aliases. need a way to execute custom utils via rofi, aliases was an interesting idea
 x 2018-03-01 note: there is a problem with wget in postinst of custom package during OS installation (works OK in installed system), it stores empty files. Won't fix.
 x 2018-03-01 install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login
+x 2018-03-09 pass for encrypted passwords (for mutt)
+x 2018-03-09 Mail and Mutt
 
-pass for encrypted passwords (for mutt)
-Mail and Mutt
-ssh + protection
-ssh keys (should be handled manually, but add a note or reminder)
-How to organize project so that sensitive info won't leak into public git? (thought about git encryption, but don't trust it's quality, better to avoid secrets and use pgp keys or keyrings)
+refactor dotfiles into separate repositories. see stow and myrepos:
+https://github.com/gerardbm/dotfiles
+https://github.com/gerardbm/vimrc
+https://www.gnu.org/software/stow/
+http://myrepos.branchable.com/
+https://github.com/aspiers/kitenet-mr/blob/master/lib/stow
+
+build custom file-based debian repo with packages, which I prefer to install from source
+
+add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
+setup vim and rofi as described in gopass instructions
+migrate from lastpass to gopass, change all passwords
+backup ssh and gpg keys and passwords
+
+refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
 
 mount some partitions as read-only
+ssh + protection
 firewall
 apparmour
+backups
 
 Customize i3 and menu
 convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
 in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
 put all the settings, packages, utils etc from backups and mac to image
 
-Nvidia, optimus - ?, gltron
+Nvidia, optimus - ?, gltron, tint
 sound
 Yota modem
 keyboard backlight, special keys
@@ -37,6 +51,16 @@ systemd timers to check mail, security updates
 check that no passwords, keys are in the repo
 check that user name is not hardcoded in scripts and configs
 
-vpn/onion/tor transport to be easily switched on, just in case?
+something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
+vpn/onion/tor/i2p transport to be easily switched on, just in case?
+user -> squid -> privoxy -> tor
+squid for caching;
+privoxy for adds filtering and routing to tor;
+squid can block adds itself, here (also about ssl): https://wiki.alpinelinux.org/wiki/Setting_up_Explicit_Squid_Proxy
+tor as a alternative route to git (it's possible to have several cache_peer's with weights and probe them in order);
+havp + clamav - for antivirus;
+squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
+
+vagrant script to automate build even more
 
 Cannot preseed location toggle key. Even with kernel params.

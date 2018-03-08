@@ -22,6 +22,19 @@ cd /etc/X11/
 Xorg -configure
 cd $wrkdir
 
+## 3rd party packages
+
+# gopass
+repoURL="https://www.justwatch.com/gopass/releases"
+wget -O- "$repoURL/0x0C92225A97F6B666.pub" | apt-key add -
+echo "deb $repoURL/binary-amd64 ./" | tee /etc/apt/sources.list.d/gopass.list
+
+apt-get -y update
+apt-get -y install gopass
+apt-get -y install goobook
+
+## SystemD
+
 # enable systemd service for periodical SSD trim (won't affect HDD, so no harm).
 cp /usr/share/doc/util-linux/examples/fstrim.service /etc/systemd/system
 cp /usr/share/doc/util-linux/examples/fstrim.timer /etc/systemd/system
@@ -32,4 +45,3 @@ systemctl enable fstrim.timer
 # # enable tmpfs via systemd
 # cp /usr/share/systemd/tmp.mount /etc/systemd/system/tmp.mount
 # systemctl enable tmp.mount
-

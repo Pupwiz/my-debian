@@ -36,6 +36,7 @@ d-i clock-setup/ntp boolean true
 # Apt.
 d-i apt-setup/non-free boolean true
 d-i apt-setup/contrib boolean true
+d-i apt-setup/backports boolean true
 d-i apt-setup/cdrom/set-first boolean false
 d-i apt-setup/cdrom/set-next boolean false
 d-i apt-setup/cdrom/set-failed boolean false

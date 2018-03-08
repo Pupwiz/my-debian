@@ -151,5 +151,5 @@ but haven't tested them yet.
 12. https://askubuntu.com/questions/542327/how-do-i-preseed-partman-recipe-two-disks
 13. https://github.com/xobs/debian-installer/blob/master/doc/devel/partman-auto-recipe.txt
 14. https://wikitech.wikimedia.org/wiki/PartMan/Auto
-
-
+15. https://github.com/justwatchcom/gopass/blob/master/docs/setup.md
+16. https://coderwall.com/p/d3uo3w/git-gpg-know-thy-commits

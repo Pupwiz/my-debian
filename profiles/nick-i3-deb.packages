@@ -1,15 +1,19 @@
 # General.
 alsa-utils
+apt-transport-https
 aptitude
 console-setup
 dialog
+gnupg2
+libsasl2-modules
 lynx
 mc
 mutt
 pmount
+poppler-utils
 qalc
 util-linux
-vim
+vim-gtk3
 weather-util
 weather-util-data
 xdotool
