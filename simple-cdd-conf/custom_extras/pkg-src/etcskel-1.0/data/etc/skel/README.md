@@ -27,9 +27,9 @@ for more information and sources.
    that you may choose to pull all or some of those repositories to the local
    system (`man mr`).
 
-    vim ~/.mrconfig
-    cd ~
-    mr -j 5 checkout
+        vim ~/.mrconfig
+        cd ~
+        mr -j 5 checkout
 
 3. Create symlinks for downloaded dot files with `stow`. Your dot files will be
    stored in the git repository in the `~/Projects/my-debian/dotfiles` folder.
@@ -40,12 +40,12 @@ for more information and sources.
    separately. Example of creating and then deleting symlinks from one of `stow`
    "package" (`man stow`):
 
-    stow --no-folding -d ~/Projects/my-debian/dotfiles -t ~ mutt
-    stow --no-folding -D -d ~/Projects/my-debian/dotfiles -t ~ mutt
+        stow --no-folding -d ~/Projects/my-debian/dotfiles -t ~ mutt
+        stow --no-folding -D -d ~/Projects/my-debian/dotfiles -t ~ mutt
 
    To apply stow to all "packages" within folder use script `~/bin/stow-all`:
 
-    stow-all
+        stow-all
 
 4. Re-login.
 
