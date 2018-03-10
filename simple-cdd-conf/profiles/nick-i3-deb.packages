@@ -1,17 +1,19 @@
 # General.
-alsa-utils
 apt-transport-https
 aptitude
 console-setup
 dialog
 gnupg2
+info
 libsasl2-modules
 lynx
 mc
 mutt
+myrepos
 pmount
 poppler-utils
 qalc
+stow
 util-linux
 vim-gtk3
 weather-util
@@ -19,6 +21,7 @@ weather-util-data
 xdotool
 
 # X, i3, themes, dbus, notifications
+alsa-utils
 adwaita-qt
 adwaita-qt4
 dbus
@@ -31,6 +34,7 @@ i3
 i3status
 imagemagick
 libnotify-bin
+mesa-utils
 rofi
 rxvt-unicode-256color
 xinit

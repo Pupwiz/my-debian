@@ -15,7 +15,7 @@ manually merge some settings from backup configs.
 Another consideration is that I want to be able to install a fresh system to
 any of my home computer or VM - with different hardware, for experiments, etc.
   
-Any general distro off the shell is either make some decisions for me, or leave
+Any general distro off the shelf is either make some decisions for me, or leave
 something not configured. I want a ready to use distro completely tailored for
 my own needs, suitable to use with my wifi adapters and printers, prepared to
 use my backup solutions and personal scripts. It should contain all I need for
@@ -106,6 +106,9 @@ popular. So, almost no community, jobs, help, difficult to find answers and docs
 
 FreeBSD is what I want to try someday. Probably next time. Currently I need
 something stable and familiar to continue my work. But this one I should try.
+Unfortunately, right now some SDKs, which I need for my everyday work as a
+software developer, are not available on FreeBSD. Probably, there are
+workarounds, but currently I have no enough time to dive into it deeper.
 
 Linuxes. There are plenty of them. But I need most stable, maintained,
 supported and popular.

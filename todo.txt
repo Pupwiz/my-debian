@@ -23,7 +23,11 @@ https://www.gnu.org/software/stow/
 http://myrepos.branchable.com/
 https://github.com/aspiers/kitenet-mr/blob/master/lib/stow
 
+setup mirror for all repositories to file, and some to bitbucket/gitlab
+http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
+
 build custom file-based debian repo with packages, which I prefer to install from source
+as I see it, this is should be a recipes in the git repo and build script, calling checkinstall for them
 
 add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
 setup vim and rofi as described in gopass instructions
