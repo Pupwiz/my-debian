@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# cleanup docker images
+sudo docker images -qf dangling=true | xargs -r sudo docker rmi
+
+# cleanup docker volumes
+sudo docker volume ls -qf dangling=true | xargs -r sudo docker volume rm

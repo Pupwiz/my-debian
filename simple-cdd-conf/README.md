@@ -142,22 +142,3 @@ but haven't tested them yet.
 You will find instructions to complete configuration with some mamual steps in
 the `~/README.md` after you boot to installed system. You may preview these
 instructions [here](custom_extras/pkg-src/etcskel-1.0/data/etc/skel/README.md).
-
-## Links
-
-1. file:///usr/share/simple-cdd/README (and profile samples)
-2. http://silicone.homelinux.org/2013/06/19/building-a-custom-debian-cd/
-3. https://computermouth.com/tutorials/custom-debian-distro-simple-cdd/
-4. https://www.debian.org/releases/stable/i386/apb.html
-5. https://shrimpworks.za.net/2015/03/29/clean-and-lean-debian-install-with-i3/
-6. https://askubuntu.com/questions/598943/how-to-de-uglify-i3-wm
-7. https://virtualboxes.org/doc/installing-guest-additions-on-debian/
-8. https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
-9. https://askubuntu.com/a/377561
-10. https://askubuntu.com/questions/220652/is-dd-command-taking-too-long
-11. http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/
-12. https://askubuntu.com/questions/542327/how-do-i-preseed-partman-recipe-two-disks
-13. https://github.com/xobs/debian-installer/blob/master/doc/devel/partman-auto-recipe.txt
-14. https://wikitech.wikimedia.org/wiki/PartMan/Auto
-15. https://github.com/justwatchcom/gopass/blob/master/docs/setup.md
-16. https://coderwall.com/p/d3uo3w/git-gpg-know-thy-commits

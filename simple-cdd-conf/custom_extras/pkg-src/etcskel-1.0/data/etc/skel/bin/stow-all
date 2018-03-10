@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# stow all packages from the folder into the home dir
+
+dir="$HOME/Projects/my-debian/dotfiles/"
+
+ls -1 "$dir" | \
+    xargs stow --no-folding -d "$dir" -t ~
+

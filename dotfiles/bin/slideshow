@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# random slideshow from family photos
+
+feh /home/shared/photo/ \
+    --scale-down \
+    --geometry 1920x1080 \
+    --slideshow-delay 5 \
+    --recursive \
+    --randomize \
+    --auto-zoom \
+    --draw-filename \
+    --image-bg black

@@ -1,3 +1,4 @@
+Cannot preseed location toggle key. Even with kernel params.
 x 2018-02-07 Localization in single-user mode console
 x 2018-02-11 try to populate /etc/skel via package; package required, because finish script invoked after first user creation
 x 2018-02-12 https://wiki.gentoo.org/wiki/X_without_Display_Manager
@@ -15,13 +16,7 @@ x 2018-03-01 note: there is a problem with wget in postinst of custom package du
 x 2018-03-01 install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login
 x 2018-03-09 pass for encrypted passwords (for mutt)
 x 2018-03-09 Mail and Mutt
-
-refactor dotfiles into separate repositories. see stow and myrepos:
-https://github.com/gerardbm/dotfiles
-https://github.com/gerardbm/vimrc
-https://www.gnu.org/software/stow/
-http://myrepos.branchable.com/
-https://github.com/aspiers/kitenet-mr/blob/master/lib/stow
+x 2018-03-11 refactor dotfiles into separate repositories. see stow and myrepos
 
 use myrepos, stow and file-based private repos to backup/restore private keys and passwords
 
@@ -71,4 +66,5 @@ squid has problems with https. for git-only cache: https://github.com/jonasmalac
 
 vagrant script to automate build even more
 
-Cannot preseed location toggle key. Even with kernel params.
+change multifon script to use gopass
+store newsbeuter's rss tokens in gopass

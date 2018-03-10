@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# fix console settings when connected via virsh console (run in console)
+
+eval `/usr/bin/resize`

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Grab Android screenshot to computer
+
+adb shell screencap -p | sed 's/\r$//' > ~/Pictures/screenshot/android-$(date +%F_%H%M%S_%N).png

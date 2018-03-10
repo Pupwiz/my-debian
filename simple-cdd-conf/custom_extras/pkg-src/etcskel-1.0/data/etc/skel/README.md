@@ -7,38 +7,50 @@ for more information and sources.
 
 ## Manual steps to complete installation
 
-1. Update dotfiles and other projects from remote repositories.  This step
-   doesn't run automatically because you may need to check and amend your
-   repository settings in `~/.mrconfig` file. Put there URLs of your own forks
-   or repositories. After that you may choose to pull all or some of those
-   repositories to the local system (`man mr`).
+1. Restore from backup your keys and passwords into:
+
+  - `.ssh`;
+  - `.gnupg`;
+  - `.password-store`;
+
+   Keys may be required at the next steps to clone repositories with write
+   access or private repositories. You may skip this step and change
+   `~/.mrconfig` to use `https://` schema for read-only access. It may be
+   enough for temporary VM installations, if you do not plan to make backups of
+   dot files from this system, or if you want to manually setup remote servers
+   for each repository later.
+
+2. Update dot files and other projects from remote repositories.  This step
+   doesn't run automatically because you may need private keys to access your
+   repository or you may want to check and amend your repository settings in
+   `~/.mrconfig` file. Put there URLs of your own forks or repositories. After
+   that you may choose to pull all or some of those repositories to the local
+   system (`man mr`).
 
     vim ~/.mrconfig
     cd ~
     mr -j 5 checkout
 
-2. Create symlinks for downloaded dotfiles with `stow`. Your dotfiles will be
+3. Create symlinks for downloaded dot files with `stow`. Your dot files will be
    stored in the git repository in the `~/Projects/my-debian/dotfiles` folder.
    You may change them there and commit to the local repository. If you
    amended your `~/.mrconfig` to use your own forks/repositories, you will be
    able to push your changes to the remote repository for backup. Make sure you
-   do not put sensitive information in your dotfiles. Store your keys/passwords
+   do not put sensitive information in your dot files. Store your keys/passwords
    separately. Example of creating and then deleting symlinks from one of `stow`
    "package" (`man stow`):
 
     stow --no-folding -d ~/Projects/my-debian/dotfiles -t ~ mutt
     stow --no-folding -D -d ~/Projects/my-debian/dotfiles -t ~ mutt
 
-   To apply stow to all "packages" within folder use script `~/stow-all`.
+   To apply stow to all "packages" within folder use script `~/bin/stow-all`:
 
-3. Restore from backup your keys and passwords into:
+    stow-all
 
-  - `.ssh`;
-  - `.gnupg`;
-  - `.password-store`;
+4. Re-login.
 
 TODO
 
-Bonus: i3 configured to use random wallpaper from dir `~/Pictures/wallpapers`
-at every login.  Only one wallpaper pre-packaged. Run script in the folder to
-upload more.
+Bonus: i3 configured to use random wallpaper from the `~/Pictures/wallpapers`
+directory at every login.  Only one wallpaper pre-packaged. Run script in the
+folder to upload more.

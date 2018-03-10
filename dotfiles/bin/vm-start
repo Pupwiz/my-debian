@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# script to start VM
+
+# $1 - VM name
+# $2 - "GUI" for GUI, console otherwise
+
+dom=$1
+
+if [ "$dom" == "-" ] || [ -z "$dom"  ]; then
+    dom=$(virsh list --all --name | dmenu)
+fi
+
+if [ "$(virsh domstate $dom)" != "running" ]; then
+    virsh start $dom
+fi
+
+if [ "$2" == "GUI" ]; then
+    virt-viewer -f $dom
+else
+    virsh console $dom
+fi

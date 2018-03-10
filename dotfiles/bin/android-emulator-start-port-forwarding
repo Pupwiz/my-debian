@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# script (to run in guest VM) to forward emulator's ports to the host,
+# to connect to the host's android emulator as if it runs locally
+
+# Note: use "arp -n" to find ip addresses of the host or guests (from guest or host respectively).
+
+# see http://stackoverflow.com/questions/1754162/remote-debugging-with-android-emulator
+
+# 192.168.122.1 - only from VM
+# 192.168.2.33  - in the local network (behind router)
+
+killall adb
+
+ssh-add
+
+echo
+echo "Port forwarding via SSH will be started in a moment for ports 5554,5555"
+echo "Use 'adb devices' to check device presence"
+echo "Do not close this window while you need this connection, use Cntrl+C when finished with it"
+echo
+
+ssh -NL 5554:localhost:5554 -L 5555:localhost:5555 nick@192.168.122.1 
+
+

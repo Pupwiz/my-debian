@@ -1,0 +1,35 @@
+#! /bin/bash
+
+set -v
+
+# HDD & SSD info
+
+blkid
+
+mount
+
+df -h
+
+lsblk
+
+# BTRFS part
+
+sudo btrfs filesystem show
+
+sudo btrfs filesystem usage /
+
+sudo btrfs filesystem usage /home
+
+sudo btrfs filesystem usage /var
+
+sudo btrfs subvolume list /
+
+sudo btrfs subvolume list /home
+
+sudo btrfs subvolume list /var
+
+# SWAP in use
+
+cat /proc/swaps
+
+# Script Finished

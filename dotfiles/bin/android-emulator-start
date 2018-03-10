@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# this script should be run on the host to start android emulator with KVM speed up
+# and to open it's ports in firewall to the network of VMs
+# $1 - avd name
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <avd-name>"
+    exit 1
+fi
+
+sudo ufw allow from 192.168.122.0/24 to 192.168.122.1 port 22
+sudo ufw allow from 192.168.122.0/24 to 192.168.122.1 port 5554
+sudo ufw allow from 192.168.122.0/24 to 192.168.122.1 port 5555
+
+~/Android/Sdk/tools/emulator64-x86 -avd $1 -gpu off -qemu -m 2G -enable-kvm &

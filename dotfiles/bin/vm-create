@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# script illustrates how to create KVM VM without virt-manager
+
+set -v
+
+virt-install \
+    --name vm-fun \
+    --memory 4096 \
+    --vcpus 4 \
+    --disk path=/dev/data/vm-fun \
+    --os-variant ubuntuutopic \
+    --cdrom /vm/distr/lubuntu-15.10-desktop-amd64.iso
+
+#    --autostart \
+#      use to start VM at host's boot time
+
+#    --filesystem /vm/shared,/vm-shared,mode=squash \
+#      to create shared partition (or folder) 
+
+#    --disk path=/dev/data/vm-fun \
+#      this can be LVM logical volume
