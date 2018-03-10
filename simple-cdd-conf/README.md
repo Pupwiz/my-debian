@@ -42,8 +42,8 @@ If no profile is selected during installation, then default netinstall will occu
    
    VirtualBox can be installed with 
     
-    brew cask install virtualbox
-    brew cask install virtualbox-extension-pack
+        brew cask install virtualbox
+        brew cask install virtualbox-extension-pack
 
    Note: installation was not smooth, first attempt failed, I requested to
    enable extension at security page in the system preferences panel. Next 
@@ -59,13 +59,13 @@ If no profile is selected during installation, then default netinstall will occu
 
 3. So, on guest Debian:
     
-    sudo apt-get install mc vim build-essential debconf-utils dh-make dosfstools fakeroot mtools simple-cdd
-    mkdir ~/my-cdd
-    cd ~/my-cdd
-    # Use mc or scp to copy files into my-cdd from this project.
-    # See docs in `/usr/share/doc/simple-cdd` and `man simple-cdd`.
-    # Alternatively, install `git` and use `git clone`.
-    ./build
+        sudo apt-get install mc vim build-essential debconf-utils dh-make dosfstools fakeroot mtools simple-cdd
+        mkdir ~/my-cdd
+        cd ~/my-cdd
+        # Use mc or scp to copy files into my-cdd from this project.
+        # See docs in `/usr/share/doc/simple-cdd` and `man simple-cdd`.
+        # Alternatively, install `git` and use `git clone`.
+        ./build
 
 4. It requires several minutes to create an image within VM on my Mac mini.
    When it finish, the image will be in the `images` subfolder.
@@ -109,10 +109,10 @@ Mac OS X.
 Both Mac OS X and Linux can use similar method, so if it works on Mac, it
 should work on Linux as well.
 
-    # For Linux:
-    sudo dd bs=4M if=input.iso of=/dev/sdX conv=fdatasync
-    # For Mac OS X:
-    sudo dd if=inputfile.img of=/dev/diskX bs=4m && sync
+        # For Linux:
+        sudo dd bs=4M if=input.iso of=/dev/sdX conv=fdatasync
+        # For Mac OS X:
+        sudo dd if=inputfile.img of=/dev/diskX bs=4m && sync
 
 To check correct device name on Linux, I'd use `lsblk` (and `punmount sdX` to
 unmount it). With Mac OS X it was not so trivial.  When I inserted my USB stick
@@ -126,7 +126,7 @@ Note: `dd` is awfully slow! I used
 [trick](http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/) to complete
 operation faster (notice `rdisk1` instead of `disk1`):
 
-    sudo dd if=debian-9.3-amd64-CD-1.iso of=/dev/rdisk1 bs=4m && sync
+        sudo dd if=debian-9.3-amd64-CD-1.iso of=/dev/rdisk1 bs=4m && sync
 
 It was a lot faster, than my first attempt with `disk1` (and produced working
 bootable USB stick).  Another hint: `Ctrl+T` in the terminal shows some
