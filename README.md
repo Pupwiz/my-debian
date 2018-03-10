@@ -52,7 +52,7 @@ they are available.
 
 ### Steps after installation
 
-[More details](custom_extras/pkg-src/etcskel-1.0/data/etc/skel/README.md).
+[More details](simple-cdd-conf/custom_extras/pkg-src/etcskel-1.0/data/etc/skel/README.md).
 
 ## License
 

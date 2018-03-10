@@ -58,7 +58,7 @@ If no profile is selected during installation, then default netinstall will occu
    much faster).
 
 3. So, on guest Debian:
-
+    
     sudo apt-get install mc vim build-essential debconf-utils dh-make dosfstools fakeroot mtools simple-cdd
     mkdir ~/my-cdd
     cd ~/my-cdd
