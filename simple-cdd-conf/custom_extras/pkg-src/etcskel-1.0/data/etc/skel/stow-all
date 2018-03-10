@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# stow all packages from the folder into the home dir
+
+dir="~/Projects/my-debian/dotfiles/"
+
+find "$dir" \
+    -mindepth 1 -maxdepth 1 -type d \! -name ".git" -printf "%f\n" | \
+    xargs stow --no-folding -d "$dir" -t ~
+

@@ -2,14 +2,16 @@
 
 ## About
 
-This project is work in progress. It's aim is to prepare (and keep updated)
+This project is work in progress. Its aim is to prepare (and keep updated)
 Debian distribution tailored for my personal needs.
 
-It contains scripts, notes, instructions and configuration files backups to:
+It contains scripts, notes, instructions and backup of configuration files for:
 
 - build custom installation/rescue image (using `simple-cdd`);
 
 - restore my personal configuration files after installation;
+
+- build some packages from sources;
 
 - other related notes and memos.
 

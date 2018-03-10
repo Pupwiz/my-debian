@@ -1,0 +1,5 @@
+[Projects/my-debian/dotfiles]
+# use https:// scheme if you are not owner of the repository (even better, use your repo/fork)
+# checkout = git clone 'https://github.com/nikolay-turpitko/my-debian.git' 'dotfiles'
+checkout = git clone 'git@github.com:nikolay-turpitko/my-debian.git' 'dotfiles'
+

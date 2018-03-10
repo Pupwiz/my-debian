@@ -35,10 +35,10 @@ Image contains these profiles:
 
 If no profile is selected during installation, then default netinstall will occur.
 
-## What's needed
+## Steps to build an image
 
-1. Debian on PC or in VM.  I installed it (from netinstall image) in VirtualBox
-   on Mac OS X.
+1. Debian on PC or in VM is required.  I installed it (from netinstall image)
+   in VirtualBox on Mac OS X.
    
    VirtualBox can be installed with 
     
@@ -136,6 +136,12 @@ progress of the `dd` command.
 suggests, that for Ubuntu (and Debian, I suppose) `dd` is also slow. Answerer
 recommends to use `pv` instead. I've also seen suggestions to use even `cut`,
 but haven't tested them yet.
+
+## After installation
+
+You will find instructions to complete configuration with some mamual steps in
+the `~/README.md` after you boot to installed system. You may preview these
+instructions [here](custom_extras/pkg-src/etcskel-1.0/data/etc/skel/README.md).
 
 ## Links
 

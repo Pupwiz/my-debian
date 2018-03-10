@@ -2,6 +2,8 @@
 distro, why I choose Debian in the first place, etc. These are notes for myself
 to somewhat arrange my thoughts, to justify some decisions in case I'll later
 need to review them. This, probably, won't give any useful info to anyone else.
+Do not read it. This is my oppinion, it may change and I'm not going to argue
+about it.
 
 ## Motivation
 
@@ -49,8 +51,8 @@ just because I like minimalistic UI, which I can use more effectively. I don't
 like when something distract me from job at hands. So, I got rid from all
 desktop environments effects and tools I don't know how to use. I like my
 windows always fullscreen (or split), I like them switched instantly without
-cool, but slow effects. I like to work on my laptop without mouse and touchpad
-- just with keyboard and shortcuts.  So, my choices are: **i3wm, terminal, vim,
+cool, but slow effects. I like to work on my laptop without mouse and touchpad,
+just with keyboard and shortcuts.  So, my choices are: **i3wm, terminal, vim,
 lynx, other cli and ncurses tools as much as possible**. Preference of
 console tools allows to work with same set of programs on the any laptop,
 remote server or share remote terminal sessions in tmate for pair
@@ -84,22 +86,30 @@ not until Windows will natively support Unix tools and sh/bash/zsh/... I'm not
 Windows hater, but it's just inconvenient to learn several sets of similar
 tools and remember all the differences. Or it rather impossible for me.
 
-Mac OS X is almost OK, if I use its terminal and bash, and BSD tools. It has
-its quirks, but system feels mostly solid. Alas, I cannot install it on my PC
-laptop, into VM or remote server. Also, i3 is useless in it (it installs and
-runs in XQuartz, but almost everything conflicts with host OS).  Another
-drawback is that some free programs is not available on Mac OS.  Homebrew is
-great, but doesn't have everything I used to on Ubuntu. And commercial soft is
-mostly terrible. I mean, there is good commercial soft, but to pay for every
-little small barely supported thing - it's not for me.  I wish I could just run
-licensed Adobe or Microsoft programs on mostly free system, if I desperately
-need and buy them.  Some big ones, not all of them. So, I use my Mac sometimes.
-Because I had to bought one (most cheap of Mac mini circa 2012) for one of my
-project. Project is already finished, but Mac still I have, so I use it as a
-backup machine just in case of some terrible disaster happen with my PC laptop.
-Because of it's backup role, I installed VirtualBox on it to run Debian within
-it and to build custom Debian images. I should be able to do this on Mac in
-case my main system fails.
+Mac OS X is almost OK, if I use its terminal and bash, and BSD tools. I don't
+like its UI and don't much trust to all the Apple's things besides the kernel
+and core tools. Also, GUI is slow as hell. But `brew` is nice, terminal is OK
+and to run VirtualBox it is a perfect system. It has its quirks, but system
+feels mostly solid. Alas, I cannot install it on my PC laptop, into VM or
+remote server. Also, i3 is useless in it (it installs and runs in XQuartz, but
+almost everything conflicts with host OS).  Another drawback is that some free
+programs is not available on Mac OS.  Homebrew is great, but doesn't have
+everything I used to on Ubuntu. And commercial soft is mostly terrible. I mean,
+there is good commercial soft, but to pay for every little barely supported
+thing - it's not for me.  I wish I could just run licensed Adobe or Microsoft
+programs on mostly free system, if I desperately need and buy them.  Some big
+ones, not all of them. Even better (in perfect future world) it'd be to merge
+all good staff from all unix-like systems (BSD, Linux, Mac, Solaris) into the
+free and open-source base system. And have Mac OS X's UI (Cocoa et al) or
+Microsoft Windows UI as a payed option on top of it. As alternatives to free
+Gnome or KDE or many others. And to be able to choose either you want free
+option or commercial one for every component of your system. But it's a dream.
+Currently, I use my Mac sometimes.  Because I had to bought one (most cheap of
+Mac mini circa 2012) for one of my project. Project is already finished, but
+Mac still I have, so I use it as a backup machine just in case of some terrible
+disaster happen with my PC laptop.  Because of it's backup role, I installed
+VirtualBox on it to run Debian within it and to build custom Debian images. I
+should be able to do this on Mac in case my main system fails.
 
 So, I excluded Windows and Mac OS X. QNX and Plan 9 are cool, but are not very
 popular. So, almost no community, jobs, help, difficult to find answers and docs.
@@ -107,8 +117,9 @@ popular. So, almost no community, jobs, help, difficult to find answers and docs
 FreeBSD is what I want to try someday. Probably next time. Currently I need
 something stable and familiar to continue my work. But this one I should try.
 Unfortunately, right now some SDKs, which I need for my everyday work as a
-software developer, are not available on FreeBSD. Probably, there are
-workarounds, but currently I have no enough time to dive into it deeper.
+software developer, are not available on FreeBSD. Namely, Andorid SDK and
+Google Cloud SDK. Probably, there are workarounds, but currently I have no
+enough time to dive into it deeper.
 
 Linuxes. There are plenty of them. But I need most stable, maintained,
 supported and popular.
@@ -124,31 +135,48 @@ though. I'll need some way to combine those with stable core system. FreeBSD
 should be a good fit with it's ports, but I want to use Linux and achieve
 something similar with it. Flatpack, Docker, Snap... Some of these should help.
 
-I want to use KVM or VirtualBox, but not for everyday job. Some projects require
-virtualisation as part of workflow, so it's quite difficult to run them within VM.
-It's not always possible to change existing project's workflow to use it from VM.
-So, I need a setup with stable core system and modern tools, but not in VM.
+I want to use KVM or VirtualBox, but not for everyday job. I mean, I cannot do
+all development within VM. BTW, I tried. It's possible to run emulators in
+another VM and connect to it. But it's not very convenient and feels against
+mainstream flow. Sometimes I need just to use teams adopted practices, tools
+and scripts quickly, without any time to change them for my own environment.
+And some projects (more and more, actually) require virtualisation as part of
+workflow, so it's quite difficult to run them within VM.  It's not always
+possible to change existing project's workflow to use it from VM.  So, I need a
+setup with stable core system and modern tools, but not in VM.
 
-Fedora is as unstable as rolling release.
+Fedora is as unstable as rolling release. Only gives you 6 months to recover
+from previous disaster before a new one (while rolling releases are in the
+state of the constant disaster, which is cool for those brave and strong). 
 
 CentOS. I used it on server. It's almost what I want. But I don't know how to
 solve problem of modern packages with it. I don't like to enable 3rd party
-repositories. Probably, like with FreeBSD, I need just learn more about it.
-But why? It's still Linux. If I had to invest more time, why not into FreeBSD?
+repositories. I tried to use EPELs, but it's a way strict to the dependency
+hell. Once you enable it, you'll replaces good part of the core libs with
+unstable ones. So, what's the point? I'd may use Fedora as well. Probably, like
+with FreeBSD, I need just learn more about it.  But why? It's still Linux. If I
+had to invest more time, why not into FreeBSD?
 
 Slackware. Don't know much about it. Seems even more terse and brutal then
 FreeBSD. Don't know what's possible and what I'll get with it. Documentation is
 scarce as well. Community is smaller, then others. Probably, this is a good
 distro, I just don't know. Still, I'd prefer to invest time into FreeBSD.
 
-Ubuntu. Short releases are as bad as Fedora. LST is better, I used it.
-Ubuntu is almost perfect - I used to it, it's based on Debian. But it based on
-barely tested branch and bring bugs of it's own on top of it. I had some
+NixOS, Alpine. It's good they exists. For someone, or for docker images.  But
+what's the point in the Linux without systemd nowadays? I'd better switch to
+FreeBSD - it's classy and with base system / extra packages idea. And NixOS is
+an interesting innovative project, but, I'm afraid, not polished enough yet
+(small community, not very well known pitfalls, practices and workarounds).
+
+Ubuntu. Short releases are as bad as Fedora. LST is better, I used it. A bit
+autocratic and opportunistic, but based on the solid foundation (Debian).
+Ubuntu LTS is almost perfect and I used to it, know some quirks. But it based
+on barely tested branch and bring bugs of it's own on top of it. I had some
 occasions, when kernel bug was fixed in Debian and reintroduced in every odd
-version in Ubuntu. I don't like idea of PPA. I don't like Canonical experiments.
-In my opinion, Canonical got good stable system and make it worse. As well, as
-others Debian derivatives. Why use them, when I can just use Debian itself?
-It's more stable and reliable.
+version in Ubuntu. I don't like idea of PPA. I don't like Canonical
+experiments.  In my opinion, Canonical got good stable system and make it
+worse. As well, as others Debian derivatives. Why use them, when I can just use
+Debian itself?  It's more stable and reliable.
 
 So, I made a full circle and decided on Debian. As usual, it's just an opinion.
 It's not even well educated choice. I just choose what I'm more familiar with,

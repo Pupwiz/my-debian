@@ -23,6 +23,10 @@ https://www.gnu.org/software/stow/
 http://myrepos.branchable.com/
 https://github.com/aspiers/kitenet-mr/blob/master/lib/stow
 
+use myrepos, stow and file-based private repos to backup/restore private keys and passwords
+
+use --mirror to file based repositories and myrepos to backup repostiories
+
 setup mirror for all repositories to file, and some to bitbucket/gitlab
 http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
 
