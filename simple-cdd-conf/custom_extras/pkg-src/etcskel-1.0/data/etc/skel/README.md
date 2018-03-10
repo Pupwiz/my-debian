@@ -47,6 +47,10 @@ for more information and sources.
 
         stow-all
 
+   Notice that command above will "adopt" existing files (in `stow` terminology),
+   which means they'll be moved into local working copy of the repository. You
+   may need to resolve conflicts manually, using git commands.
+
 4. Re-login.
 
 TODO

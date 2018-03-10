@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# stow all packages from the folder into the home dir
+# Stow all packages from the folder into the home dir.
+# Notice --adopt option! Existing files will be moved into local working copy of
+# the repository, you may need to use git to resolve conflicts manually.
 
 dir="$HOME/Projects/my-debian/dotfiles/"
 
 ls -1 "$dir" | \
-    xargs stow --no-folding -d "$dir" -t ~
+    xargs stow --adopt --no-folding -d "$dir" -t ~
 
