@@ -1,6 +1,6 @@
 [Desktop Entry]
-Comment=high-level interface to the package manager
-Name=aptitude
+Comment=High-level interface to the package manager
+Name=Aptitude
 Type=Application
 Exec=/usr/bin/aptitude
 Terminal=true

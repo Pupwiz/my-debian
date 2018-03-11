@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=The Mutt Mail User Agent
+Type=Application
+Exec=bin/mutt
+Name=Mutt
+Terminal=true

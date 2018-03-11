@@ -1,5 +1,5 @@
 [Desktop Entry]
-Comment=displays a calendar and the date of Easter
+Comment=Displays a calendar and the weather forecast
 Exec=x-terminal-emulator -hold -T calendar -e "bin/calendar"
 Name=Calendar
 Type=Application
