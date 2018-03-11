@@ -17,8 +17,11 @@ x 2018-03-01 install one wallpaper and symlink, prepare script to download wallp
 x 2018-03-09 pass for encrypted passwords (for mutt)
 x 2018-03-09 Mail and Mutt
 x 2018-03-11 refactor dotfiles into separate repositories. see stow and myrepos
+x 2018-03-11 resolve conflict of .bashrc
 
-resolve conflict of .bashrc
+refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
+
+
 
 use myrepos, stow and file-based private repos to backup/restore private keys and passwords
 
@@ -35,7 +38,6 @@ setup vim and rofi as described in gopass instructions
 migrate from lastpass to gopass, change all passwords
 backup ssh and gpg keys and passwords (+file permissions)
 
-refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
 
 mount some partitions as read-only
 ssh + protection
