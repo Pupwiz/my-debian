@@ -7,9 +7,9 @@
 ;oauth_db_filename: ~/.goobook_auth.json
 
 # The client secret file is not really secret.
-;client_secret_filename: ~/.cache/goobook_client_secret.json
+client_secret_filename: ~/.cache/goobook_client_secret.json
 
-;cache_filename: ~/.cache/goobook_cache
+cache_filename: ~/.cache/goobook_cache
 ;cache_expiry_hours: 24
 ;filter_groupless_contacts: yes
 

@@ -8,6 +8,7 @@ dialog \
 dialog --clear
 
 clear
+echo "Root privileges required to install VirtualBos guest additions"
 # suppress confirmation, this upgrade is required
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
@@ -21,6 +22,6 @@ sudo sh /media/cdrom/VBoxLinuxAdditions.run
 # configure X11
 wrkdir=$(pwd)
 cd /etc/X11/
-Xorg -configure
+Xorg -configure || true
 cd $wrkdir
 

@@ -2,6 +2,10 @@
 
 Welcome to the custom Debian setup!
 
+Below are manual steps required to complete installation.
+
+This instruction can be found in the file `~/README.md` on the installed system.
+
 Visit [project's Github page](https://github.com/nikolay-turpitko/my-debian)
 for more information and sources.
 

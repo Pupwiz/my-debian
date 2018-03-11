@@ -33,7 +33,7 @@ as I see it, this is should be a recipes in the git repo and build script, calli
 add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
 setup vim and rofi as described in gopass instructions
 migrate from lastpass to gopass, change all passwords
-backup ssh and gpg keys and passwords
+backup ssh and gpg keys and passwords (+file permissions)
 
 refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
 
