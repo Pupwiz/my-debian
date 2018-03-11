@@ -1,4 +1,4 @@
-# TNL: custom .profile, explicitly invoked from .bash_profile
+# TNL: custom .profile, explicitly invoked from .bash_profile and .bashrc
 # So, I put here all my customizations like PATH, etc.
 
 export GPG_TTY=$(tty)

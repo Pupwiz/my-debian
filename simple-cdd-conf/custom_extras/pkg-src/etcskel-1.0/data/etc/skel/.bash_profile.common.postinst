@@ -1,0 +1,19 @@
+# Script to be executed at first login.
+# Enhances preinstalled .bashrc with execution of .bash_custom.
+
+# Enhance .bashrc for all users.
+# Not done via custom package due conflict with bash package.
+# Not done in preseed postinstall script for simplicity.
+cat << 'EOF' > /etc/skel/.bashrc
+
+# To minimize conflicts with system-provided .bashrc put your settings into
+# .bash_custom, which will be sourced by .bashrc automatically.
+
+if [ -f "$HOME/.bash_custom" ]; then
+    . "$HOME/.bash_custom"
+fi
+EOF
+
+# Copy it to the current user's home dir.
+cp -fb "/etc/skel/.bashrc" "$HOME"
+

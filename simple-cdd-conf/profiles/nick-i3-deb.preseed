@@ -26,7 +26,8 @@ d-i passwd/user-fullname string Nikolay Turpitko
 d-i passwd/user-fullname seen false
 d-i passwd/username string nick
 d-i passwd/username seen false
-#d-i passwd/user-default-groups string audio cdrom video
+d-i passwd/user-default-groups string adm sudo staff cdrom floppy audio dip \
+  video plugdev netdev lp lpadmin scanner systemd-journal
 
 # Time Zone.
 d-i clock-setup/utc boolean true
