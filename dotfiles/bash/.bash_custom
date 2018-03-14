@@ -4,3 +4,4 @@
 export GPG_TTY=$(tty)
 eval "$(lesspipe)"
 
+export GOPATH="$HOME/go"

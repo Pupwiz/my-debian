@@ -57,6 +57,11 @@ for more information and sources.
 
 4. Re-login.
 
+5. Setup `vim`. Plugins should have been installed at step 2. Config - at step 3.
+   At this step vim plugins are executed for post-installation.
+   
+        vim +GoInstallBinaries
+
 TODO
 
 Bonus: i3 configured to use random wallpaper from the `~/Pictures/wallpapers`
