@@ -18,12 +18,11 @@ util-linux
 vim-gtk3
 weather-util
 weather-util-data
-xdotool
 
 # X, i3, themes, dbus, notifications
-alsa-utils
 adwaita-qt
 adwaita-qt4
+alsa-utils
 dbus
 dbus-user-session
 dex
@@ -37,8 +36,10 @@ libnotify-bin
 mesa-utils
 rofi
 rxvt-unicode-256color
+xdotool
 xinit
 xorg
+xsel
 xserver-xorg-input-all
 xserver-xorg-video-all
 
@@ -61,3 +62,5 @@ etcskel
 
 # Development.
 git
+tig
+

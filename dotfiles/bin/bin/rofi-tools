@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+# This script intended to be used with rofi.
+# It lists:
+# - bash aliases;
+# - functions, declared within this script;
+# - utilities in `bin/bash`.
+# It executes selected option with parameters,
+# returned by rofi.
+#
+# Functions may return list of options themselves,
+# allowing simple second-level menu.
+#
+# Note how `godoc` function without arguments returns
+# a list of the options, prefixed with `godoc` again,
+# so it can be invoked again to handle arguments.
+
+function man() {
+	if [ -z "$1" ]; then
+		echo ".."
+		echo "man"
+		echo "man find"
+		echo "man systemctl"
+		echo "man stow"
+		echo "man mr"
+		echo "man git"
+		echo "man rofi"
+		echo "Usage: man [OPTION...] [SECTION] PAGE..."
+	else
+		_term "man $@"
+	fi
+}
+
+function godoc() {
+	if [ -z "$1" ]; then
+		echo ".."
+		local path=$(readlink -f "$(go env GOROOT)/src")
+		find "$path" \
+			-mindepth 1 \
+			-type d \
+			\( -name vendor -o -name internal -o -name "test*" \) \
+			-prune -o \
+			-type f -name "*.go" \
+			-printf "%P\n" \
+			| xargs -n 1 dirname \
+			| sort -u \
+			| xargs -n 1 echo godoc
+	else
+		_term "go tool doc $1"
+	fi
+}
+
+function pass() {
+	if [ -z "$1" ]; then
+		echo ".."
+		command pass ls -f | xargs -n 1 echo pass
+	else
+		x-terminal-emulator -T "pass show $1" -e /bin/bash -c "pass show -c $@ && sleep 50" &
+	fi
+}
+
+# Lists declared aliases from `~/.bash_aliases`.
+function aliases() {
+	echo ".."
+	(/bin/bash -O expand_aliases -c "source ~/.bash_aliases; alias -p") \
+		| cut -d'=' -f1 | cut -d' ' -f2 | sort
+}
+
+# Lists files in `~/bin`.
+function bin() {
+	echo ".."
+	ls -1 --color=never ~/bin
+}
+
+# Lists all functions declared within this script,
+# except those prefixed with underscore.
+function _funcs() {
+	declare -F | cut -d' ' -f3 | grep -e '^[^_]' | sort
+}
+
+# Executes command in terminal.
+function _term() {
+	x-terminal-emulator -hold -T "$1" -e /bin/bash -O expand_aliases -i -c "$@" &
+}
+
+# First arg of this script contains all args for tool.
+args=$(for s in $1; do echo "$s"; done)
+
+# If first arg contains the name of a function, alias or file from `~/bin` - execute it and exit.
+# Don't execute unknown staff. String `..` is special - it renders top level menu.
+if [ -n "${args[0]}" ] && [ "$1" != ".." ]; then
+	if [ $(_funcs | grep -c -e "${args[0]}") -gt 0 ]; then
+		eval $1
+	elif [ $((aliases; bin) | grep -c -e "${args[0]}") -gt 0 ]; then
+		_term "$1"
+	fi
+	exit 0
+fi
+
+_funcs
