@@ -45,6 +45,7 @@ mount some partitions as read-only
 ssh + protection
 firewall
 apparmour
+firejail - https://firejail.wordpress.com/documentation-2/
 backups
 backup script should run with backup group privelegies, not root
 
