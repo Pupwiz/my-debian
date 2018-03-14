@@ -2,5 +2,5 @@
 Type=Application
 Comment=Powerful and easy to use command line calculator
 Exec=/usr/bin/qalc
-Name=qalc
+Name=Qalc
 Terminal=true
