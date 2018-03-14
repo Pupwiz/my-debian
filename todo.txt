@@ -18,9 +18,11 @@ x 2018-03-09 pass for encrypted passwords (for mutt)
 x 2018-03-09 Mail and Mutt
 x 2018-03-11 refactor dotfiles into separate repositories. see stow and myrepos
 x 2018-03-11 resolve conflict of .bashrc
+Customize i3 and menu
+convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
+in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
 
 refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
-
 
 
 use myrepos, stow and file-based private repos to backup/restore private keys and passwords
@@ -47,10 +49,7 @@ firejail - https://firejail.wordpress.com/documentation-2/
 backups
 backup script should run with backup group privelegies, not root
 
-Customize i3 and menu
-convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
-in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
-put all the settings, packages, utils etc from backups and mac to image
+put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
 
 Nvidia, optimus - ?, gltron, tint
 sound

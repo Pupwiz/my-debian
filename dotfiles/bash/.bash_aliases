@@ -7,6 +7,8 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+alias suspend='sudo systemctl suspend'
+alias hybrid-sleep='sudo systemctl hybrid-sleep'
 
 function tz-convert() {
 	usage=" \n \
@@ -45,3 +47,7 @@ alias tz-convert-to-msk='tz-convert to "Eurpoe/Moscow"'
 alias tz-convert-from-msk='tz-convert from "Europe/Moscow"'
 alias tz-convert-to-ist='tz-convert to "Asia/Jerusalem"'
 alias tz-convert-from-ist='tz-convert from "Asia/Jerusalem"'
+
+alias cal='ncal -y -M'
+alias wthr='weather unbb uudd'
+alias wttr='curl wttr.in/barnaul'
