@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # This script intended to be used with rofi.
 # It lists:
@@ -17,15 +17,17 @@
 
 function man() {
     if [ -z "$1" ]; then
-        echo ".."
-        echo "man"
-        echo "man find"
-        echo "man systemctl"
-        echo "man stow"
-        echo "man mr"
-        echo "man git"
-        echo "man rofi"
-        echo "Usage: man [OPTION...] [SECTION] PAGE..."
+        cat <<- EOF
+		..
+		man
+		man find
+		man systemctl
+		man stow
+		man mr
+		man git
+		man rofi
+		Usage: man [OPTION...] [SECTION] PAGE...
+		EOF
     else
         _term "man $@"
     fi
@@ -55,7 +57,18 @@ function pass() {
         echo ".."
         command pass ls -f | xargs -n 1 echo pass
     else
-        x-terminal-emulator -T "pass show $1" -e /bin/bash -c "pass show -c $@ && sleep 50" &
+        x-terminal-emulator \
+            -T "pass show $1" \
+            -e /bin/bash -c "pass show -c $@ && sleep 50" &
+    fi
+}
+
+function power() {
+    if [ -z "$1" ]; then
+        echo ".."
+        command power | xargs -n 1 echo power
+    else
+        command power "$@"
     fi
 }
 
@@ -86,8 +99,9 @@ function _term() {
 # First arg of this script contains all args for tool.
 args=$(for s in $1; do echo "$s"; done)
 
-# If first arg contains the name of a function, alias or file from `~/bin` - execute it and exit.
-# Don't execute unknown staff. String `..` is special - it renders top level menu.
+# If first arg contains the name of a function, alias or file from `~/bin` -
+# execute it and exit.  Don't execute unknown staff. String `..` is special -
+# it renders top level menu.
 if [ -n "${args[0]}" ] && [ "$1" != ".." ]; then
     if [ $(_funcs | grep -c -e "${args[0]}") -gt 0 ]; then
         eval $1

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function power() {
+    if [ -z "$1" ]; then
+        cat <<- EOF
+		logout
+		suspend
+		hybrid-sleep
+		poweroff
+		reboot
+		EOF
+    else
+        /bin/bash -O expand_aliases -c "source ~/.bash_aliases; eval $1"
+    fi
+}
+
+power "$@"

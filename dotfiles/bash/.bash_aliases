@@ -9,7 +9,7 @@ alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 alias suspend='sudo systemctl suspend'
 alias hybrid-sleep='sudo systemctl hybrid-sleep'
-alias logout='dialog --yesno "Exit i3wm and return to login?" 7 40 && i3-msg "exit"; clear'
+alias logout='i3-msg "exit"'
 
 function tz-convert() {
 	usage=" \n \
