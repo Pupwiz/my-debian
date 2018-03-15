@@ -10,7 +10,7 @@ x 2018-02-25 maunt params for ssd disk
 x 2018-02-28 Keyboard layout switching and indicator
 x 2018-02-28 Localization in X mode
 x 2018-03-01 notify-send, notification-daemon, dbus - don't work, tried dunst - the same, should check dbus
-x 2018-03-01 alias for time convertions like `date -d"10:00MSK"`
+x 2018-03-01 alias for time conversions like `date -d"10:00MSK"`
 x 2018-03-01 rofi won't work with aliases. need a way to execute custom utils via rofi, aliases was an interesting idea
 x 2018-03-01 note: there is a problem with wget in postinst of custom package during OS installation (works OK in installed system), it stores empty files. Won't fix.
 x 2018-03-01 install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login
@@ -18,47 +18,58 @@ x 2018-03-09 pass for encrypted passwords (for mutt)
 x 2018-03-09 Mail and Mutt
 x 2018-03-11 refactor dotfiles into separate repositories. see stow and myrepos
 x 2018-03-11 resolve conflict of .bashrc
-Customize i3 and menu
-convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
-in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
+x 2018-03-15 Customize i3 and menu
+x 2018-03-15 convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
+x 2018-03-15 in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
 
 refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
 
+Security:
+file permissions
+mount some partitions as read-only (scripts to remount rw during installs/updates) - ? 
+ssh + protection (fail2ban, ... ?)
+firewall
+apparmour
+firejail - https://firejail.wordpress.com/documentation-2/
+systemd timers for security updates
 
+Backup script and approach (check, review, integrate):
+backup ssh and gpg keys and passwords (+ file permissions)
+backup script should run with backup group privileges, not root
 use myrepos, stow and file-based private repos to backup/restore private keys and passwords
-
-use --mirror to file based repositories and myrepos to backup repostiories
-
+add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
+use --mirror to file based repositories and myrepos to backup repositories
 setup mirror for all repositories to file, and some to bitbucket/gitlab
 http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
 
 build custom file-based debian repo with packages, which I prefer to install from source
 as I see it, this is should be a recipes in the git repo and build script, calling checkinstall for them
 
-add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
-setup vim and rofi as described in gopass instructions
-migrate from lastpass to gopass, change all passwords
-backup ssh and gpg keys and passwords (+file permissions)
-
-
-mount some partitions as read-only
-ssh + protection
-firewall
-apparmour
-firejail - https://firejail.wordpress.com/documentation-2/
-backups
-backup script should run with backup group privelegies, not root
-
-put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
-
-Nvidia, optimus - ?, gltron, tint
-sound
-Yota modem
-keyboard backlight, special keys
-systemd timers to check mail, security updates
+Passwords:
 check that no passwords, keys are in the repo
 check that user name is not hardcoded in scripts and configs
+migrate from lastpass to gopass, change all passwords
+setup vim and rofi as described in gopass instructions
+change multifon script to use gopass
+store newsbeuter's rss tokens in gopass
 
+Virualization:
+KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
+docker
+Andorid
+vagrant script to automate build even more
+
+
+Hardware (check/fix):
+Nvidia, optimus - ?, gltron, tint
+sound, input
+Yota modem
+keyboard backlight, special keys
+hibernation, battery life
+printer, scanner
+camera (+ tool to switch it off)
+
+Caching/offline mode/alternative routes for public repositories. Net security, privacy and add blocking.
 something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
 vpn/onion/tor/i2p transport to be easily switched on, just in case?
 user -> squid -> privoxy -> tor
@@ -69,7 +80,7 @@ tor as a alternative route to git (it's possible to have several cache_peer's wi
 havp + clamav - for antivirus;
 squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
 
-vagrant script to automate build even more
 
-change multifon script to use gopass
-store newsbeuter's rss tokens in gopass
+Final touch:
+put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
+themes and plugins for vim, cmus, mutt, etc.

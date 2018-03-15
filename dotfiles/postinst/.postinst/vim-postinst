@@ -1,0 +1,26 @@
+#!/bin/sh
+
+cat << EOF
+
+# VIM postinstallation tasks.
+
+## Downloading spell files for VIM.
+
+EOF
+
+wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
+wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
+
+cat << EOF
+
+## Updating go-vim binary dependencies.
+
+EOF
+
+vim +GoInstallBinaries +q
+
+cat << EOF
+
+# Finished VIM postinstallation tasks.
+
+EOF

@@ -57,12 +57,17 @@ for more information and sources.
 
 4. Re-login.
 
-5. Setup `vim`. Plugins should have been installed at step 2. Config - at step 3.
-   At this step vim plugins are executed for post-installation.
-   
-        vim +GoInstallBinaries
+5. Execute `~/.postinst/postinst`. It will guide you through other
+   semi-automated installation steps. Such as:
 
-TODO
+   - updating vim's spell files;
+   - updating vim-go's binary dependencies;
+   - ...
+
+   This script depends on manual steps above, such as existance of vim plugins
+   or Go environment variables. So, these steps cannot be done automatically
+   during installation.
+
 
 Bonus: i3 configured to use random wallpaper from the `~/Pictures/wallpapers`
 directory at every login.  Only one wallpaper pre-packaged. Run script in the
