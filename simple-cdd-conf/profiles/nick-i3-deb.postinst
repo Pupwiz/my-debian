@@ -22,6 +22,11 @@ cd /etc/X11/
 Xorg -configure
 cd $wrkdir
 
+# shared dir
+mkdir -p /home/share/family
+chgrp family /home/share/family
+chmod 2775 /home/share/family
+
 ## 3rd party packages
 
 # gopass

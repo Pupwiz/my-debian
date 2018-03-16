@@ -142,7 +142,9 @@ done
 if [ -d "$custom_extras/cfg" ]; then
     mkdir -p "$extras_dir/cfg"
     for file in "$custom_extras"/cfg/* ; do
-        tar -cf "$extras_dir/cfg/$(basename $file).tar" \
+        tar --group=root --owner=root \
+            --exclude-vcs --dereference \
+            -cf "$extras_dir/cfg/$(basename $file).tar" \
             -C "$file" .
     done
 fi
