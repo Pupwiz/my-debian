@@ -3,4 +3,4 @@
 # Entry point to post installation scripts.
 # Executes all other executables within this folder.
 
-find ~/.postinst -executable -not -name postinst -type f -exec {} \;
+find -L ~/.postinst -executable -not -name postinst -type f -exec {} \;

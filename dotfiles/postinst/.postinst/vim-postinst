@@ -8,8 +8,9 @@ cat << EOF
 
 EOF
 
-wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
-wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
+mkdir -p "$HOME/.vim/spell"
+/usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
+/usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
 
 cat << EOF
 
