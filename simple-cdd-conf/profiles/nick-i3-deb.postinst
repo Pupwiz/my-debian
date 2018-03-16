@@ -50,7 +50,8 @@ apt-get -y install \
 
 apt-get -y -t stretch-backports install \
 	firejail \
-	firejail-profiles
+	firejail-profiles \
+    torbrowser-launcher
 
 # firejail, apparmor
 aa-enforce firejail-default

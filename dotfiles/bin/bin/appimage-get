@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Downloads AppImage binaries and makes them executable via firejail.
+# Apps to download are listed in `~/bin/appimage/app.list`.
+# Script creates *.desktop entries for them, `appimage-run` executes them.
+
+# Note: AppImages are of bad quality. Some cannot find shared libs, for example.
+
+/usr/bin/wget -N -i ~/bin/appimage/app.list -P ~/bin/appimage
+
+find ~/bin/appimage -type f -name "*.AppImage" -exec chmod +x {} +
+
+for f in $(find ~/bin/appimage -type f -name "*.AppImage"); do
+	b=$(basename "$f")
+    n=$(echo "$b" | cut -d'-' -f 1)
+	cat <<- EOF > "$HOME/.local/share/applications/$n.desktop"
+	[Desktop Entry]
+	Type=Application
+	Exec=bin/appimage-run "$f"
+	Name=$n
+	EOF
+done
+
+

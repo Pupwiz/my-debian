@@ -22,18 +22,16 @@ x 2018-03-11 resolve conflict of .bashrc
 x 2018-03-15 Customize i3 and menu
 x 2018-03-15 convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
 x 2018-03-15 in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
-
-check vim plagins, spell and switching langs
+x 2018-03-17 check vim plugins, spell and switching langs
+x 2018-03-17 file permissions - to some extend
+x 2018-03-17 firewall
+x 2018-03-17 apparmour
+x 2018-03-17 firejail - https://firejail.wordpress.com/documentation-2/
+x 2018-03-17 systemd timers for security updates (preinstalled)
 
 Security:
-file permissions
-https://wiki.debian.org/UserPrivateGroups
 mount some partitions as read-only (scripts to remount rw during installs/updates) - ? 
 ssh + protection (fail2ban, ... ?)
-firewall
-apparmour
-firejail - https://firejail.wordpress.com/documentation-2/
-systemd timers for security updates
 review logs in VM before install on laptop
 
 Backup script and approach (check, review, integrate):
@@ -47,7 +45,7 @@ http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backu
 
 Custom/new packages:
 build custom file-based debian repo with packages, which I prefer to install from source
-as I see it, this is should be a recipes in the git repo and build script, calling checkinstall for them
+as I see it, this should be a recipes in the git repo and build script, calling checkinstall for them
 
 Passwords:
 check that no passwords, keys are in the repo
