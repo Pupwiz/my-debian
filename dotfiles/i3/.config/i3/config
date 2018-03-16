@@ -174,3 +174,5 @@ bar {
 # restore wallpapers
 exec_always --no-startup-id "$(dir=~/Pictures/wallpapers; $dir/wallpapers sel-rnd $dir/current.jpg $dir; feh --bg-fill $dir/current.jpg)"
 
+# run apparmor notifications
+exec_always --no-startup-id "/usr/bin/aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"

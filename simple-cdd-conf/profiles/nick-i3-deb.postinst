@@ -22,10 +22,20 @@ cd /etc/X11/
 Xorg -configure
 cd $wrkdir
 
+# update grub
+update-grub
+
+# fix permissions
+chmod -R o-rwx /home
+
+# firejail, apparmor
+aa-enforce firejail-default
+firecfg
+
 # shared dir
 mkdir -p /home/share/family
 chgrp family /home/share/family
-chmod 2775 /home/share/family
+chmod 2770 /home/share/family
 
 ## 3rd party packages
 

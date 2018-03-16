@@ -1,3 +1,0 @@
-#!/bin/bash
-
-find $GOROOT/src -maxdepth 2 -type d -printf '%P\n' | grep -v vendor

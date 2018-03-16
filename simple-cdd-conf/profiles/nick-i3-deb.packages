@@ -28,6 +28,7 @@ apparmor-profiles
 apparmor-profiles-extra
 apparmor-utils
 auditd
+firejail
 ufw
 
 # X, i3, themes, dbus, notifications

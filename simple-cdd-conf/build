@@ -12,16 +12,17 @@ if [ -d "$custom_extras/pkg-src" ]; then
     TMP_PKGS=$(mktemp -d "${TMPDIR:-/tmp}"/simple-cdd.custom-pkg.XXXX)
     for file in "$custom_extras"/pkg-src/* ; do
         PKG=$(basename $file)
-	PKG_SHORT=$(echo "$PKG" | sed 's/-.\+$//')
-	reprepro -b "$mirror_dir" remove stretch "$PKG_SHORT"
+        PKG_SHORT=$(echo "$PKG" | sed 's/-.\+$//')
+        reprepro -b "$mirror_dir" remove stretch "$PKG_SHORT"
         mkdir -p $TMP_PKGS/$PKG
         cd $TMP_PKGS/$PKG
         dh_make -n -i -y
         rm $TMP_PKGS/$PKG/debian/*.ex \
-           $TMP_PKGS/$PKG/debian/*.EX \
-           $TMP_PKGS/$PKG/debian/R*
+            $TMP_PKGS/$PKG/debian/*.EX \
+            $TMP_PKGS/$PKG/debian/R*
         cp -r $file $TMP_PKGS
-	dpkg-buildpackage --no-sign
+        chmod -R o-rwx $TMP_PKGS/$PKG/data
+        dpkg-buildpackage --no-sign
     done
     cp $TMP_PKGS/*.deb "$custom_extras/pkg"
     cd $wrkdir
