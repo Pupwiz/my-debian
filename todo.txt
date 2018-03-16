@@ -1,4 +1,5 @@
 Cannot preseed location toggle key. Even with kernel params.
+Cannot preserve existing partitions, have to completely erase disk and restore additional partitions from backup.
 x 2018-02-07 Localization in single-user mode console
 x 2018-02-11 try to populate /etc/skel via package; package required, because finish script invoked after first user creation
 x 2018-02-12 https://wiki.gentoo.org/wiki/X_without_Display_Manager
@@ -22,16 +23,18 @@ x 2018-03-15 Customize i3 and menu
 x 2018-03-15 convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
 x 2018-03-15 in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
 
-refactor profiles to install on laptop into existing partition or with recreating all partitions (as it do now)
+check vim plagins, spell and switching langs
 
 Security:
 file permissions
+https://wiki.debian.org/UserPrivateGroups
 mount some partitions as read-only (scripts to remount rw during installs/updates) - ? 
 ssh + protection (fail2ban, ... ?)
 firewall
 apparmour
 firejail - https://firejail.wordpress.com/documentation-2/
 systemd timers for security updates
+review logs in VM before install on laptop
 
 Backup script and approach (check, review, integrate):
 backup ssh and gpg keys and passwords (+ file permissions)
@@ -42,12 +45,14 @@ use --mirror to file based repositories and myrepos to backup repositories
 setup mirror for all repositories to file, and some to bitbucket/gitlab
 http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
 
+Custom/new packages:
 build custom file-based debian repo with packages, which I prefer to install from source
 as I see it, this is should be a recipes in the git repo and build script, calling checkinstall for them
 
 Passwords:
 check that no passwords, keys are in the repo
 check that user name is not hardcoded in scripts and configs
+regenerate all the ssh and pgp keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
 migrate from lastpass to gopass, change all passwords
 setup vim and rofi as described in gopass instructions
 change multifon script to use gopass
@@ -55,7 +60,10 @@ store newsbeuter's rss tokens in gopass
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
-docker
+docker (run 3rd party containers in VM, it's unsecure to run them on host, it's safe to run dev containers in VM as well)
+do not install docker on the host, only docker client, do not create docker group (alternative: https://askubuntu.com/a/982187)
+consider alias and NORASSWD to save typing sudo and password
+https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
 vagrant script to automate build even more
 

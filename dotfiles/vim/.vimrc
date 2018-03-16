@@ -1,6 +1,5 @@
 syntax on
 
-"colorscheme slate
 colorscheme cobalt2
 
 set keymap=russian-jcukenwin
@@ -55,6 +54,9 @@ autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -\ -j\ -k
 autocmd FileType gitcommit setlocal spell textwidth=72
 autocmd FileType java set omnifunc=javacomplete#Complete
 
+" Per default, netrw leaves unmodified buffers open. This autocommand
+" deletes netrw's buffer once it's hidden (using ':q', for example)
+autocmd FileType netrw setl bufhidden=delete
                                                                                                     
 filetype plugin indent on
 set autoindent
