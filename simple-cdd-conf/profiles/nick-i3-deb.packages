@@ -19,6 +19,15 @@ util-linux
 vim-gtk3
 weather-util
 weather-util-data
+
+# Security.
+apparmor
+apparmor-easyprof
+apparmor-notify
+apparmor-profiles
+apparmor-profiles-extra
+apparmor-utils
+auditd
 ufw
 
 # X, i3, themes, dbus, notifications
