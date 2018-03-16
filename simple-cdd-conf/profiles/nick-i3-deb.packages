@@ -19,6 +19,7 @@ util-linux
 vim-gtk3
 weather-util
 weather-util-data
+ufw
 
 # X, i3, themes, dbus, notifications
 adwaita-qt
