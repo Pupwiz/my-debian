@@ -28,7 +28,9 @@ apparmor-profiles
 apparmor-profiles-extra
 apparmor-utils
 auditd
-firejail
+# from backports via postinst
+#firejail
+#firejail-profiles
 ufw
 
 # X, i3, themes, dbus, notifications
@@ -51,6 +53,7 @@ rxvt-unicode-256color
 xdotool
 xinit
 xorg
+xpra
 xsel
 xserver-xorg-input-all
 xserver-xorg-video-all

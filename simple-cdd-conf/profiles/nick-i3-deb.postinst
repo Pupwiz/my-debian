@@ -28,10 +28,6 @@ update-grub
 # fix permissions
 chmod -R o-rwx /home
 
-# firejail, apparmor
-aa-enforce firejail-default
-firecfg
-
 # shared dir
 mkdir -p /home/share/family
 chgrp family /home/share/family
@@ -39,14 +35,27 @@ chmod 2770 /home/share/family
 
 ## 3rd party packages
 
-# gopass
+# goobook is from stable, but fails to install with simple-cdd
+# firejail is from backports, because version in stable doesn't support newer AppImage format
+
 repoURL="https://www.justwatch.com/gopass/releases"
 wget -O- "$repoURL/0x0C92225A97F6B666.pub" | apt-key add -
-echo "deb $repoURL/binary-amd64 ./" | tee /etc/apt/sources.list.d/gopass.list
 
+# update 3rd party and backports, add all keys above
 apt-get -y update
-apt-get -y install gopass
-apt-get -y install goobook
+
+apt-get -y install \
+	gopass \
+	goobook
+
+apt-get -y -t stretch-backports install \
+	firejail \
+	firejail-profiles
+
+# firejail, apparmor
+aa-enforce firejail-default
+firecfg --fix-sound
+firecfg
 
 ## SystemD
 
