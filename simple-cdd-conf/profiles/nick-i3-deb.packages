@@ -28,10 +28,12 @@ apparmor-profiles
 apparmor-profiles-extra
 apparmor-utils
 auditd
-# from backports via postinst
+fail2ban
+ufw
+# currently installed from backports via postinst
+# change it later to install from stable (version >=0.9.52)
 #firejail
 #firejail-profiles
-ufw
 
 # X, i3, themes, dbus, notifications
 adwaita-qt

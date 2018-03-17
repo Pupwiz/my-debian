@@ -10,6 +10,6 @@ fi
 clear
 
 if [[ ! ${DISPLAY} && ${XDG_VTNR} == 1 ]]; then
-    exec startx
+    exec startx -- -nolisten tcp
 fi
 

@@ -1,5 +1,4 @@
 Cannot preseed location toggle key. Even with kernel params.
-Cannot preserve existing partitions, have to completely erase disk and restore additional partitions from backup.
 x 2018-02-07 Localization in single-user mode console
 x 2018-02-11 try to populate /etc/skel via package; package required, because finish script invoked after first user creation
 x 2018-02-12 https://wiki.gentoo.org/wiki/X_without_Display_Manager
@@ -28,10 +27,16 @@ x 2018-03-17 firewall
 x 2018-03-17 apparmour
 x 2018-03-17 firejail - https://firejail.wordpress.com/documentation-2/
 x 2018-03-17 systemd timers for security updates (preinstalled)
+x 2018-03-17 ssh + protection (default settings of fail2ban is good enough, disbled root login in sshd settings and ufw accepts requests only from local network, should be enough for rare direct exposions to wlan)
+
+Cannot preserve existing partitions, have to completely erase disk and restore additional partitions from backup.
+Possibly achievable with `keep` method and 2 almost identical parted recipes (one with `format` and another with `keep`)
+https://www.enricozini.org/blog/2008/tips/d-i-conditional-partitioning/
 
 Security:
 mount some partitions as read-only (scripts to remount rw during installs/updates) - ? 
-ssh + protection (fail2ban, ... ?)
+can be done if /etc is in separate partition
+https://wiki.debian.org/ReadonlyRoot
 review logs in VM before install on laptop
 
 Backup script and approach (check, review, integrate):
@@ -85,6 +90,7 @@ squid can block adds itself, here (also about ssl): https://wiki.alpinelinux.org
 tor as a alternative route to git (it's possible to have several cache_peer's with weights and probe them in order);
 havp + clamav - for antivirus;
 squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
+https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
 
 
 Final touch:

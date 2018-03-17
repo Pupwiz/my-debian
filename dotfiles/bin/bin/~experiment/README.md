@@ -28,6 +28,9 @@ to isolate app's dependencies from the host system. Sort of a lightweight
 alternative to other containers like Docker and LXC. I still need to evaluate
 what is more secure and easy to use.
 
+[Here](https://github.com/AppImage/AppImages) is a project, tools and docs about
+how to create custom `AppImage`s.
+
 Note: for scripts to work contains of this folder should be placed into
 `~/bin`.
 
