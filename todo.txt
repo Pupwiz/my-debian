@@ -1,45 +1,42 @@
 Cannot preseed location toggle key. Even with kernel params.
-x 2018-02-07 Localization in single-user mode console
-x 2018-02-11 try to populate /etc/skel via package; package required, because finish script invoked after first user creation
-x 2018-02-12 https://wiki.gentoo.org/wiki/X_without_Display_Manager
-x 2018-02-12 x, i3 and themes (without much customizations)
-x 2018-02-12 how to make usb stick?
+x 2018-02-07 Localization in single-user mode console.
+x 2018-02-11 Populate /etc/skel via package; package is required, because first user is created before postinst script.
+x 2018-02-12 Login without DM: https://wiki.gentoo.org/wiki/X_without_Display_Manager.
+x 2018-02-12 X, i3 and themes (without much customizations).
+x 2018-02-12 How to make usb stick?
 x 2018-02-14 Image check failed due contrib and non-free packages absence.
 x 2018-02-25 Try to add disk partitioning in separate profile and vbox specifics in another one.
-x 2018-02-25 maunt params for ssd disk
-x 2018-02-28 Keyboard layout switching and indicator
-x 2018-02-28 Localization in X mode
-x 2018-03-01 notify-send, notification-daemon, dbus - don't work, tried dunst - the same, should check dbus
-x 2018-03-01 alias for time conversions like `date -d"10:00MSK"`
-x 2018-03-01 rofi won't work with aliases. need a way to execute custom utils via rofi, aliases was an interesting idea
-x 2018-03-01 note: there is a problem with wget in postinst of custom package during OS installation (works OK in installed system), it stores empty files. Won't fix.
-x 2018-03-01 install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login
-x 2018-03-09 pass for encrypted passwords (for mutt)
-x 2018-03-09 Mail and Mutt
-x 2018-03-11 refactor dotfiles into separate repositories. see stow and myrepos
-x 2018-03-11 resolve conflict of .bashrc
-x 2018-03-15 Customize i3 and menu
-x 2018-03-15 convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use
-x 2018-03-15 in case there'll be a need to replace paths in *.desktop files with user directory, `man adduser` says there is a hook to put `sed` into it 
-x 2018-03-17 check vim plugins, spell and switching langs
-x 2018-03-17 file permissions - to some extend
-x 2018-03-17 firewall
-x 2018-03-17 apparmour
-x 2018-03-17 firejail - https://firejail.wordpress.com/documentation-2/
-x 2018-03-17 systemd timers for security updates (preinstalled)
-x 2018-03-17 ssh + protection (default settings of fail2ban is good enough, disbled root login in sshd settings and ufw accepts requests only from local network, should be enough for rare direct exposions to wlan)
+x 2018-02-25 maunt params for ssd disk.
+x 2018-02-28 Keyboard layout switching and indicator.
+x 2018-02-28 Localization in X mode.
+x 2018-03-01 notify-send, notification-daemon, dbus - don't work, tried dunst - the same, should check dbus.
+x 2018-03-01 Alias for time conversions like `date -d"10:00MSK"`.
+x 2018-03-01 rofi won't work with aliases. need a way to execute custom utils via rofi, aliases was an interesting idea.
+x 2018-03-01 wget stores empty files in postinst of custom package during OS installation. Won't fix, workaround.
+x 2018-03-01 Install one wallpaper and symlink, prepare script to download wallpapers and choose random one at every login.
+x 2018-03-09 pass for encrypted passwords (for mutt).
+x 2018-03-09 Mail and Mutt.
+x 2018-03-11 Refactor dotfiles into separate repositories. see stow and myrepos.
+x 2018-03-11 Resolve conflict of .bashrc.
+x 2018-03-15 Customize i3 and menu.
+x 2018-03-15 Convert custom utils into scripts in $HOME/bin + $HOME/.local/share/applications/*.desktop shortcuts, which rofi can use.
+x 2018-03-17 Check vim plugins, spell and switching langs.
+x 2018-03-17 File permissions - to some extend.
+x 2018-03-17 Firewall.
+x 2018-03-17 apparmour.
+x 2018-03-17 firejail - https://firejail.wordpress.com/documentation-2/.
+x 2018-03-17 systemd timers for security updates (already existed).
+x 2018-03-17 ssh + protection (fail2ban, sshd settings, ufw rules). Enough for laptop/VM usage (most time behind router's firewall).
 
-Cannot preserve existing partitions, have to completely erase disk and restore additional partitions from backup.
-Possibly achievable with `keep` method and 2 almost identical parted recipes (one with `format` and another with `keep`)
-https://www.enricozini.org/blog/2008/tips/d-i-conditional-partitioning/
+Make parted recipe to preserve existing partitions. Idea: https://www.enricozini.org/blog/2008/tips/d-i-conditional-partitioning/.
 
 Security:
-mount some partitions as read-only (scripts to remount rw during installs/updates) - ? 
-can be done if /etc is in separate partition
-https://wiki.debian.org/ReadonlyRoot
-review logs in VM before install on laptop
+Mount as read-only `/` and `/backups`. Temporary mount to write for updates and backups. https://wiki.debian.org/ReadonlyRoot. Make `/etc` separate partition?
+Create encrypted directory for documents scans, contracts, etc.
+Review logs in VM before installation onto laptop.
 
 Backup script and approach (check, review, integrate):
+systemd timer for backups onto local partition, mail remainders to make backup to external drive
 backup ssh and gpg keys and passwords (+ file permissions)
 backup script should run with backup group privileges, not root
 use myrepos, stow and file-based private repos to backup/restore private keys and passwords
@@ -47,6 +44,9 @@ add note to readme with instructions to copy ssh and pgp keys. display readme at
 use --mirror to file based repositories and myrepos to backup repositories
 setup mirror for all repositories to file, and some to bitbucket/gitlab
 http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
+https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/
+https://github.com/rsnapshot/rsnapshot/blob/master/docs/docbook/rest.txt
+https://blog.interlinked.org/tutorials/rsync_time_machine.html
 
 Custom/new packages:
 build custom file-based debian repo with packages, which I prefer to install from source
@@ -80,7 +80,7 @@ hibernation, battery life
 printer, scanner
 camera (+ tool to switch it off)
 
-Caching/offline mode/alternative routes for public repositories. Net security, privacy and add blocking.
+Caching/offline mode/alternative routes for public repositories. Net security, privacy and ads blocking.
 something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
 vpn/onion/tor/i2p transport to be easily switched on, just in case?
 user -> squid -> privoxy -> tor
