@@ -31,7 +31,7 @@ x 2018-03-17 ssh + protection (fail2ban, sshd settings, ufw rules). Enough for l
 Make parted recipe to preserve existing partitions. Idea: https://www.enricozini.org/blog/2008/tips/d-i-conditional-partitioning/.
 
 Security:
-Mount as read-only `/` and `/backups`. Temporary mount to write for updates and backups. https://wiki.debian.org/ReadonlyRoot. Make `/etc` separate partition?
+Mount as read-only `/` and `/backups`. Temporary mount to write for updates and backups. https://wiki.debian.org/ReadonlyRoot.
 Create encrypted directory for documents scans, contracts, etc.
 Review logs in VM before installation onto laptop.
 

@@ -53,7 +53,7 @@ two-disks ::
             $primary{ }
             method{ swap }
             format{ } .
-    2000 2000 2000 $default_filesystem
+    10000 10000 10000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg01 }
@@ -73,7 +73,7 @@ two-disks ::
             use_filesystem{ }
             $default_filesystem{ }
             mountpoint{ /var } .
-    100000 100000 100000 $default_filesystem
+    200000 200000 200000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg01 }

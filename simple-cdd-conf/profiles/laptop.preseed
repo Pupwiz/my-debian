@@ -2,43 +2,6 @@
 d-i netcfg/get_hostname string n76vj
 d-i netcfg/get_hostname seen false
 
-# Partitioning for SSD (/dev/sda) + HDD (/dev/sdb).
-
-d-i partman-auto/disk string /dev/sda /dev/sdb
-d-i partman/alignment select optimal
-d-i partman-auto/choose_recipe select two-disks
-d-i partman/default_filesystem string ext4
-d-i partman-auto/expert_recipe_file string /cdrom/simple-cdd/laptop.partman
-#d-i partman-auto/expert_recipe_file string /hd-media/simple-cdd/laptop.partman
-
-d-i partman-basicfilesystems/choose_label string gpt
-d-i partman-basicfilesystems/default_label string gpt
-d-i partman-partitioning/choose_label string gpt
-d-i partman-partitioning/default_label string gpt
-d-i partman/choose_label string gpt
-d-i partman/default_label string gpt
-d-i partman-partitioning/choose_label select gpt
-partman-partitioning partman-partitioning/choose_label select gpt
-
-d-i partman-auto/method string lvm
-d-i partman-auto-lvm/new_vg_name string vg00
-d-i partman-auto-lvm/guided_size string max
-d-i partman-md/device_remove_md boolean true
-d-i partman-lvm/device_remove_lvm boolean true
-d-i partman-lvm/device_remove_lvm_span boolean true
-d-i partman-auto/purge_lvm_from_device  boolean true
-d-i partman/confirm boolean true
-d-i partman-md/confirm boolean true
-d-i partman-lvm/confirm boolean true
-d-i partman-partitioning/confirm_write_new_label boolean true
-d-i partman/choose_partition select finish
-d-i partman/confirm_nooverwrite boolean true
-
-# Remove stub partitions (free0 and free1)
-d-i preseed/late_command string \
-    lvremove -f /dev/vg00/free0 > /dev/null 2>&1; \
-    lvremove -f /dev/vg01/free1 > /dev/null 2>&1
-
 # Packages.
 tasksel tasksel/first multiselect standard, ssh-server, laptop
 d-i pkgsel/upgrade select safe-upgrade

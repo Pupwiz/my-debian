@@ -137,8 +137,67 @@ suggests, that for Ubuntu (and Debian, I suppose) `dd` is also slow. Answerer
 recommends to use `pv` instead. I've also seen suggestions to use even `cut`,
 but haven't tested them yet.
 
+## Installation
+
+Installation starts in a usual way from USB stick or `iso` image mounted to VM.
+
+Choose "Install" or "Graphical Install" in the installer's menu to start
+preseeded installation.
+
+Most answers will be preseeded from the profile. Still, you'll need to answer
+(or confirm default answer) on some questions. Namely:
+
+- keyboard shortcut to switch keyboard language layout;
+- user login, real name and password;
+- custom profiles to install.
+
+Note, that there will be no question about timezone. If you need, either amend
+preseed file manually or change timezone after installation completes.
+
+Custom profiles allow to choose partitioning scheme, packages and some options
+depending on target environment (VM/laptop).
+
+You should always chose to install `nick-i3-deb` profile (only basic system
+will be installed without it, without any customizations; also, post-install
+automation will not work).
+
+You may choose one of `laptop` or `vbox` profiles. They just install different
+sets of packages. For example, `laptop` will install hardware-related packages
+and `vbox` will automatically start installation of VirtualBox Additions on
+first boot.
+
+You should choose one of `partman-*` profiles. Without any of these profiles
+preseeded installation will most likely fail to partition disks. There is no
+way to bypass `partman-auto` script during installation and without any
+preseeded configuration it usually hangs in the menu loop - returns to the
+partitioning menu after any of your choice and make no further progress.
+
+`partman-sda-atomic` profile is to install system into single root partition on
+`sda` drive (no separate partitions for `/home` etc). It is usually useful in
+companion with `vbox` profile.
+
+`partman-2-disk` profile is to be used on laptop with SDD being `sda`
+and `HDD` being `sdb`. It creates separate `efi`, `boot` and `root` partitions
+on the SDD and `swap`, `tmp`, `home` and `backup` partitions on the HDD. It
+formats all partitions.
+
+Note: `partman-auto` script's restrictions don't allow to preserve existing
+partitions. I haven't found workaround yet. Backup partitions' content to
+external drive before installation and restore them from backup later.
+
+Currently I do not need any other partitioning scheme. To add a new one use
+existing ones as an example.
+
 ## After installation
+
+On the first boot after installation completes additional post-installation
+script will be automatically executed. It will amend bash profile files and
+install VirtualBox Additions, etc.
+
+Some steps are not automated. Like restoring secrets from backup. But
+post-installation script is provided to complete installation semi-manually.
 
 You will find instructions to complete configuration with some mamual steps in
 the `~/README.md` after you boot to installed system. You may preview these
 instructions [here](custom_extras/pkg-src/etcskel-1.0/data/etc/skel/README.md).
+

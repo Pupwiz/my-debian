@@ -30,8 +30,11 @@ chmod -R o-rwx /home
 
 # shared dir
 mkdir -p /home/share/family
-chgrp family /home/share/family
+chgrp -R staff /home/share
+chmod 2750 /home/share
 chmod 2770 /home/share/family
+
+#TODO: /backup dir
 
 ## 3rd party packages
 
