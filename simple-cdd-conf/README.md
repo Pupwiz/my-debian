@@ -176,14 +176,30 @@ partitioning menu after any of your choice and make no further progress.
 `sda` drive (no separate partitions for `/home` etc). It is usually useful in
 companion with `vbox` profile.
 
-`partman-2-disk` profile is to be used on laptop with SDD being `sda`
+`partman-2-disk` profile is to be used on laptop with 2 disks: SDD being `sda`
 and `HDD` being `sdb`. It creates separate `efi`, `boot` and `root` partitions
 on the SDD and `swap`, `tmp`, `home` and `backup` partitions on the HDD. It
-formats all partitions.
+uses LVM partitions where it makes sense and formats all partitions.
 
-Note: `partman-auto` script's restrictions don't allow to preserve existing
-partitions. I haven't found workaround yet. Backup partitions' content to
-external drive before installation and restore them from backup later.
+`partman-2-disk-keep` profile is not actually a `partman-auto` invocation, but
+my custom workaround to bypass `partman-auto` with it's limitation and preserve
+existing `home` and `backup` partitions. Script assumed that existing
+partitions were previously created with `partman-2-disk` scenario (LVM names
+are hardcoded). It is very basic and does not support any other partitioning
+scheme. It mounts all partitions for installer be able to continue and erases
+their content (except `home`). It also preserves `/etc/fstab`. So, to use it
+partitions and `/etc/fstab` should not be corrupted. Though it will not erase
+content of `home`, but it will copy usual skeleton files to it (bash profiles,
+etc). To be on the safe side, it's better to backup all data. Main use case of
+this scenario is to completely reinstall system (for example - clean upgrade)
+without need to restore all the data from external backup drive afterward.
+Also, keep in mind that postinstall scripts are written in assumption of clean
+install and may not work as expected on the altered `home` directory. Scripts
+may fail to replace existing files and execute. Manual intervention or
+reparation may be required. In case it won't replace existing files, see
+scripts in the `/etc/skel` dir and copy & execute them manually. Yet another
+caveat: you may need to fix `/etc/fstab` after installation, as line will be
+added by script to fix issue with `apt` unable to find cdrom.
 
 Currently I do not need any other partitioning scheme. To add a new one use
 existing ones as an example.

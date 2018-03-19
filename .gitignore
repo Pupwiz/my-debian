@@ -3,4 +3,4 @@
 *.iso
 tmp/
 images/
-custom_extras/pkg
+simple-cdd-conf/custom_extras/pkg

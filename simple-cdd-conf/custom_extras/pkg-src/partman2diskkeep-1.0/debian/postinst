@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Note: this script works only with partitions/volumes created by
+# `partman-2-disk` recipe. It is not general.
+# Script assumes that existing partitions and /etc/fstab were not corrupted.
+
+tag="partman-2-disk-keep"
+
+logger -t "$tag" "Started"
+
+# disable partman invocation by commenting it out with sed
+logger -t "$tag" "Disable partman"
+log-output -t "$tag" sed -i -e 's/partman/#partman/' /var/lib/dpkg/info/partman-base.postinst
+
+# activate lvm groups
+logger -t "$tag" "Activate LVM groups"
+anna-install lvm2-udeb
+depmod -a
+log-output -t "$tag" vgchange -a y vg00
+log-output -t "$tag" vgchange -a y vg01
+
+# create /target dir and subdirs and mount lvm partitions to them
+# remove content of partitions, but preserve /etc/fstab and /home
+logger -t "$tag" "Mount LVM partitions and cleanup them"
+log-output -t "$tag" mkdir /target
+log-output -t "$tag" mount -t ext4 /dev/mapper/vg00-root /target
+log-output -t "$tag" cp /target/etc/fstab /tmp/fstab
+log-output -t "$tag" rm -rf /target/*
+log-output -t "$tag" mkdir /target/boot
+log-output -t "$tag" mount -t ext4 /dev/sda3 /target/boot
+log-output -t "$tag" rm -rf /target/boot/*
+log-output -t "$tag" mkdir /target/var
+log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-var /target/var
+log-output -t "$tag" rm -rf /target/var/*
+log-output -t "$tag" mkdir /target/tmp
+log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-tmp /target/tmp
+log-output -t "$tag" rm -rf /target/tmp/*
+log-output -t "$tag" mkdir /target/home
+log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-home /target/home
+log-output -t "$tag" mkdir -p /target/media/cdrom
+log-output -t "$tag" mount -t auto /dev/sr0 /target/media/cdrom
+log-output -t "$tag" mkdir -p /target/media/cdrom0
+log-output -t "$tag" mount -t auto /dev/sr0 /target/media/cdrom0
+
+logger -t "$tag" "Restore /etc/fstab"
+log-output -t "$tag" mkdir /target/etc
+log-output -t "$tag" cp /tmp/fstab /target/etc/fstab
+# comment out old lines for /dev/sr0 and add new mount point, which apt can find
+log-output -t "$tag" sed -e '/\dev\/sr0/ s/^#*/#/' -i /target/etc/fstab
+echo '/dev/sr0 /media/cdrom/ udf,iso9660 user,noauto 0 0' >> /target/etc/fstab
+
+# preseed grub-installer
+logger -t "$tag" "Preseed grub-installer with bootloader disk"
+log-output -t "$tag" debconf-set grub-installer/bootdev /dev/sda
+
+logger -t "$tag" "Finished"
+
+
+

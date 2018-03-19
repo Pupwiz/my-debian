@@ -1,0 +1,11 @@
+Source: partman2diskkeep
+Section: debian-installer
+Priority: extra
+Standards-Version: 3.9.1
+Maintainer: Custom Image Creator <custom.image.creator@example.com>
+
+Package: partman2diskkeep
+XC-Package-Type: udeb
+Architecture: all
+Depends: ${misc:Depends}, cdebconf-udeb, di-utils, lvm2-udeb
+Description: Custom partitioning, preserving existing partitions

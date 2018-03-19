@@ -19,12 +19,15 @@ if [ -d "$custom_extras/pkg-src" ]; then
         dh_make -n -i -y
         rm $TMP_PKGS/$PKG/debian/*.ex \
             $TMP_PKGS/$PKG/debian/*.EX \
-            $TMP_PKGS/$PKG/debian/R*
+            $TMP_PKGS/$PKG/debian/R* || true
         cp -r $file $TMP_PKGS
-        chmod -R o-rwx $TMP_PKGS/$PKG/data
+	if [ -d "$TMP_PKGS/$PKG/data" ]; then
+        	chmod -R o-rwx $TMP_PKGS/$PKG/data
+	fi
         dpkg-buildpackage --no-sign
     done
     cp $TMP_PKGS/*.deb "$custom_extras/pkg"
+    cp $TMP_PKGS/*.udeb "$custom_extras/pkg"
     cd $wrkdir
 fi
 

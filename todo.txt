@@ -27,12 +27,11 @@ x 2018-03-17 apparmour.
 x 2018-03-17 firejail - https://firejail.wordpress.com/documentation-2/.
 x 2018-03-17 systemd timers for security updates (already existed).
 x 2018-03-17 ssh + protection (fail2ban, sshd settings, ufw rules). Enough for laptop/VM usage (most time behind router's firewall).
-
-Make parted recipe to preserve existing partitions. Idea: https://www.enricozini.org/blog/2008/tips/d-i-conditional-partitioning/.
+x 2018-03-20 Make parted recipe to preserve existing partitions.
+x 2018-03-20 Create encrypted directory... Won't do. Not very reliable.
 
 Security:
 Mount as read-only `/` and `/backups`. Temporary mount to write for updates and backups. https://wiki.debian.org/ReadonlyRoot.
-Create encrypted directory for documents scans, contracts, etc.
 Review logs in VM before installation onto laptop.
 
 Backup script and approach (check, review, integrate):

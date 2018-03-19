@@ -84,3 +84,6 @@ being a lawyer, I'm not sure how to better deal with it.
 19. https://github.com/aspiers/kitenet-mr/blob/master/lib/stow
 20. https://github.com/gerardbm/dotfiles
 21. https://github.com/gerardbm/vimrc
+22. https://d-i.alioth.debian.org/doc/internals/ch03.html
+23. https://ubuntuforums.org/showthread.php?t=1411273
+24. https://github.com/bfritz/remote-script-partitioner

@@ -136,6 +136,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id x-terminal-emulator -e alsamixer
 
+# quick help
+bindsym $mod+F1 exec --no-startup-id feh /usr/share/doc/i3-wm/keyboard-layer1.png /usr/share/doc/i3-wm/keyboard-layer2.png
+
 workspace_layout tabbed
 
 # resize window (you can also use the mouse for that)
