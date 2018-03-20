@@ -12,6 +12,12 @@ unpack_tars(){
 unpack_tars "/media/cdrom/simple-cdd/cfg"
 unpack_tars "/media/hd-media/simple-cdd/cfg"
 
+# explicitly grant some access, revoked during archive creation
+# (it's convenient to have less restrictive file permissions in the git
+# project, but then it's necessary to disable access for "others" by default
+# during archiving; so, here only exclusions are listed)
+chmod a+r /etc/apt/sources.list.d/*
+
 # configure console locale
 dpkg-reconfigure console-setup
 dpkg-reconfigure keyboard-configuration
