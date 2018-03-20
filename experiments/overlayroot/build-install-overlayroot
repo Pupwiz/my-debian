@@ -12,5 +12,6 @@ sudo dpkg --install ./overlayroot_0.18.debian5_all.deb
 
 # amend config
 sudo sed -e 's/^overlayroot=.*/overlayroot=tmpfs:swap=1,recurse=0/' -i /etc/overlayroot.conf
+echo "overlay" | sudo tee -a /etc/modules
 
 echo 'Check "mount" after reboot'

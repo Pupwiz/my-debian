@@ -16,16 +16,20 @@ cat /proc/filesystems
 sudo /sbin/modprobe overlay
 cat /proc/filesystems
 
-overlayroot package is commented out in debian sources, I tried to build it from sources,
-it installs, but won't make any difference. Probably, because kernel module is not loaded
-by default at the boot time. Is there any way to load it?
+overlayroot package is commented out in debian sources, I tried to build it
+from sources, it installs, but won't make any difference. Probably, because
+kernel module is not loaded by default at the boot time. Is there any way to
+load it?
 
 https://askubuntu.com/questions/123766/is-is-possible-to-modprobe-a-module-from-the-boot-loader
+
+Added it to `/etc/modules`, but it won't help. Though, `overlay` filesystem
+appears after boot (it wasn't before).
 
 # Note 2
 
 It'd be nice to have a read-only root partition. But what about /boot as well?
-Also, it protects from unintentional damage of the root partition by buggy scripts,
-but easily bypassed by malicious person/code - it's enough to find and remount
-underlying partition.
+Also, it protects from unintentional damage of the root partition by buggy
+scripts, but easily bypassed by malicious person/code - it's enough to find and
+remount underlying partition.
 
