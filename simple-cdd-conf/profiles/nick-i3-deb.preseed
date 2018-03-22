@@ -57,6 +57,11 @@ d-i pkgsel/upgrade select safe-upgrade
 d-i grub-installer/only_debian boolean true
 d-i grub-installer/with_other_os boolean true
 d-i grub-installer/bootdev string default
+grub-efi-amd64 grub2/force_efi_extra_removable boolean true
+grub-efi-amd64 grub2/update_nvram boolean true
+
+# Partman.
+d-i partman-efi/non_efi_system boolean true
 
 # Skip some annoying installation status notes.
 d-i finish-install/reboot_in_progress note

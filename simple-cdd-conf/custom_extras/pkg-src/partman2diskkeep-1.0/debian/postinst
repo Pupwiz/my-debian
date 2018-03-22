@@ -26,17 +26,29 @@ log-output -t "$tag" mkdir /target
 log-output -t "$tag" mount -t ext4 /dev/mapper/vg00-root /target
 log-output -t "$tag" cp /target/etc/fstab /tmp/fstab
 log-output -t "$tag" rm -rf /target/*
+
 log-output -t "$tag" mkdir /target/boot
 log-output -t "$tag" mount -t ext4 /dev/sda3 /target/boot
 log-output -t "$tag" rm -rf /target/boot/*
+
+log-output -t "$tag" mkdir /target/boot/efi
+log-output -t "$tag" mount -t vfat /dev/sda2 /target/boot/efi
+log-output -t "$tag" rm -rf /target/boot/efi/*
+# workaround to vbox uefi issue (https://askubuntu.com/a/573672)
+#TODO: check, should it be /dev/sda1, will grub installation erase file, should it stay mounted
+echo '\EFI\debian\grubx64.efi' > /target/boot/efi/startup.nsh
+
 log-output -t "$tag" mkdir /target/var
 log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-var /target/var
 log-output -t "$tag" rm -rf /target/var/*
+
 log-output -t "$tag" mkdir /target/tmp
 log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-tmp /target/tmp
 log-output -t "$tag" rm -rf /target/tmp/*
+
 log-output -t "$tag" mkdir /target/home
 log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-home /target/home
+
 log-output -t "$tag" mkdir -p /target/media/cdrom
 log-output -t "$tag" mount -t auto /dev/sr0 /target/media/cdrom
 log-output -t "$tag" mkdir -p /target/media/cdrom0
@@ -48,10 +60,6 @@ log-output -t "$tag" cp /tmp/fstab /target/etc/fstab
 # comment out old lines for /dev/sr0 and add new mount point, which apt can find
 log-output -t "$tag" sed -e '/\dev\/sr0/ s/^#*/#/' -i /target/etc/fstab
 echo '/dev/sr0 /media/cdrom/ udf,iso9660 user,noauto 0 0' >> /target/etc/fstab
-
-# preseed grub-installer
-logger -t "$tag" "Preseed grub-installer with bootloader disk"
-log-output -t "$tag" debconf-set grub-installer/bootdev /dev/sda
 
 logger -t "$tag" "Finished"
 
