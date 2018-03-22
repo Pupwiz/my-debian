@@ -184,25 +184,58 @@ uses LVM partitions where it makes sense and formats all partitions.
 `partman-2-disk-keep` profile is not actually a `partman-auto` invocation, but
 my custom workaround to bypass `partman-auto` with it's limitation and preserve
 existing `home` and `backup` partitions. Script assumed that existing
-partitions were previously created with `partman-2-disk` scenario (LVM names
-are hardcoded). It is very basic and does not support any other partitioning
-scheme. It mounts all partitions for installer be able to continue and erases
-their content (except `home`). It also preserves `/etc/fstab`. So, to use it
-partitions and `/etc/fstab` should not be corrupted. Though it will not erase
-content of `home`, but it will copy usual skeleton files to it (bash profiles,
-etc). To be on the safe side, it's better to backup all data. Main use case of
-this scenario is to completely reinstall system (for example - clean upgrade)
-without need to restore all the data from external backup drive afterward.
-Also, keep in mind that postinstall scripts are written in assumption of clean
-install and may not work as expected on the altered `home` directory. Scripts
-may fail to replace existing files and execute. Manual intervention or
-reparation may be required. In case it won't replace existing files, see
-scripts in the `/etc/skel` dir and copy & execute them manually. Yet another
-caveat: you may need to fix `/etc/fstab` after installation, as line will be
-added by script to fix issue with `apt` unable to find cdrom.
+partitions were previously created with `partman-2-disk` scenario (partitions
+and LVM names are hardcoded). It is very basic and does not support any other
+partitioning scheme. It mounts all partitions for installer be able to continue
+and erases their content (except `home`). It also preserves `/etc/fstab`. So,
+to use it partitions and `/etc/fstab` should not be corrupted. Though it will
+not erase content of `home`, but it will run post-installation script on it.
+To be on the safe side, it's better to backup all data. Main use case of this
+scenario is to completely reinstall system (for example - clean upgrade)
+without need to restore all the data from external backup drive afterward. So,
+all `/`, `/boot`, `/var`, etc will be erased.  Also, keep in mind that
+post-install scripts are written in assumption of clean install and may not
+work as expected on the altered `home` directory. My tests shows, that Debian
+refuses to copy skeleton files into existing user's directory.  So, scripts
+will not run on first boot after installation (and, probably, for good). You
+may want to run them (or some portions of them) manually, copying them from
+`/etc/skel`. For example, VirtualBox Addons installation will not be started
+automatically in this case. And, because of that, Xorg may fail to start due
+lack of driver.  To repair it, you may need to login via `tty2` (Alt-F2), and
+run scripts from there.  Yet another caveat: you may need to fix `/etc/fstab`
+after installation, as line will be added by script to fix issue with `apt`
+unable to find cdrom.
 
 Currently I do not need any other partitioning scheme. To add a new one use
 existing ones as an example.
+
+### Installation options (combinations of profiles)
+
+To put it simple, here are my usual combinations of profiles for various needs.
+
+#### VirtualBox, general use
+
+Default settings for Debian in vbox - one disk, bios.
+
+Profiles: `nick-i3-deb` + `vbox` + `partman-sda-atomic`.
+
+#### VirtualBox, closer laptop emulation
+
+This is to test installer and other related scripts before deploy them to laptop.
+
+Settings in vbox - based on default for Debian, but with EFI enabled and 2
+disks.  First disk is SSD (250G on laptop, 230G in vbox), second one is HDD
+(1TB on laptop, 900G in vbox). Just to be sure that it all will fit onto real
+hardware, I make vbox disks a bit smaller (to avoid errors due measurement
+units nonsense).
+
+Profiles: `nick-i3-deb` + `vbox` + `partman-2-disk`.
+Or, to preserve existing partitions: `nick-i3-deb` + `vbox` + `partman-2-disk-keep`.
+
+#### Laptop
+
+Profiles: `nick-i3-deb` + `laptop` + `partman-2-disk`.
+Or, to preserve existing partitions: `nick-i3-deb` + `laptop` + `partman-2-disk-keep`.
 
 ## After installation
 
