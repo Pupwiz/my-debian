@@ -1,7 +1,13 @@
 # AppImage experiment
 
-This folder contains couple of scripts and list file for `wget` to download and
-setup some applications from [AppImage](https://appimage.org/) repository.
+This folder contains couple of scripts and a list file for `wget` to download
+and setup some applications from [AppImage](https://appimage.org/) repository.
+
+Note: scripts are written in assumption that they'll be put into `~/bin`. They
+use folder `~/bin/appimage` to store list and downloaded images themselves.
+This folder along with scripts may be managed by `stow` and put into "dotfiles"
+hierarchy. Alas, quality of the apps in the `AppImage` repository is not good
+enough to make this approach usable on the stable system.
 
 `AppImage` is a format of executable file packed with all its dependencies.  It's
 interesting from usability POV as a way to more simply obtain fresh packages
@@ -12,7 +18,7 @@ Especially it is interesting in a pair with `firejail` to easily execute such
 images in a sandbox.
 
 Scripts in this folder automate downloading bunch of `AppImage`s and wrap them
-with *.desktop entries to execute them in the sandbox via `firejail`.
+with `*.desktop` entries to execute them in the sandbox via `firejail`.
 
 Unfortunately, my experiments lid me to conclusion that this technology is not
 mature and popular enough to be practical right now. I was not able to find
@@ -30,7 +36,3 @@ what is more secure and easy to use.
 
 [Here](https://github.com/AppImage/AppImages) is a project, tools and docs about
 how to create custom `AppImage`s.
-
-Note: for scripts to work contains of this folder should be placed into
-`~/bin`.
-
