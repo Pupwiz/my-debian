@@ -1,4 +1,5 @@
 # General.
+apt-src
 apt-transport-https
 aptitude
 console-setup
@@ -68,6 +69,7 @@ xserver-xorg-video-all
 # For building custom packages and installation images.
 build-essential
 debconf-utils
+devscripts
 dh-make
 dosfstools
 fakeroot

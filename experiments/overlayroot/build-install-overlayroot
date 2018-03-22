@@ -1,0 +1,17 @@
+#!/bin/bash
+
+apt-src update
+apt-src install cloud-initramfs-tools
+
+# just uncomment it and build
+sed -e 's/^#*//' -i ./cloud-initramfs-tools-0.18.debian5/debian/control
+
+apt-src build cloud-initramfs-tools
+sudo apt install cryptsetup cryptsetup-bin
+sudo dpkg --install ./overlayroot_0.18.debian5_all.deb 
+
+# amend config
+sudo sed -e 's/^overlayroot=.*/overlayroot=tmpfs:swap=1,recurse=0/' -i /etc/overlayroot.conf
+echo "overlay" | sudo tee -a /etc/modules
+
+echo 'Check "mount" after reboot'
