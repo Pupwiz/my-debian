@@ -9,11 +9,11 @@
 # Symlink can be used by other programs to setup it as a current wallpaper.
 
 # Use GNU tools on Mac OS X (install with `brew install coreutils`).
-if [ $(command -v gdate) ]; then
+if command -v gdate; then
     function date() { gdate "$@"; }
     export -f date
 fi
-if [ $(command -v gshuf) ]; then
+if command -v gshuf; then
     function shuf() { gshuf "$@"; }
     export -f shuf
 fi
