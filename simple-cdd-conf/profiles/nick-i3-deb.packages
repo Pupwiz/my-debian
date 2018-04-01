@@ -2,26 +2,77 @@
 apt-src
 apt-transport-https
 aptitude
+aria2
+bash-completion
+bitlbee-libpurple
+bitlbee-plugin-otr
+calcurse
+chromium
+cmus
 console-setup
+coreutils
+curl
 dialog
+easytag
+evince
+fbreader
+findutils
+firefox-esr
+gdebi
+gimp
 gnupg2
+gstreamer1.0-plugins-bad
+gstreamer1.0-plugins-bad-doc
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-base-apps
+gstreamer1.0-plugins-base-doc
+gstreamer1.0-plugins-good
+gstreamer1.0-plugins-good-doc
+gstreamer1.0-plugins-ugly
+gstreamer1.0-plugins-ugly-doc
+hugin
+hugo
+ifuse
 info
+inkscape
+jq
+libavcodec-extra
 libsasl2-modules
 lynx
 mc
+mplayer
 mutt
 myrepos
+newsbeuter
+p7zip-full
+pandoc
+pinta
 pmount
 poppler-utils
 qalc
+rsync
+shotwell
 stow
 taskwarrior
+transmission
+tree
+ufraw
+unar
+unattended-upgrades
+unrar
+usbmuxd
 util-linux
+vifm
 vim-gtk3
 weather-util
 weather-util-data
+weechat
+wget
+xpdf
+xtightvncviewer
+zathura
 
-# Security.
+# Security, privacy.
 apparmor
 apparmor-easyprof
 apparmor-notify
@@ -30,6 +81,7 @@ apparmor-profiles-extra
 apparmor-utils
 auditd
 fail2ban
+tor
 ufw
 # currently installed from backports via postinst
 # change it later to install from stable (version >=0.9.52)
@@ -53,6 +105,7 @@ libnotify-bin
 mesa-utils
 rofi
 rxvt-unicode-256color
+xclip
 xdotool
 xinit
 xorg
@@ -80,6 +133,49 @@ simple-cdd
 etcskel
 
 # Development.
+#golang # will install from testing
+#debian-vm-builder
+#libvirt-bin
+android-tools-adb
+avahi-utils
+bridge-utils
+checkinstall
+docker-compose
+gcc
 git
+liblua5.2-dev
+libncurses5-dev
+libperl-dev
+libqt5widgets5
+libvirt-clients
+libvirt-daemon-system
+lua5.2
+make
+make-doc
+meld
+mercurial
+nim
+packer
+python-dev
+qemu-kvm
+qemu-system
+ruby-dev
 tig
-golang-go
+tmate
+tmux
+vagrant
+virt-manager
+
+# Java Development.
+android-sdk
+gradle
+icedtea-plugin
+maven
+openjdk-8-jdk
+visualvm
+
+
+##  Questionable.
+# pulseaudio
+# timidity
+# timidity-interfaces-extra

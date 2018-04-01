@@ -4,7 +4,7 @@
 dialog \
     --backtitle "Installing VirtualBox guest additions" \
     --title "Action required" \
-    --msgbox 'Click "Devices > Insert Guest Additions CD image..." item in VirtualBox menu' 10 30
+    --msgbox 'Click "Devices > Insert Guest Additions CD image..." item in VirtualBox menu' 10 60
 dialog --clear
 
 clear

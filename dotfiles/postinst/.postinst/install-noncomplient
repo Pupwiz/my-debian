@@ -1,0 +1,51 @@
+#!/bin/bash
+
+mkdir -p ${CACHE_DIR:=/home/share/install/deb}
+
+# $1 - url of deb file
+function install_deb_from_url() {
+    local url="$1"
+    local fname=${url##*/}
+    wget -NP "$CACHE_DIR" "$url"
+    gdebi -n "$CACHE_DIR/$fname"
+}
+
+# $1 - repository
+function install_deb_from_github() {
+    local url=$(curl -s "https://api.github.com/repos/$1/releases/latest" | \
+        jq --raw-output '.assets[] | .browser_download_url | match(".*deb$") | .string')
+    install_deb_from_url "$url"
+}
+
+# $1 - url of executable file
+function install_exec_from_url() {
+    local url="$1"
+    local fname=${url##*/}
+    wget -NP "$CACHE_DIR" "$url"
+    chmod +x "$CACHE_DRI/$fname"
+    exec "$CACHE_DIR/$fname"
+}
+
+install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
+install_deb_from_github "BurntSushi/ripgrep"
+
+#TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
+
+#install_deb_from_github "nikolay-turpitko/cloud-initramfs-tools"
+#apt-mark hold overlayroot
+#cp /etc/overlayroot.conf /etc/overlayroot.local.conf
+#sed -e '/overlayroot=/ s/^#*/#/' -i /etc/overlayroot.local.conf
+#cat << 'EOF' >> /etc/overlayroot.local.conf
+#overlayroot="tmpfs:driver=overlay,swap=1,recurse=/boot|/backup"
+#EOF
+#
+#cat << 'EOF'
+#
+### Overlayroot will be activated after reboot.
+#
+#EOF
+
+# Genymotion do not offer free download anymore.
+#genymotion_ver="2.7.2"
+#install_exec_from_url "http://files2.genymotion.com/genymotion/genymotion-${genymotion_ver}/genymotion-${genymotion_ver}-linux_x64.bin"
+

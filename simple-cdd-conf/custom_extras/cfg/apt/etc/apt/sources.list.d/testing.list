@@ -1,0 +1,4 @@
+deb http://mirror.truenetwork.ru/debian testing main contrib non-free
+deb-src http://mirror.truenetwork.ru/debian testing main contrib non-free
+deb http://ftp.ru.debian.org/debian testing main contrib non-free
+deb-src http://ftp.ru.debian.org/debian testing main contrib non-free

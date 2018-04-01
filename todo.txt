@@ -29,10 +29,9 @@ x 2018-03-17 systemd timers for security updates (already existed).
 x 2018-03-17 ssh + protection (fail2ban, sshd settings, ufw rules). Enough for laptop/VM usage (most time behind router's firewall).
 x 2018-03-20 Make parted recipe to preserve existing partitions.
 x 2018-03-20 Create encrypted directory... Won't do. Not very reliable.
+x 2018-03-27 Mount some partitions as overlayed. Checked, but need custom package installed at the end of the whole process.
+x 2018-04-01 Custom packages. Created example on github. Install from testing/contrib/backports.
 
-Security:
-Mount as read-only `/` and `/backups`. Temporary mount to write for updates and backups. https://wiki.debian.org/ReadonlyRoot.
-Review logs in VM before installation onto laptop.
 
 Backup script and approach (check, review, integrate):
 systemd timer for backups onto local partition, mail remainders to make backup to external drive
@@ -46,10 +45,7 @@ http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backu
 https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/
 https://github.com/rsnapshot/rsnapshot/blob/master/docs/docbook/rest.txt
 https://blog.interlinked.org/tutorials/rsync_time_machine.html
-
-Custom/new packages:
-build custom file-based debian repo with packages, which I prefer to install from source
-as I see it, this should be a recipes in the git repo and build script, calling checkinstall for them
+backup installed packages: https://wiki.debian.org/ListInstalledPackages
 
 Passwords:
 check that no passwords, keys are in the repo
@@ -95,3 +91,11 @@ https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
 Final touch:
 put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
 themes and plugins for vim, cmus, mutt, etc.
+bitlbee+libpurple -> hangouts, skype, slack
+lost messages - ?
+upwork - ?
+deezer - ?
+
+Security:
+Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
+Review logs in VM before installation onto laptop.

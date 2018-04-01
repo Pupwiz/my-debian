@@ -52,3 +52,6 @@ alias tz-convert-from-ist='tz-convert from "Asia/Jerusalem"'
 alias cal='ncal -y -M'
 alias wthr='weather unbb uudd'
 alias wttr='curl wttr.in/barnaul'
+
+# usage: cat file.list | apt-get-all
+alias apt-get-all='grep -v '^#' | xargs sudo apt-get install -y'

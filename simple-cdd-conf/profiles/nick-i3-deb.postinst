@@ -1,13 +1,23 @@
 #!/bin/sh
 
+mount -t auto /media/cdrom
+
+# remove apt sources, to be replaced with custom one
+rm -rf /etc/apt/sources.list*
+
 # unpack custom configs (probe cdrom and hd-media)
 unpack_tars(){
     dir="$1"
+    echo "Starting unpack_tars '$dir'..."
     if [ -d "$dir" ]; then
+        echo "Scanning tars in '$dir'..."
         for f in "$dir"/*.tar; do
-            tar -xf $f || echo "WARN: $f failed."
+            echo "Unpacking '$f'..."
+            tar -xvf $f || echo "WARN: $f failed."
+            echo "Unpacked '$f'."
         done
     fi
+    echo "Finished unpack_tars '$dir'."
 }
 unpack_tars "/media/cdrom/simple-cdd/cfg"
 unpack_tars "/media/hd-media/simple-cdd/cfg"
@@ -16,7 +26,7 @@ unpack_tars "/media/hd-media/simple-cdd/cfg"
 # (it's convenient to have less restrictive file permissions in the git
 # project, but then it's necessary to disable access for "others" by default
 # during archiving; so, here only exclusions are listed)
-chmod a+r /etc/apt/sources.list.d/*
+chmod -R a+r /etc/apt/sources.list.d
 
 # configure console locale
 dpkg-reconfigure console-setup
@@ -39,33 +49,63 @@ mkdir -p /home/share/family
 chgrp -R staff /home/share
 chmod 2750 /home/share
 chmod 2770 /home/share/family
+mkdir -p /home/share/install
+mkdir -p /home/share/distr
 
-#TODO: /backup dir
+#TODO: chmod, chgrp
+mkdir -p /backup
 
 ## 3rd party packages
 
 # goobook is from stable, but fails to install with simple-cdd
 # firejail is from backports, because version in stable doesn't support newer AppImage format
 
-repoURL="https://www.justwatch.com/gopass/releases"
-wget -O- "$repoURL/0x0C92225A97F6B666.pub" | apt-key add -
+curl -s "https://www.justwatch.com/gopass/releases/0x0C92225A97F6B666.pub" | apt-key add -
+curl -s "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
+curl -s "http://deb.opera.com/archive.key" | apt-key add -
 
-# update 3rd party and backports, add all keys above
+# update 3rd party, testing and backports, add all keys above
+apt-get -y clean
 apt-get -y update
 
-apt-get -y install \
-	gopass \
-	goobook
-
 apt-get -y -t stretch-backports install \
-	firejail \
-	firejail-profiles \
-    torbrowser-launcher
+    firejail \
+    firejail-profiles \
+    openjdk-9-jdk \
+    telegram-desktop \
+    torbrowser-launcher \
+    virtualbox
+
+# currently fails
+apt-get -y -t stretch-backports install \
+    virtualbox-ext-pack
+
+apt-get -y -t testing install \
+    docker-doc \
+    docker.io \
+    golang
+
+apt-get -y install \
+    goobook \
+    google-cloud-sdk \
+    google-cloud-sdk-app-engine-go \
+    gopass \
+    libguestfs-tools \
+    libreoffice \
+    mysql-workbench \
+    opera-developer
+
+# already have this
+rm /etc/apt/sources.list.d/opera-developer.list
 
 # firejail, apparmor
 aa-enforce firejail-default
 firecfg --fix-sound
 firecfg
+
+# golang packages
+go get -u github.com/golang/dep/cmd/dep
+go get -u github.com/Masterminds/glide
 
 ## SystemD
 

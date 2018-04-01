@@ -25,9 +25,19 @@ Caveats:
 - Have to install it from sources, patched package for Ubuntu onto Debian.
   Need to handle logs, it's better persist them.
 
+- Not clear how to deal with /var. It's better to make it read-only, so that
+  some apps (apt, for instance) won't leave system in inconsistent state, when
+  modifications in /var persisted, while in / and /boot were not. At the same
+  time, there are many programs unusable without read-write access to /var
+  (logs, docker, ...).
 
-TODO: preserve /var/log (mount -bind - ?).
-TODO: update Debian package?
+- It conflicts with unattended updates. There is a hook in apt, which can be
+  used to remount partition in read-write mode, but I was not able to combine
+  it with `overlayroot-chroot`.
+
+- Often `overlayroot-chroot` exits leaving root partition in rw mode. 
+
+Current state: decided to postpone it.
 
 # Links
 
@@ -41,3 +51,4 @@ TODO: update Debian package?
 8. https://yulistic.gitlab.io/2016/05/overlayroot-not-working-with-custom-kernel/
 9. https://askubuntu.com/questions/123766/is-is-possible-to-modprobe-a-module-from-the-boot-loader
 10. https://manpages.debian.org/jessie/initramfs-tools/initramfs-tools.8.en.html
+11. https://wiki.debian.org/ReadonlyRoot#Make_apt-get_remount_.2F_if_needed

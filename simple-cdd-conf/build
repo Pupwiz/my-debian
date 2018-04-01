@@ -31,4 +31,4 @@ if [ -d "$custom_extras/pkg-src" ]; then
     cd $wrkdir
 fi
 
-build-simple-cdd --conf nick-i3-deb.conf
+build-simple-cdd --conf nick-i3-deb.conf --dvd

@@ -89,4 +89,5 @@ being a lawyer, I'm not sure how to better deal with it.
 24. https://github.com/bfritz/remote-script-partitioner
 25. https://askubuntu.com/questions/566315/virtualbox-boots-only-in-uefi-interactive-shell/573672#573672
 26. http://www.bog.pp.ru/hard/UEFI.html
-
+27. https://wiki.debian.org/BuildingTutorial#Installing_and_testing_the_modified_package
+28. https://wiki.debian.org/apt-src
