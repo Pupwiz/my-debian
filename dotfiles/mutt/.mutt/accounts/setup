@@ -7,7 +7,7 @@
 # $3 - "default" means this account is active on startup
 
 # make a fake header mailbox
-mbx=`printf "      %-10s" "${1^^}"`
+mbx=`printf "      %s" "${1^^}"`
 
 cat << EOF
 
