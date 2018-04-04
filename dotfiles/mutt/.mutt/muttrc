@@ -26,6 +26,10 @@ source ~/.mutt/sidebar
 
 source "~/.mutt/accounts/setup-all personal |"
 
+mailboxes "      LOCAL"
+mailboxes /var/mail/nick
+folder-hook /var/mail/nick source "~/.mutt/accounts/local"
+
 set realname            = "Nikolay Turpitko"
 set move                = no
 set copy                = no
