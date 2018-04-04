@@ -2,6 +2,17 @@
 d-i netcfg/get_hostname string n76vj
 d-i netcfg/get_hostname seen false
 
+# Local email server.
+exim4-config exim4/dc_localdelivery select mbox format in /var/mail/
+exim4-config exim4/mailname	string n76vj
+exim4-config exim4/no_config boolean true
+exim4-config exim4/dc_other_hostnames string n76vj
+exim4-config exim4/dc_postmaster string nick
+exim4-config exim4/dc_eximconfig_configtype select local delivery only; not on a network
+exim4-config exim4/use_split_config boolean true
+exim4-config exim4/dc_local_interfaces string 127.0.0.1
+exim4-config exim4/dc_minimaldns boolean true
+
 # Packages.
 tasksel tasksel/first multiselect standard, ssh-server, laptop
 d-i pkgsel/upgrade select safe-upgrade
