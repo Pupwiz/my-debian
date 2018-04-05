@@ -8,7 +8,7 @@ dialog \
 dialog --clear
 
 clear
-echo "Root privileges required to install VirtualBos guest additions"
+echo "Root privileges required to install VirtualBox guest additions"
 # suppress confirmation, this upgrade is required
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical

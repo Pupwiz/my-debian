@@ -27,7 +27,7 @@ d-i passwd/user-fullname seen false
 d-i passwd/username string nick
 d-i passwd/username seen false
 d-i passwd/user-default-groups string adm sudo staff cdrom floppy audio dip \
-  video plugdev netdev lp lpadmin scanner systemd-journal
+  video plugdev netdev lp lpadmin scanner systemd-journal mail
 
 # Time Zone.
 d-i clock-setup/utc boolean true
