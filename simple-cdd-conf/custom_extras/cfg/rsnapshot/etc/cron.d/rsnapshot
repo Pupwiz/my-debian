@@ -5,8 +5,8 @@
 # To activate this cron file you have to uncomment the lines below.
 # Feel free to adapt it to your needs.
 
-0 10,14,18,22 	* * *		root	/usr/bin/rsnapshot alpha
-30 12 		* * *		root	/usr/bin/rsnapshot beta
-0  12 		* * 1		root	/usr/bin/rsnapshot gamma
-30 11 		1 * *		root	/usr/bin/rsnapshot delta
+0 10,14,18,22 	* * *		root	APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes /usr/bin/rsnapshot alpha
+30 12 		* * *		root	APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes /usr/bin/rsnapshot beta
+0  12 		* * 1		root	APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes /usr/bin/rsnapshot gamma
+30 11 		1 * *		root	APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes /usr/bin/rsnapshot delta
 30 14 		1 * *		root	/usr/local/bin/rsnaptar root
