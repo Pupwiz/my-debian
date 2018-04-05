@@ -1,0 +1,57 @@
+# common caches & trashes
+*.log*
+*/.Trash/
+*/.cache/
+*/.config/*/logs/
+*/.config/chromium/
+*/.config/opera-developer/
+*/.mozilla/firefox/
+*/.thumbnails
+*/Cache/
+*/Logs/
+*/Trash/
+*/trash/
+
+# build artifacts
+*/.gem/
+*/.gradle/
+*/.m2/
+*/.npm/
+*/_build/
+*/_test-data/
+*/go/bin
+*/go/pkg
+*/node_modules/
+*/vendor/
+
+# iso, vbox images
+*/VirtualBox\ VMs/
+*.iso
+*.vbox*
+*.vdi
+
+# audio, video
+*/Music/
+*/Video/
+*/Photo/
+*.avi
+*.flac
+*.mp3
+*.mp4
+
+# ide, android
+*/.AndroidStudio*/
+*/.IdeaIC*/
+*/.android/
+*/Android/
+
+# stored other way
+*/.vim/pack/plugin/start/
+*/Downloads/
+*/Mail/
+*/TelegramDesktop/
+*/share/books/
+*/share/distr/
+*/share/install/
+*/share/music/
+*/share/video/

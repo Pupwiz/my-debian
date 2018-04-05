@@ -32,6 +32,7 @@ x 2018-03-20 Create encrypted directory... Won't do. Not very reliable.
 x 2018-03-27 Mount some partitions as overlayed. Checked, but need custom package installed at the end of the whole process.
 x 2018-04-01 Custom packages. Created example on github. Install from testing/contrib/backports.
 
+go config is wrong (GOROOT, GOPATH, go dir)
 
 Backup script and approach (check, review, integrate):
 systemd timer for backups onto local partition, mail remainders to make backup to external drive

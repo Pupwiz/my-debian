@@ -1,0 +1,12 @@
+# This is a sample cron file for rsnapshot.
+# The values used correspond to the examples in /etc/rsnapshot.conf.
+# There you can also set the backup points and many other things.
+#
+# To activate this cron file you have to uncomment the lines below.
+# Feel free to adapt it to your needs.
+
+0 10,14,18,22 	* * *		root	/usr/bin/rsnapshot alpha
+30 12 		* * *		root	/usr/bin/rsnapshot beta
+0  12 		* * 1		root	/usr/bin/rsnapshot gamma
+30 11 		1 * *		root	/usr/bin/rsnapshot delta
+30 14 		1 * *		root	/usr/local/bin/rsnaptar root

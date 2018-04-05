@@ -38,7 +38,6 @@ inkscape
 jq
 libavcodec-extra
 libsasl2-modules
-logwatch
 lynx
 mc
 mplayer
@@ -51,6 +50,7 @@ pinta
 pmount
 poppler-utils
 qalc
+rsnapshot
 rsync
 shotwell
 stow
@@ -82,6 +82,7 @@ apparmor-profiles-extra
 apparmor-utils
 auditd
 fail2ban
+logwatch
 tor
 ufw
 # currently installed from backports via postinst
