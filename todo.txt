@@ -36,8 +36,6 @@ x 2018-04-05 Unattended backup by cron (system must be powered on).
 x 2018-04-05 ssh|gpg keys & passwords stored along with /home dir in the snapshots/tar, permissions preserved (tar may be encrypted with gpg if necessary).
 x 2018-04-05 Add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
 
-go config is wrong (GOROOT, GOPATH, go dir)
-
 Create private repo for todo/taskwarrior/calcurse.
 Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
 

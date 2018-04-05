@@ -103,10 +103,6 @@ aa-enforce firejail-default
 firecfg --fix-sound
 firecfg
 
-# golang packages
-go get -u github.com/golang/dep/cmd/dep
-go get -u github.com/Masterminds/glide
-
 ## SystemD
 
 # enable systemd service for periodical SSD trim (won't affect HDD, so no harm).
