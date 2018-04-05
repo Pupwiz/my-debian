@@ -24,6 +24,15 @@ for more information and sources.
    dot files from this system, or if you want to manually setup remote servers
    for each repository later.
 
+   Sample command to restore parts from tar backup:
+
+        sudo tar -C /home/nick \
+                 --strip-components=3 \
+                 -xvf /backup/tar/2018-04-05/vbx-files.tar.gz \
+                 files/home/nick/.ssh \
+                 files/home/nick/.gnupg \
+                 files/home/nick/.password-store
+
 2. Update dot files and other projects from remote repositories.  This step
    doesn't run automatically because you may need private keys to access your
    repository or you may want to check and amend your repository settings in

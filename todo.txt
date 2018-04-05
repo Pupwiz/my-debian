@@ -31,22 +31,15 @@ x 2018-03-20 Make parted recipe to preserve existing partitions.
 x 2018-03-20 Create encrypted directory... Won't do. Not very reliable.
 x 2018-03-27 Mount some partitions as overlayed. Checked, but need custom package installed at the end of the whole process.
 x 2018-04-01 Custom packages. Created example on github. Install from testing/contrib/backports.
+x 2018-04-05 Incremental backups with rsnapshot, email reminder to store it on external drive.
+x 2018-04-05 Unattended backup by cron (system must be powered on).
+x 2018-04-05 ssh|gpg keys & passwords stored along with /home dir in the snapshots/tar, permissions preserved (tar may be encrypted with gpg if necessary).
+x 2018-04-05 Add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
 
 go config is wrong (GOROOT, GOPATH, go dir)
 
-Backup script and approach (check, review, integrate):
-systemd timer for backups onto local partition, mail remainders to make backup to external drive
-backup ssh and gpg keys and passwords (+ file permissions)
-backup script should run with backup group privileges, not root
-use myrepos, stow and file-based private repos to backup/restore private keys and passwords
-add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
-use --mirror to file based repositories and myrepos to backup repositories
-setup mirror for all repositories to file, and some to bitbucket/gitlab
-http://experiments.openhood.com/git/2010/04/09/mirror-a-git-repository-for-backup/
-https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/
-https://github.com/rsnapshot/rsnapshot/blob/master/docs/docbook/rest.txt
-https://blog.interlinked.org/tutorials/rsync_time_machine.html
-backup installed packages: https://wiki.debian.org/ListInstalledPackages
+Create private repo for todo/taskwarrior/calcurse.
+Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
 
 Passwords:
 check that no passwords, keys are in the repo
@@ -56,6 +49,7 @@ migrate from lastpass to gopass, change all passwords
 setup vim and rofi as described in gopass instructions
 change multifon script to use gopass
 store newsbeuter's rss tokens in gopass
+push encrypted passwords into private remote repo?
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
