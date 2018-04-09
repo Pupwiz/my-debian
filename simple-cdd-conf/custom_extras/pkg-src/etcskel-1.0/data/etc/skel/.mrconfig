@@ -3,6 +3,10 @@
 #checkout = git clone 'https://github.com/nikolay-turpitko/my-debian.git' 'my-debian'
 checkout = git clone 'git@github.com:nikolay-turpitko/my-debian.git' 'my-debian'
 
+[Projects/todo]
+# private repo, use your own
+checkout = git clone 'git@bitbucket.org:nickolay_turpitko/todo.git' 'todo'
+
 [.vim/pack/plugin/start/FastFold]
 checkout = git clone 'https://github.com/Konfekt/FastFold' 'FastFold'
 

@@ -14,11 +14,11 @@ mkdir -p "$HOME/.vim/spell"
 
 cat << EOF
 
-## Updating go-vim binary dependencies.
+## Updating go-vim binary dependencies, help tags.
 
 EOF
 
-vim +GoInstallBinaries +q
+vim +GoInstallBinaries +"helptags ALL" +q
 
 cat << EOF
 
