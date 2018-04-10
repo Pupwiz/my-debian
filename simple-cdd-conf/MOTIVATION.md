@@ -2,14 +2,14 @@
 distro, why I choose Debian in the first place, etc. These are notes for myself
 to somewhat arrange my thoughts, to justify some decisions in case I'll later
 need to review them. This, probably, won't give any useful info to anyone else.
-Do not read it. This is my oppinion, it may change and I'm not going to argue
+Do not read it. This is my opinion, it may change and I'm not going to argue
 about it.
 
 ## Motivation
 
 I need a distro with all my tools included as a backup, to be able to rapidly
 install it at any new laptop or VM, or even remote server with ssh connection,
-and continue my everyday work. I do make traditional backups, but I'm sceptical
+and continue my everyday work. I do make traditional backups, but I'm skeptical
 about backups of core system - if something goes terribly wrong, I cannot trust
 them. I prefer to be able to install working system from scratch and to
 manually merge some settings from backup configs.
@@ -30,7 +30,7 @@ decisions, check some old solutions, reorganize accustomed ways of work and
 gain some new knowledge on the way.
 
 I spent some time on research and comparison. I considered to use different
-OSes, and decided to stick to vanilla Debian (not derivative, not flavour, not
+OSes, and decided to stick to vanilla Debian (not derivative, not flavor, not
 another Linux). I'll elaborate on this decision below. Here I just postulate
 that I want to base my custom distro on minimal vanilla Debian.  I've chosen
 netinstall, though server is also good starter point.
@@ -140,7 +140,7 @@ all development within VM. BTW, I tried. It's possible to run emulators in
 another VM and connect to it. But it's not very convenient and feels against
 mainstream flow. Sometimes I need just to use teams adopted practices, tools
 and scripts quickly, without any time to change them for my own environment.
-And some projects (more and more, actually) require virtualisation as part of
+And some projects (more and more, actually) require vitalization as part of
 workflow, so it's quite difficult to run them within VM.  It's not always
 possible to change existing project's workflow to use it from VM.  So, I need a
 setup with stable core system and modern tools, but not in VM.
@@ -205,7 +205,7 @@ with all my usual tools in usual places. After I install customized system I
 can choose whether to apply changes from backups or discard them at all.
 
 So, why not just use rolling release and constantly keep it up to date and back
-it up regularly? Donno. I just think, it's required more work from my part.
+it up regularly? Dunno. I just think, it's required more work from my part.
 Also, I think it's harder to restore system in case it breaks on update. I
 rather want to reuse community efforts to keep system stable and secure. In
 this trade-off between fresh and stable I rather prefer to keep base system a

@@ -7,3 +7,5 @@ eval "$(lesspipe)"
 export GOPATH="$HOME/go"
 
 export PATH="$GOPATH/bin:$PATH"
+
+source <(gopass completion bash)

@@ -24,7 +24,7 @@ Carefully review all settings, check documentation and think what you are
 doing. I'm not to be blamed about any damage to your system due usage of this
 project.
 
-You may use issue tracker to ask (specific) questions or give me advices about
+You may use issue tracker to ask (specific) questions or give me advises about
 how to better achieve something, but don't anticipate answers. You'll faster
 find answers to general questions in the documentation or online. I'm not an
 expert. I'm in the same learning position as you are. You may send me
