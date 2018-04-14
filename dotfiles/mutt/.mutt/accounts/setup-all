@@ -21,7 +21,7 @@ colors=(
 c=0
 sz=${#colors[@]}
 
-for acc in $(pass ls -f -s email | cut -d/ -f1 | sort -u); do
+for acc in $(pass ls -f -s email-and-im/google | cut -d/ -f1 | sort -u); do
   d=""
   if [ -z "$dft" ] || [ "$1" = "$acc" ]; then
     d="default"

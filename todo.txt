@@ -48,6 +48,9 @@ migrate from lastpass to gopass, change all passwords
 change multifon script to use gopass
 store newsbeuter's rss tokens in gopass
 push encrypted passwords into private remote repo?
+passwords for bitlbee
+
+bookmarks into private repo
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
