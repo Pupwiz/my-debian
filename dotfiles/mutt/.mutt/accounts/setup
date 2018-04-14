@@ -11,8 +11,8 @@ mbx=`printf "      %s" "${1^^}"`
 
 cat << EOF
 
-set my_$1_login = "\`pass email/$1/login\`"
-set my_$1_pass = "\`pass email/$1/pass\`"
+set my_$1_login = "\`pass email-and-im/google/$1/username\`"
+set my_$1_pass = "\`pass email-and-im/google/$1/password\`"
 
 alias my-$1 \$my_$1_login
 

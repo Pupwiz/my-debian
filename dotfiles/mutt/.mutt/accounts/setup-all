@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Selects all email account from `pass` and prepares mailboxes for them.
-# Accounts should be stored with path like "email/name/login", where "name"
-# is a logical account name, like "work" or "personal".
-# Script takes a color name for account from the hardcoded list.
+# Accounts should be stored with path like "email-and-im/google/name/username",
+# where "name" is a logical account name, like "work" or "personal".  Script
+# takes a color name for account from the hardcoded list.
 
 # $1 - default account name, account with this name will be activated at startup.
 
