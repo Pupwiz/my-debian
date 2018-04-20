@@ -38,18 +38,21 @@ x 2018-04-05 Add note to readme with instructions to copy ssh and pgp keys. disp
 x 2018-04-09 Create private repo for todo/taskwarrior/calcurse.
 x 2018-04-10 setup vim and rofi as described in gopass instructions
 
-Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
-
 Passwords:
+migrate from lastpass to gopass
+x 2018-04-20 fix mutt configs
+x 2018-04-20 fix rofi script
+passwords for bitlbee
+change multifon script to use gopass
+setup newsbeuter (store rss tokens in gopass)
 check that no passwords, keys are in the repo
 check that user name is not hardcoded in scripts and configs
 regenerate all the ssh and pgp keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
-migrate from lastpass to gopass, change all passwords
-change multifon script to use gopass
-store newsbeuter's rss tokens in gopass
+change all passwords
 push encrypted passwords into private remote repo?
-passwords for bitlbee
 
+Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
+time tracking and pomodoro - migrate?
 bookmarks into private repo
 
 Virualization:
