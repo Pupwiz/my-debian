@@ -10,7 +10,7 @@ set mbox         = "+[Gmail]/All Mail"
 set record       = "+[Gmail]/Sent Mail"
 set postponed    = "+[Gmail]/Drafts"
 set trash        = "+[Gmail]/Trash"
-set signature    = "pass email-and-im/google/$my_mbox_name/signature |"
+set signature    = "gopass show email-and-im/google.com/$my_mbox_name signature 2>/dev/null |"
 
 color sidebar_divider   $my_status_color default
 color sidebar_spoolfile $my_status_color default

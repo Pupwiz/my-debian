@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Selects all email account from `pass` and prepares mailboxes for them.
-# Accounts should be stored with path like "email-and-im/google/name/username",
-# where "name" is a logical account name, like "work" or "personal".  Script
-# takes a color name for account from the hardcoded list.
+# Selects all email account from `gopass` and prepares mailboxes for them.
+# Accounts should be stored with path like "email-and-im/google.com/name",
+# where "name" is a logical account name, like "work" or "personal". See
+# comments on format in `~/.mutt/muttrc`. Script takes a color name for account
+# from the hardcoded list.
 
 # $1 - default account name, account with this name will be activated at startup.
 
@@ -21,7 +22,7 @@ colors=(
 c=0
 sz=${#colors[@]}
 
-for acc in $(pass ls -f -s email-and-im/google | cut -d/ -f1 | sort -u); do
+for acc in $(gopass ls -f -s email-and-im/google.com | cut -d/ -f1 | sort -u); do
   d=""
   if [ -z "$dft" ] || [ "$1" = "$acc" ]; then
     d="default"

@@ -3,7 +3,9 @@
 mount -t auto /media/cdrom
 
 # remove apt sources, to be replaced with custom one
-rm -rf /etc/apt/sources.list*
+rm -rf /etc/apt/sources.list.d
+truncate -s 0 /etc/apt/sources.list
+chmod a+r /etc/apt/sources.list
 
 # unpack custom configs (probe cdrom and hd-media)
 unpack_tars(){

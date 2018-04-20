@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cat << EOF
+
+# Setup custom alternatives (update-alternatives).
+
+EOF
+
+sudo update-alternatives --set x-www-browser /usr/bin/chromium
+
+cat << EOF
+
+# Finished setup custom alternatives (update-alternatives).
+
+EOF

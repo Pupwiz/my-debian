@@ -4,31 +4,32 @@
 
 # $1 - get | set
 # $2 - phone number
-# $3 - password
-# $4 - cell | ip | both (or 0 | 1 | 2) - only for $1=='get'
+# $3 - cell | ip | both (or 0 | 1 | 2) - only for $1=='set'
 
 function usage () {
-    echo "Usage: $0 get|set 7926xxxxxxx pass [cell|ip|both]"
+    echo "Usage: $0 get|set 7926xxxxxxx [cell|ip|both]"
 }
 
-if [ "$#" -lt 3 ]; then
+if [ "$#" -lt 2 ]; then
     usage
     exit 1
 fi
 
-case $4 in
+p=$(gopass show -o telephony/megafon/sm.megafon.ru/$2)
+
+case $3 in
     0|cell) r=0 ;;
     1|ip) r=1 ;;
     *) r=2 ;;
 esac
 
 case $1 in
-    get) url="https://sm.megafon.ru/sm/client/routing?login=$2@multifon.ru&password=$3" ;;
-    set) url="https://sm.megafon.ru/sm/client/routing/set?login=$2@multifon.ru&password=$3&routing=$r" ;;
+    get) url="https://sm.megafon.ru/sm/client/routing?login=$2@multifon.ru&password=$p" ;;
+    set) url="https://sm.megafon.ru/sm/client/routing/set?login=$2@multifon.ru&password=$p&routing=$r" ;;
     *) usage; exit 1 ;;
 esac
 
-curl -3 -sS $url | sed \
+curl -sS $url | sed \
     -e '/<routing>0<\/routing>/a <!-- CELL -->' \
     -e '/<routing>1<\/routing>/a <!-- IP -->' \
     -e '/<routing>2<\/routing>/a <!-- BOTH -->'

@@ -52,14 +52,26 @@ function godoc() {
     fi
 }
 
-function pass() {
+function gopass() {
     if [ -z "$1" ]; then
         echo ".."
-        command pass ls -f | xargs -n 1 echo pass
+        command gopass ls -f | xargs -n 1 echo gopass
     else
         x-terminal-emulator \
-            -T "pass show $1" \
-            -e /bin/bash -c "pass show -c $@ && sleep 50" &
+            -T "gopass show $1" \
+            -e /bin/bash -c "source $HOME/.bash_custom && { gopass show $@ | tail -n +2; } && echo && gopass show -c $@ && sleep 50" &
+    fi
+}
+
+function gopass-open() {
+    if [ -z "$1" ]; then
+        echo ".."
+        command gopass ls -f | xargs -n 1 echo gopass-open
+    else
+        url="$(command gopass show $@ url)"
+        x-terminal-emulator \
+            -T "gopass-open $1" \
+            -e /bin/bash -c "source $HOME/.bash_custom && { gopass show $@ | tail -n +2; } && echo && gopass show -c $@ && { gopass show $@ url | xargs -I$ x-www-browser $ 2>&1 >/dev/null ; } && sleep 50" &
     fi
 }
 

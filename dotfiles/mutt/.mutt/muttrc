@@ -1,19 +1,23 @@
 source ~/.mutt/colors
 source ~/.mutt/sidebar
 
-# Scripts in the "~/.mutt/accounts" folder use `pass` tool to pull account names,
+# Scripts in the "~/.mutt/accounts" folder use `gopass` tool to pull account names,
 # logins and passwords from it. Accounts should be stored in the tree structure
 # like following:
-# email/
-#   work/
-#     login
-#     pass
-#     signature
-#   personal/
-#     login
-#     pass
-#     signature
+# email-and-im/google.com/work
+# email-and-im/google.com/personal
 #   ...
+#
+# where file name correspond to account name. Each file should be in a yaml
+# format as described at
+# https://github.com/justwatchcom/gopass/blob/master/docs/setup.md#filling-in-passwords-from-browser.
+# In short: first line is a password, next line is a yaml header delimiter,
+# and fields "username" and "signature" should be below:
+#
+# xxx
+# ---
+# username: nick
+# signature: Best,
 #
 # Names of accounts do not hardcoded in the scripts.  But name of default
 # account passed as an argument to the "~/.mutt/accounts/setup-all" script
