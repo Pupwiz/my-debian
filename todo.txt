@@ -42,37 +42,23 @@ Passwords:
 migrate from lastpass to gopass
 x 2018-04-20 fix mutt configs
 x 2018-04-20 fix rofi script
-passwords for bitlbee
-change multifon script to use gopass
-setup newsbeuter (store rss tokens in gopass)
-check that no passwords, keys are in the repo
-check that user name is not hardcoded in scripts and configs
-regenerate all the ssh and pgp keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
+x 2018-04-20 change multifon script to use gopass
+x 2018-04-20 check that no passwords, keys are in the repo
+x 2018-04-20 check that user name is not hardcoded in scripts and configs
+regenerate and backup gpg key
 change all passwords
 push encrypted passwords into private remote repo?
 
 Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
 time tracking and pomodoro - migrate?
 bookmarks into private repo
-
-Virualization:
-KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
-docker (run 3rd party containers in VM, it's unsecure to run them on host, it's safe to run dev containers in VM as well)
-do not install docker on the host, only docker client, do not create docker group (alternative: https://askubuntu.com/a/982187)
-consider alias and NORASSWD to save typing sudo and password
-https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
-Andorid
-vagrant script to automate build even more
+bitlbee, weechat and newsbeuter are not easy to make use gopass, just put configs into private repo
 
 
-Hardware (check/fix):
-Nvidia, optimus - ?, gltron, tint
-sound, input
-Yota modem
-keyboard backlight, special keys
-hibernation, battery life
-printer, scanner
-camera (+ tool to switch it off)
+Experiments before migration:
+
+bitlbee+libpurple -> hangouts, skype, slack
+lost messages - bouncer, hosting ?
 
 Caching/offline mode/alternative routes for public repositories. Net security, privacy and ads blocking.
 something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
@@ -87,14 +73,40 @@ squid has problems with https. for git-only cache: https://github.com/jonasmalac
 https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
 
 
-Final touch:
+----
+Right before migration:
+
+Review logs in VM before installation onto laptop.
 put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
+
+
+----
+After migration:
+
+Hardware (check/fix):
+Nvidia, optimus - ?, gltron, tint
+sound, input
+Yota modem
+keyboard backlight, special keys
+hibernation, battery life
+printer, scanner
+camera (+ tool to switch it off)
+
+Virualization:
+KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
+docker (run 3rd party containers in VM, it's unsecure to run them on host, it's safe to run dev containers in VM as well)
+do not install docker on the host, only docker client, do not create docker group (alternative: https://askubuntu.com/a/982187)
+consider alias and NORASSWD to save typing sudo and password
+https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
+Andorid
+vagrant script to automate build even more
+
+regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
+
+----
+Some day later:
+
+Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
 themes and plugins for vim, cmus, mutt, etc.
-bitlbee+libpurple -> hangouts, skype, slack
-lost messages - ?
 upwork - ?
 deezer - ?
-
-Security:
-Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
-Review logs in VM before installation onto laptop.
