@@ -37,17 +37,14 @@ x 2018-04-05 ssh|gpg keys & passwords stored along with /home dir in the snapsho
 x 2018-04-05 Add note to readme with instructions to copy ssh and pgp keys. display readme at startup.
 x 2018-04-09 Create private repo for todo/taskwarrior/calcurse.
 x 2018-04-10 setup vim and rofi as described in gopass instructions
-
-Passwords:
-migrate from lastpass to gopass
+x 2018-04-21 migrate from lastpass to gopass
 x 2018-04-20 fix mutt configs
 x 2018-04-20 fix rofi script
 x 2018-04-20 change multifon script to use gopass
 x 2018-04-20 check that no passwords, keys are in the repo
 x 2018-04-20 check that user name is not hardcoded in scripts and configs
-regenerate and backup gpg key
-change all passwords
-push encrypted passwords into private remote repo?
+x 2018-04-21 regenerate and backup gpg key
+x 2018-04-21 push encrypted passwords into private remote repo?
 
 Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
 time tracking and pomodoro - migrate?
@@ -104,6 +101,7 @@ Andorid
 vagrant script to automate build even more
 
 regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
+change all passwords
 
 ----
 Some day later:

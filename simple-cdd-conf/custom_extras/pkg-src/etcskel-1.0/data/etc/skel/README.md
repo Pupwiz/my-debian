@@ -15,7 +15,6 @@ for more information and sources.
 
   - `.ssh`;
   - `.gnupg`;
-  - `.password-store`;
 
    Keys may be required at the next steps to clone repositories with write
    access or private repositories. You may skip this step and change
@@ -30,8 +29,7 @@ for more information and sources.
                  --strip-components=3 \
                  -xvf /backup/tar/2018-04-05/vbx-files.tar.gz \
                  files/home/nick/.ssh \
-                 files/home/nick/.gnupg \
-                 files/home/nick/.password-store
+                 files/home/nick/.gnupg
 
 2. Update dot files and other projects from remote repositories.  This step
    doesn't run automatically because you may need private keys to access your
