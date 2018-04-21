@@ -85,6 +85,8 @@ fail2ban
 logwatch
 tor
 ufw
+pinentry-curses
+pinentry-qt
 # currently installed from backports via postinst
 # change it later to install from stable (version >=0.9.52)
 #firejail
