@@ -72,6 +72,8 @@ havp + clamav - for antivirus;
 squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
 https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
 
+How to pre-install browser plugins?
+https://github.com/gorhill/uBlock#ublock-origin
 
 ----
 Right before migration:
