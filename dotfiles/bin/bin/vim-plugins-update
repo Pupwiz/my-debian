@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mr -j5 -d .vim update
+
+vim +GoUpdateBinaries +"helptags ALL" +q
