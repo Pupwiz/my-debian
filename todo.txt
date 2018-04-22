@@ -45,16 +45,13 @@ x 2018-04-20 check that no passwords, keys are in the repo
 x 2018-04-20 check that user name is not hardcoded in scripts and configs
 x 2018-04-21 regenerate and backup gpg key
 x 2018-04-21 push encrypted passwords into private remote repo?
-
-Add file-based remote for some important github/bitbucket repos and setup mr to backup them into file-based repo.
-time tracking and pomodoro - migrate?
-bookmarks into private repo
-bitlbee, weechat and newsbeuter are not easy to make use gopass, just put configs into private repo
+x 2018-04-22 move file-based repos into bitbucket private repos
 
 
 Experiments before migration:
 
 bitlbee+libpurple -> hangouts, skype, slack
+bitlbee, weechat and newsbeuter are not easy to make use gopass, just put configs into private repo (or gopass)
 lost messages - bouncer, hosting ?
 
 Caching/offline mode/alternative routes for public repositories. Net security, privacy and ads blocking.
@@ -69,8 +66,17 @@ havp + clamav - for antivirus;
 squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
 https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
 
+in worse case if proxy cache won't work, just create a folder for all go and other deps and find how to setup dep to use it (glide can with file:// schema)
+include all worthy deps into big mr config file and add cron job to regulary update repos in the folder
+in case of offline mode it'd be possible to switch dependencies manually to file repos
+
 How to pre-install browser plugins?
+setup browsers - profiles, bookmarks
 https://github.com/gorhill/uBlock#ublock-origin
+
+building of current projects
+
+reinstall and check in vm
 
 ----
 Right before migration:
@@ -106,6 +112,7 @@ change all passwords
 ----
 Some day later:
 
+time tracking and pomodoro - migrate? (check taskwarrior plugins)
 Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
 themes and plugins for vim, cmus, mutt, etc.
 upwork - ?

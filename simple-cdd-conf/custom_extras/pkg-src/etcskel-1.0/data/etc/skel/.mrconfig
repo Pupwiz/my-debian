@@ -1,14 +1,4 @@
-[Projects/my-debian]
-# use https:// scheme if you are not owner of the repository (even better, use your repo/fork)
-#checkout = git clone 'https://github.com/nikolay-turpitko/my-debian.git' 'my-debian'
-checkout = git clone 'git@github.com:nikolay-turpitko/my-debian.git' 'my-debian'
-
-[Projects/todo]
-# private repo, use your own
-checkout = git clone 'git@bitbucket.org:nikolay_turpitko/todo.git' 'todo'
-
-[.password-store]
-checkout = git clone 'git@bitbucket.org:nikolay_turpitko/pass.git' '.password-store'
+# vim plugins
 
 [.vim/pack/plugin/start/FastFold]
 checkout = git clone 'https://github.com/Konfekt/FastFold' 'FastFold'
@@ -66,3 +56,72 @@ skip = [ "$1" = "commit" -o "$1" = "record" -o "$1" = "push" ]
 checkout = git clone 'https://github.com/farseer90718/vim-taskwarrior' 'vim-taskwarrior'
 skip = [ "$1" = "commit" -o "$1" = "record" -o "$1" = "push" ]
 
+##############################################################################
+# my-debian is a repository, containing my own installation scripts and
+# configuration files. If you are not me, you may want to use your own fork
+# with r/w access to it. You will not be allowed to commit your changes in
+# my repository. Also, if you decide to try my settings, you may need
+# to use https:// scheme instead of ssh one.
+##############################################################################
+
+[Projects/my-debian]
+#checkout = git clone 'https://github.com/nikolay-turpitko/my-debian.git' 'my-debian'
+checkout = git clone 'git@github.com:nikolay-turpitko/my-debian.git' 'my-debian'
+
+##############################################################################
+# Below are private repositories. You may want to remove or replace settings
+# below with your own.
+##############################################################################
+
+[Projects/bookmarks]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/bookmarks.git' 'bookmarks'
+
+[Projects/todo]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/todo.git' 'todo'
+
+
+[Projects/.occasionally-used/business-freelance]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/business-freelance.git' 'business-freelance'
+
+[Projects/.occasionally-used/job-hunting]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/job-hunting.git' 'job-hunting'
+
+[Projects/.occasionally-used/x-trifle]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/x-trifle.git' 'x-trifle'
+
+[Projects/.occasionally-used/me-gitpages-hugo]
+checkout = git clone 'git@github.com:nikolay-turpitko/me-gitpages-hugo.git' 'me-gitpages-hugo'
+
+[Projects/.occasionally-used/elapsed]
+checkout = git clone 'git@github.com:nikolay-turpitko/elapsed.git' 'elapsed'
+
+[Projects/.occasionally-used/x-newsbeuter-scripts]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-newsbeuter-scripts.git' 'x-newsbeuter-scripts'
+
+[Projects/.occasionally-used/x-go-templator]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-go-templator.git' 'x-go-templator'
+
+[Projects/.occasionally-used/pass2pass]
+checkout = git clone 'git@github.com:nikolay-turpitko/pass2pass.git' 'pass2pass'
+
+[Projects/.occasionally-used/cloud-initramfs-tools]
+checkout = git clone 'git@github.com:nikolay-turpitko/cloud-initramfs-tools.git' 'cloud-initramfs-tools'
+
+[Projects/.occasionally-used/x-gae-dep]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-gae-dep.git' 'x-gae-dep'
+
+[Projects/.occasionally-used/structor]
+checkout = git clone 'git@github.com:nikolay-turpitko/structor.git' 'structor'
+
+[Projects/.occasionally-used/x-msrv]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-msrv.git' 'x-msrv'
+
+[Projects/.occasionally-used/x-go-nim-alg-cmp]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-go-nim-alg-cmp.git' 'x-go-nim-alg-cmp'
+
+[Projects/.occasionally-used/x-go]
+checkout = git clone 'git@github.com:nikolay-turpitko/x-go.git' 'x-go'
+
+
+[.password-store]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/pass.git' '.password-store'
