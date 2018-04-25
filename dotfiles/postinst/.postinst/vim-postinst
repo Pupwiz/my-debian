@@ -1,27 +1,17 @@
 #!/bin/sh
 
-cat << EOF
+set -v
 
 # VIM postinstallation tasks.
 
 ## Downloading spell files for VIM.
 
-EOF
-
 mkdir -p "$HOME/.vim/spell"
 /usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
 /usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
 
-cat << EOF
-
 ## Updating go-vim binary dependencies, help tags.
-
-EOF
 
 vim +GoInstallBinaries +"helptags ALL" +q
 
-cat << EOF
-
 # Finished VIM postinstallation tasks.
-
-EOF

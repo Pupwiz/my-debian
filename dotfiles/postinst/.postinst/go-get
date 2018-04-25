@@ -1,17 +1,11 @@
 #!/bin/sh
 
-cat << EOF
+set -v
 
 # Installing GO packages into $GOPATH within /home dir.
 
-EOF
-
-# golang packages
 go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/Masterminds/glide
 
-cat << EOF
-
 # Finished installing GO packages into $GOPATH within /home dir.
 
-EOF

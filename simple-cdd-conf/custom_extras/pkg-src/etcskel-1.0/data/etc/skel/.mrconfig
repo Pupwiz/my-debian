@@ -122,6 +122,8 @@ checkout = git clone 'git@github.com:nikolay-turpitko/x-go-nim-alg-cmp.git' 'x-g
 [Projects/.occasionally-used/x-go]
 checkout = git clone 'git@github.com:nikolay-turpitko/x-go.git' 'x-go'
 
+[Projects/.occasionally-used/my-purple-plugins]
+checkout = git clone 'git@github.com:nikolay-turpitko/my-purple-plugins.git' 'my-purple-plugins'
 
 [.password-store]
 checkout = git clone 'git@bitbucket.org:nikolay_turpitko/pass.git' '.password-store'

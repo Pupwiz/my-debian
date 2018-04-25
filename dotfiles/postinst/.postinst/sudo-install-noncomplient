@@ -1,15 +1,9 @@
 #!/bin/sh
 
-cat << EOF
+set -v
 
 # Installing 3rd party debian packages, hosted outside of any repositories.
 
-EOF
-
 cat ~/.postinst/install-noncomplient | sudo /bin/bash
 
-cat << EOF
-
 # Finished installing 3rd party debian packages, hosted outside of any repositories.
-
-EOF
