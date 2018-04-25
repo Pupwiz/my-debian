@@ -104,7 +104,7 @@ do not install docker on the host, only docker client, do not create docker grou
 consider alias and NORASSWD to save typing sudo and password
 https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
-vagrant script to automate build even more
+vagrant (or docker is enough?) script to automate build even more
 
 regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
 change all passwords
