@@ -11,10 +11,12 @@ function install_deb_from_url() {
 }
 
 # $1 - repository
-function install_deb_from_github() {
-    local url=$(curl -s "https://api.github.com/repos/$1/releases/latest" | \
+function install_debs_from_github() {
+    local urls=$(curl -s "https://api.github.com/repos/$1/releases/latest" | \
         jq --raw-output '.assets[] | .browser_download_url | match(".*deb$") | .string')
-    install_deb_from_url "$url"
+    for url in $urls; do
+        install_deb_from_url "$url"
+    done
 }
 
 # $1 - url of executable file
@@ -27,11 +29,12 @@ function install_exec_from_url() {
 }
 
 install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
-install_deb_from_github "BurntSushi/ripgrep"
+install_debs_from_github "BurntSushi/ripgrep"
+install_debs_from_github "nikolay-turpitko/my-purple-plugins"
 
 #TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
 
-#install_deb_from_github "nikolay-turpitko/cloud-initramfs-tools"
+#install_debs_from_github "nikolay-turpitko/cloud-initramfs-tools"
 #apt-mark hold overlayroot
 #cp /etc/overlayroot.conf /etc/overlayroot.local.conf
 #sed -e '/overlayroot=/ s/^#*/#/' -i /etc/overlayroot.local.conf
