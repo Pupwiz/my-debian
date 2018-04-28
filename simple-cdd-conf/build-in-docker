@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+TAG="build-custom-debain-iso"
+docker build --tag="${TAG}" .
+docker run --rm -v $(pwd)/images:/build-iso/images -v $(pwd)/tmp:/build-iso/tmp "${TAG}"

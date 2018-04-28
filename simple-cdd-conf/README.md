@@ -37,6 +37,27 @@ If no profile is selected during installation, then default netinstall will occu
 
 ## Steps to build an image
 
+There are several options how to build image:
+
+- You may use existing Debian host and run `./build` on it.
+- You may run it in the VirtualBox as described below.
+- You may run it in the Docker container on Mac/Linux.
+
+### Docker variant
+
+Docker variant should be faster and more convenient, as it does not require
+manual intervention.
+
+Just execute script `./build-in-docker`.
+
+Be prepared to wait ~20-30 minutes first time, or even more, while it downloads
+all required packages. Keep `./tmp` folder (it contains cache) in case you'll
+need to rebuild it later. Next time it'll take much less (~5-10 min).
+
+Result goes into `./images`.
+
+### VirtualBox variant
+
 1. Debian on PC or in VM is required.  I installed it (from netinstall image)
    in VirtualBox on Mac OS X.
    
