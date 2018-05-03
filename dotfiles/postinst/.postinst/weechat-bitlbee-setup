@@ -1,0 +1,160 @@
+#!/bin/bash
+
+set -v
+
+bitlbee_pass=`gopass show -o email-and-im/bitlbee`
+freenode_user=`gopass show email-and-im/freenode.net username`
+nick=$freenode_user
+
+skype_login=`gopass show telephony/manager.skype.com username`
+skype_pass=`gopass show -o telephony/manager.skype.com`
+
+hangouts_work_login=`gopass show email-and-im/google.com/work username`
+hangouts_personal_login=`gopass show email-and-im/google.com/personal username`
+
+telegram_login=`gopass show email-and-im/telegram username`
+
+nc -q 1 localhost 6667 << EOF
+NICK $nick
+USER $nick 8 x : $nick
+JOIN &bitlbee
+PRIVMSG &bitlbee :plugins
+PRIVMSG &bitlbee :drop $bitlbee_pass
+PRIVMSG &bitlbee :register $bitlbee_pass
+PRIVMSG &bitlbee :account add skypeweb $skype_login $skype_pass
+PRIVMSG &bitlbee :account add hangouts $hangouts_work_login
+PRIVMSG &bitlbee :account hangouts set tag hangouts-work
+PRIVMSG &bitlbee :account add hangouts $hangouts_personal_login
+PRIVMSG &bitlbee :account hangouts set tag hangouts-personal
+PRIVMSG &bitlbee :account add telegram $telegram_login
+PRIVMSG &bitlbee :account list
+PRIVMSG &bitlbee :save
+EOF
+
+rm -rf ~/.weechat
+
+secure_pass=`gopass show -o email-and-im/weechat`
+
+freenode_user=`gopass show email-and-im/freenode.net username`
+freenode_realname=`gopass show email-and-im/freenode.net realname`
+freenode_pass=`gopass show -o email-and-im/freenode.net`
+nicks=$freenode_user
+
+bitlbee_pass=`gopass show -o email-and-im/bitlbee`
+slack_token=`gopass show email-and-im/letsrock-today.slack.com api-token`
+gitter_pass=`gopass show -o email-and-im/irc.gitter.im`
+
+cmd='/set logger.level.irc 1;'
+
+cmd+='/set aspell.check.default_dict "en,ru";'
+cmd+='/set aspell.check.suggestions 3;'
+cmd+='/set aspell.color.suggestion *green;'
+cmd+='/aspell enable;'
+
+cmd+='/set weechat.bar.input.size 0;'
+cmd+='/set weechat.bar.input.size_max 3;'
+
+cmd+='/set irc.look.smart_filter on;'
+cmd+='/filter add irc_smart * irc_smart_filter *;'
+
+cmd+='/set weechat.color.chat_nick_colors red,green,brown,blue,magenta,cyan,white,lightred,lightgreen,yellow,lightblue,lightmagenta,lightcyan;'
+cmd+='/set weechat.color.separator 31;'
+cmd+='/set buffers.color.current_fg 31;'
+cmd+='/set buffers.color.current_bg white;'
+cmd+='/set buffers.color.hotlist_message_fg 229;'
+cmd+='/set buffers.color.hotlist_private_fg 121;'
+cmd+='/set buffers.color.hotlist_highlight_fg 163;'
+cmd+='/set buffers.color.number 239;'
+cmd+='/set buffers.color.number_char 245;'
+cmd+='/set irc.server_default.away_check 10;'
+cmd+='/set irc.server_default.away_check_max_nicks 25;'
+cmd+='/set weechat.bar.title.color_fg white;'
+cmd+='/set weechat.bar.title.color_bg 31;'
+cmd+='/set weechat.bar.title.separator on;'
+cmd+='/bar add rootstatus root bottom 1 0 [time],[buffer_count],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_filter,[bitlbee_typing_notice],[lag],[aspell_dict],[aspell_suggest],[hotlist],completion,scroll;'
+cmd+='/set weechat.bar.rootstatus.color_fg 31;'
+cmd+='/set weechat.bar.rootstatus.color_bg 234;'
+cmd+='/set weechat.bar.rootstatus.separator on;'
+cmd+='/set weechat.bar.rootstatus.priority 500;'
+cmd+='/bar del status;'
+cmd+='/bar set rootstatus name status;'
+cmd+='/bar add rootinput root bottom 1 0 [buffer_name]+[input_prompt]+(away),[input_search],[input_paste],input_text,[spell_correction];'
+cmd+='/set weechat.bar.rootinput.color_bg black;'
+cmd+='/set weechat.bar.rootinput.priority 1000;'
+cmd+='/bar del input;'
+cmd+='/bar set rootinput name input;'
+cmd+='/set weechat.bar.nicklist.color_fg 229;'
+cmd+='/set weechat.bar.nicklist.separator on;'
+cmd+='/set weechat.bar.nicklist.size_max 20;'
+cmd+='/set weechat.bar.nicklist.size 20;'
+cmd+='/set irc.look.server_buffer independent;'
+cmd+='/set weechat.bar.buffers.position top;'
+cmd+='/set buffers.color.number white;'
+cmd+='/set buffers.look.hotlist_counter on;'
+cmd+='/set buffers.name_size_max 20;'
+cmd+='/set buffers.color.current_bg default;'
+cmd+='/set buffers.color.current_fg lightcyan;'
+cmd+='/set buffers.color.hotlist_message_bg default;'
+cmd+='/set buffers.color.hotlist_message_fg yellow;'
+cmd+='/set plugins.var.perl.highmon.alignment "nchannel";'
+cmd+='/window splith 15;'
+cmd+='/buffer highmon;'
+cmd+='/key bind meta-n /bar toggle nicklist;'
+cmd+='/key bind meta-g /go;'
+
+cmd+="/secure passphrase $secure_pass;"
+cmd+="/secure set freenode_pass $freenode_pass;"
+cmd+="/secure set bitlbee_pass $bitlbee_pass;"
+cmd+="/secure set slack_token $slack_token;"
+cmd+="/secure set gitter_pass $gitter_pass;"
+
+cmd+="/set irc.server_default.nicks $nicks;"
+cmd+="/set irc.server_default.username $freenode_user;"
+cmd+="/set irc.server_default.sasl_username $freenode_user;"
+cmd+="/set irc.server_default.realname $freenode_realname;"
+cmd+='/set irc.server_default.capabilities "account-notify,away-notify,cap-notify,multi-prefix,server-time";'
+
+cmd+='/server add freenode chat.freenode.net;'
+cmd+='/set irc.server.freenode.addresses "chat.freenode.net/6697";'
+cmd+='/set irc.server.freenode.ssl on;'
+cmd+='/set irc.server.freenode.autoconnect on;'
+cmd+='/set irc.server.freenode.sasl_password \${sec.data.freenode_pass};'
+
+cmd+='/server add im localhost/6667 -autoconnect;'
+cmd+='/set irc.server.im.command "/msg &bitlbee identify \${sec.data.bitlbee_pass}";'
+
+cmd+='/set plugins.var.python.slack.slack_api_token \${sec.data.slack_token};'
+
+cmd+='/server add gitter irc.gitter.im;'
+cmd+='/set irc.server.gitter.ssl on;'
+cmd+='/set irc.server.gitter.autoconnect on;'
+cmd+='/set irc.server.gitter.password \${sec.data.gitter_pass};'
+
+cmd+='/save;'
+cmd+='/print ;'
+cmd+='/print ### DO NOT EXIT WHILE SCRIPTS ARE INSTALLING ###;'
+cmd+='/print Will exit by timeout (30 sec);'
+cmd+='/print ;'
+cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notify_send.pl slack.py urlgrab.py;'
+cmd+='/wait 60 /exit'
+
+WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) /usr/bin/weechat -a -r "$cmd"
+
+
+# To complete telegram account creation check sms or existing telegram app
+# and send code, sent to you, in response on telegram's request in the weechat.
+# Don't forget `save` at `&bitlbee` channel.
+
+# To complete hangouts account creation (do for every account):
+# - navigate to link below:
+# https://accounts.google.com/o/oauth2/programmatic_auth?hl=en&scope=https%3A%2F%2Fwww.google.com%2Faccounts%2FOAuthLogin+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&client_id=936475272427.apps.googleusercontent.com&access_type=offline&delegated_client_id=183697946088-m3jnlsqshjhh5lbvg05k46q1k4qqtrgn.apps.googleusercontent.com&top_level_cookie=1
+# - open `Developer Tools` there, `Network` tab (you'll need to grab cookie in the response)
+# - submit login form and grub cookie named `oauth_code` on `programmatic_auth` respnse
+# - open weechat, connect to bitlbee, login into hangouts account
+# - paste `oauth_code` cookie value into buffer, corresponded to hangouts account
+# - go to `&bitlbee` control channel and issue `save` command
+
+# To complete accounts setup you'll need to start weechat manually and
+# follow instructions above (or online instructions for plugins).
+# Do not forget to `save` at `&bitlbee` and `/save` weechat settings.
+

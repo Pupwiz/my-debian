@@ -3,6 +3,9 @@ apt-src
 apt-transport-https
 aptitude
 aria2
+aspell
+aspell-en
+aspell-ru
 bash-completion
 bitlbee-libpurple
 bitlbee-plugin-otr
@@ -68,6 +71,8 @@ vim-gtk3
 weather-util
 weather-util-data
 weechat
+weechat-plugins
+weechat-scripts
 wget
 xpdf
 xtightvncviewer

@@ -57,3 +57,4 @@ alias wttr='curl wttr.in/barnaul'
 alias apt-get-all='grep -v '^#' | xargs sudo apt-get install -y'
 
 alias calcurse="calcurse --directory ~/Projects/todo/calcurse/"
+alias weechat='WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) command weechat'
