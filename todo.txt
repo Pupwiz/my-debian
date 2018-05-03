@@ -46,13 +46,12 @@ x 2018-04-20 check that user name is not hardcoded in scripts and configs
 x 2018-04-21 regenerate and backup gpg key
 x 2018-04-21 push encrypted passwords into private remote repo?
 x 2018-04-22 move file-based repos into bitbucket private repos
+x 2018-05-03 bitlbee+libpurple -> hangouts, skype, slack
 
 
 Experiments before migration:
 
-bitlbee+libpurple -> hangouts, skype, slack
-bitlbee, weechat and newsbeuter are not easy to make use gopass, just put configs into private repo (or gopass)
-lost messages - bouncer, hosting ?
+newsbeuter config may contain private tokens how to put it to gopass? or just into private repo
 
 Caching/offline mode/alternative routes for public repositories. Net security, privacy and ads blocking.
 something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
