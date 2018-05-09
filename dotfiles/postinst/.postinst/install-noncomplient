@@ -2,11 +2,15 @@
 
 mkdir -p ${CACHE_DIR:=/home/share/install/deb}
 
+if [ -n "$TORIFY" ]; then
+    TORIFY=torify
+fi
+
 # $1 - url of deb file
 function install_deb_from_url() {
     local url="$1"
     local fname=${url##*/}
-    wget -NP "$CACHE_DIR" "$url"
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR" "$url"
     gdebi -n "$CACHE_DIR/$fname"
 }
 
@@ -23,7 +27,7 @@ function install_debs_from_github() {
 function install_exec_from_url() {
     local url="$1"
     local fname=${url##*/}
-    wget -NP "$CACHE_DIR" "$url"
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR" "$url"
     chmod +x "$CACHE_DRI/$fname"
     exec "$CACHE_DIR/$fname"
 }

@@ -6,9 +6,13 @@ set -v
 
 ## Downloading spell files for VIM.
 
+if [ -n "$TORIFY" ]; then
+    TORIFY=torify
+fi
+
 mkdir -p "$HOME/.vim/spell"
-/usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
-/usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
+$TORIFY /usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.spl
+$TORIFY /usr/bin/wget -NP "$HOME/.vim/spell" http://ftp.vim.org/vim/runtime/spell/ru.utf-8.sug
 
 ## Updating go-vim binary dependencies, help tags.
 

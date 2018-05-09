@@ -92,6 +92,7 @@ logwatch
 pinentry-curses
 pinentry-qt
 tor
+torsocks
 ufw
 # currently installed from backports via postinst
 # change it later to install from stable (version >=0.9.52)

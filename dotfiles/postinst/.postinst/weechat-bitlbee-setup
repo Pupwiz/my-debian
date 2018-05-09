@@ -138,7 +138,11 @@ cmd+='/print ;'
 cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notify_send.pl slack.py urlgrab.py;'
 cmd+='/wait 60 /exit'
 
-WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) /usr/bin/weechat -a -r "$cmd"
+if [ -n "$TORIFY" ]; then
+    TORIFY=torify
+fi
+
+WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) $TORIFY /usr/bin/weechat -a -r "$cmd"
 
 
 # To complete telegram account creation check sms or existing telegram app

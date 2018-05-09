@@ -3,4 +3,10 @@
 # Entry point to post installation scripts.
 # Executes all other executables within this folder.
 
+# Use $TORIFY=torify env variable to torify downloads.
+
+if [ -n "$TORIFY" ]; then
+    TORIFY=torify
+fi
+
 find -L ~/.postinst -executable -not -name postinst -type f -exec {} \;
