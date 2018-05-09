@@ -2,8 +2,12 @@ deb http://mirror.truenetwork.ru/debian stable main contrib non-free
 deb-src http://mirror.truenetwork.ru/debian stable main contrib non-free
 deb http://ftp.ru.debian.org/debian stable main contrib non-free
 deb-src http://ftp.ru.debian.org/debian stable main contrib non-free
+deb tor+http://vwakviie2ienjx6t.onion/debian stable main contrib non-free
+deb-src tor+http://vwakviie2ienjx6t.onion/debian stable main contrib non-free
 
 deb http://mirror.truenetwork.ru/debian stable-updates main contrib non-free
 deb-src http://mirror.truenetwork.ru/debian stable-updates main contrib non-free
 deb http://ftp.ru.debian.org/debian stable-updates main contrib non-free
 deb-src http://ftp.ru.debian.org/debian stable-updates main contrib non-free
+deb tor+http://vwakviie2ienjx6t.onion/debian stable-updates main contrib non-free
+deb-src tor+http://vwakviie2ienjx6t.onion/debian stable-updates main contrib non-free

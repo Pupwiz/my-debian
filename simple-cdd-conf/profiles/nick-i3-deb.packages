@@ -85,6 +85,7 @@ apparmor-notify
 apparmor-profiles
 apparmor-profiles-extra
 apparmor-utils
+apt-transport-tor
 auditd
 dirmngr
 fail2ban

@@ -1,2 +1,4 @@
-deb http://deb.opera.com/opera-stable/ stable non-free
-deb https://deb.opera.com/opera-developer/ stable non-free
+#deb https://deb.opera.com/opera-stable/ stable non-free
+#deb https://deb.opera.com/opera-developer/ stable non-free
+deb tor+https://deb.opera.com/opera-stable/ stable non-free
+deb tor+https://deb.opera.com/opera-developer/ stable non-free

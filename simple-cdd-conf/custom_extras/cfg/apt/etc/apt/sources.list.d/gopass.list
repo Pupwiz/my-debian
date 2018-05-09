@@ -1,1 +1,2 @@
-deb https://www.justwatch.com/gopass/releases/binary-amd64 ./
+#deb https://www.justwatch.com/gopass/releases/binary-amd64 ./
+deb tor+https://www.justwatch.com/gopass/releases/binary-amd64 ./

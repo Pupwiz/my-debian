@@ -1,0 +1,2 @@
+#deb [arch=amd64] https://repo.skype.com/deb stable main
+deb [arch=amd64] tor+https://repo.skype.com/deb stable main
