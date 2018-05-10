@@ -47,31 +47,12 @@ x 2018-04-21 regenerate and backup gpg key
 x 2018-04-21 push encrypted passwords into private remote repo?
 x 2018-04-22 move file-based repos into bitbucket private repos
 x 2018-05-03 bitlbee+libpurple -> hangouts, skype, slack
-
+x 2018-05-10 setup chromium (bookmarks, extensions)
+x 2018-05-10 https://github.com/gorhill/uBlock#ublock-origin
 
 Experiments before migration:
 
 newsbeuter config may contain private tokens how to put it to gopass? or just into private repo
-
-Caching/offline mode/alternative routes for public repositories. Net security, privacy and ads blocking.
-something like squid or other caching proxy. preferably, with fallback to tor/i2p (mostly for github/bitbucket/gitlub, but can be global for all web, with rules to store git data longer and discard movies)
-vpn/onion/tor/i2p transport to be easily switched on, just in case?
-user -> squid -> privoxy -> tor
-squid for caching;
-privoxy for adds filtering and routing to tor;
-squid can block adds itself, here (also about ssl): https://wiki.alpinelinux.org/wiki/Setting_up_Explicit_Squid_Proxy
-tor as a alternative route to git (it's possible to have several cache_peer's with weights and probe them in order);
-havp + clamav - for antivirus;
-squid has problems with https. for git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
-https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
-
-in worse case if proxy cache won't work, just create a folder for all go and other deps and find how to setup dep to use it (glide can with file:// schema)
-include all worthy deps into big mr config file and add cron job to regulary update repos in the folder
-in case of offline mode it'd be possible to switch dependencies manually to file repos
-
-How to pre-install browser plugins?
-setup browsers - profiles, bookmarks
-https://github.com/gorhill/uBlock#ublock-origin
 
 building of current projects
 
@@ -95,6 +76,7 @@ keyboard backlight, special keys
 hibernation, battery life
 printer, scanner
 camera (+ tool to switch it off)
+vpn client
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
@@ -116,3 +98,19 @@ Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need
 themes and plugins for vim, cmus, mutt, etc.
 upwork - ?
 deezer - ?
+
+
+Some solution for add blocking, caching, alternative routing to github/bitbucket (in case of wrong configuration at provider's side).
+There is a problem with https. There are hacks for squid, sniproxy can work with https without decrypting it.
+What use for caching with sniproxy?
+https://github.com/dlundquist/sniproxy
+user -> squid -> privoxy -> tor
+squid for caching;
+privoxy for adds filtering and routing to tor;
+squid can block adds itself, here (also about ssl): https://wiki.alpinelinux.org/wiki/Setting_up_Explicit_Squid_Proxy
+tor as a alternative route to git (it's possible to have several cache_peer's with weights and probe them in order);
+havp + clamav - for antivirus;
+git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
+https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
+Another way - install mirror for git repositories on the hosting and manually switch to it. Drawbacks: manuall process, works only for git, no add blocking.
+Can be simplified with mr to sync list of repositories.
