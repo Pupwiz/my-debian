@@ -5,7 +5,7 @@
 
 # Use $TORIFY=torify env variable to torify downloads.
 
-if [ -n "$TORIFY" ]; then
+if [ -n "$TORIFY" ] || [ "$1" = "torify" ]; then
     TORIFY=torify
 fi
 

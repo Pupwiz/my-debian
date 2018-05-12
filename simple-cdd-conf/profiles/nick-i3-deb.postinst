@@ -85,7 +85,8 @@ apt-get -y -t stretch-backports install \
 apt-get -y -t testing install \
     docker-doc \
     docker.io \
-    golang
+    golang \
+    golang-golang-x-tools
 
 apt-get -y install \
     goobook \
@@ -117,3 +118,8 @@ systemctl enable fstrim.timer
 # # enable tmpfs via systemd
 # cp /usr/share/systemd/tmp.mount /etc/systemd/system/tmp.mount
 # systemctl enable tmp.mount
+
+## Fix for java CA certificates (for Gradle etc.)
+# see http://stackoverflow.com/questions/6784463/error-trustanchors-parameter-must-be-non-empty/25188331#25188331
+sudo update-ca-certificates -f
+sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure

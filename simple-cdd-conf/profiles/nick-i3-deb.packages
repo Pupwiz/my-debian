@@ -12,6 +12,7 @@ bitlbee-plugin-otr
 calcurse
 chromium
 cmus
+cmus-plugin-ffmpeg
 console-setup
 coreutils
 curl

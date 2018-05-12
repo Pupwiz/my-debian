@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Weechat
+Exec=/bin/bash -c "WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) command /usr/local/bin/weechat"
+Type=Application
+Terminal=true

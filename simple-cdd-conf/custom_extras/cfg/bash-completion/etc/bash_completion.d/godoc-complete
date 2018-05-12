@@ -1,0 +1,16 @@
+# bash completion file for godoc command
+# put it into /etc/bash_completion.d/
+
+_godoc()
+{
+	local cur pkgs
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	n=$(( 2 +  $(echo ${cur} | grep -o / | wc -l) ))
+	dir=$(go env GOROOT)/src/
+	pkgs=`find $dir -maxdepth $n -type d -path "**${cur}*" \( \( -name ".*" -or -name "_*" -or -name vendor -or -name internal \) -prune -or -printf '%P\n' \)`
+	dir=$(go env GOPATH)/src/
+	pkgs+=`find $dir -mindepth 2 -maxdepth $n -type d -path "**${cur}*" \( \( -name ".*" -or -name "_*" -or -name vendor -or -name internal \) -prune -or -printf '%P\n' \)`
+	COMPREPLY=( $(compgen -W "${pkgs}" -- ${cur}) )
+	return 0
+}
+complete -F _godoc godoc 

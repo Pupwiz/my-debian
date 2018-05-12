@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -v
+
+# Installing HP printer.
+
+# Note: cups web interface: http://localhost:631/
+
+## >> Connect HP printer to USB (in case of VM - also selected in the virt-viewer)
+## >> If something goes wrong, try to invoke commands manually
+
+read -N 1 -p "Connect HP printer and press any key to continue"
+
+hp-plugin -i
+
+hp-setup -i
+
+system-config-printer
+
+# Finished installing HP printer.
