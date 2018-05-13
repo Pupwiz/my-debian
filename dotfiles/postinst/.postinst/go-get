@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 set -v
 
-# Installing GO packages into $GOPATH within /home dir.
+# Installing Go packages into $GOPATH within /home dir.
 
 if [ -n "$TORIFY" ]; then
     TORIFY=torify
@@ -11,5 +11,12 @@ fi
 $TORIFY go get -u github.com/golang/dep/cmd/dep
 $TORIFY go get -u github.com/Masterminds/glide
 
-# Finished installing GO packages into $GOPATH within /home dir.
+# Personal Go tools.
+
+$TORIFY go get -u github.com/nikolay-turpitko/elapsed
+stow -vv --no-folding \
+    -d "$(go env GOPATH)/src/github.com/nikolay-turpitko" \
+    -t "$HOME/bin" --ignore=".*\..*" elapsed
+
+# Finished installing Go packages into $GOPATH within /home dir.
 

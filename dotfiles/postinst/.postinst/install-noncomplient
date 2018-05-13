@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p ${CACHE_DIR:=/home/share/install/deb}
+mkdir -p ${CACHE_DIR:=/home/share/install}/{deb,bin,zip}
 
 if [ -n "$TORIFY" ]; then
     TORIFY=torify
@@ -10,8 +10,8 @@ fi
 function install_deb_from_url() {
     local url="$1"
     local fname=${url##*/}
-    $TORIFY /usr/bin/wget -NP "$CACHE_DIR" "$url"
-    gdebi -n "$CACHE_DIR/$fname"
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR/deb" "$url"
+    gdebi -n "$CACHE_DIR/deb/$fname"
 }
 
 # $1 - repository
@@ -24,17 +24,26 @@ function install_debs_from_github() {
 }
 
 # $1 - url of executable file
-function install_exec_from_url() {
+function install_bin_from_url() {
     local url="$1"
     local fname=${url##*/}
-    $TORIFY /usr/bin/wget -NP "$CACHE_DIR" "$url"
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR/bin" "$url"
     chmod +x "$CACHE_DRI/$fname"
-    exec "$CACHE_DIR/$fname"
+    exec "$CACHE_DIR/bin/$fname"
+}
+
+# $1 - url of zip file with binary in it
+function unzip_url_to_home_bin() {
+    local url="$1"
+    local fname=${url##*/}
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR/zip" "$url"
+    unzip "$CACHE_DIR/zip/$fname" -d /usr/local/bin
 }
 
 install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
 install_debs_from_github "BurntSushi/ripgrep"
 install_debs_from_github "nikolay-turpitko/my-purple-plugins"
+unzip_url_to_home_bin "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
 
 #TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
 
@@ -54,5 +63,5 @@ install_debs_from_github "nikolay-turpitko/my-purple-plugins"
 
 # Genymotion do not offer free download anymore.
 #genymotion_ver="2.7.2"
-#install_exec_from_url "http://files2.genymotion.com/genymotion/genymotion-${genymotion_ver}/genymotion-${genymotion_ver}-linux_x64.bin"
+#install_bin_from_url "http://files2.genymotion.com/genymotion/genymotion-${genymotion_ver}/genymotion-${genymotion_ver}-linux_x64.bin"
 

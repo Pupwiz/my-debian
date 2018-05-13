@@ -186,6 +186,7 @@ icedtea-plugin
 maven
 openjdk-8-jdk
 visualvm
+xmlbeans
 
 
 ##  Questionable.

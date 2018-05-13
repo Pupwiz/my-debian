@@ -6,6 +6,6 @@
 
 dir="$HOME/Projects/my-debian/dotfiles/"
 
-ls -1 "$dir" | \
+ls "$dir" | \
     xargs stow --adopt --no-folding -d "$dir" -t ~
 
