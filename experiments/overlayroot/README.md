@@ -12,7 +12,7 @@ as read-write and chroot into writable root partition.
 Caveats:
 
 - Debian package is pretty old, even disabled (commented out) in the sources.
-  I created a patch to re-enable it and submit to Debian:
+  I created a patch to re-enable it and submitted to Debian:
   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=860915, where it have had no
   attention yet.
 
@@ -22,8 +22,8 @@ Caveats:
   Submitted patch to Ubuntu (link on Github in README) and forked and patched
   on Github.
 
-- Have to install it from sources, patched package for Ubuntu onto Debian.
-  Need to handle logs, it's better persist them.
+- Had to install it from sources, patched package for Ubuntu onto Debian.
+  Need to handle logs, it's better to persist them.
 
 - Not clear how to deal with /var. It's better to make it read-only, so that
   some apps (apt, for instance) won't leave system in inconsistent state, when

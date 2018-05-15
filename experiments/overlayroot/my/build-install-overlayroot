@@ -1,0 +1,41 @@
+#!/bin/bash
+
+apt-src update
+apt-src install cloud-initramfs-tools
+
+ver="0.18.debian6"
+dir="cloud-initramfs-tools-${ver}"
+
+quilt push -a
+quilt new enable-overlayroot.diff
+quilt add debian/control
+quilt add overlayroot/hooks/overlayroot
+quilt add overlayroot/scripts/overlayroot
+
+# uncomment package definition
+sed -e 's/^#*//' -i ./$dir/debian/control
+
+# replace: overlayfs -> overlay
+find ./$dir/overlayroot -type f -exec sed -e 's/overlayfs/overlay/g' -r -i {} \;
+
+#TODO: manually merged some code from web page
+
+quilt refresh #you can do this as often as you like
+quilt pop -a #this un-applies all patches so that the source returns to the downloaded condition
+
+# build
+apt-src build cloud-initramfs-tools
+
+# install dependencies
+sudo apt install cryptsetup cryptsetup-bin
+
+# install package
+sudo dpkg --install ./overlayroot_${ver}_all.deb 
+
+# amend config
+sudo sed -e 's/^overlayroot=.*/overlayroot=tmpfs:swap=1,recurse=0/' -i /etc/overlayroot.conf
+echo "overlay" | sudo tee -a /etc/modules
+
+echo 'Check "mount" after reboot'
+
+#TODO: make debian source package and diff

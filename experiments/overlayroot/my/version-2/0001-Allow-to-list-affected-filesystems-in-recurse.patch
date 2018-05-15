@@ -1,0 +1,119 @@
+From e6b40de5fc105847f170500a4ae13d10f6ad7b03 Mon Sep 17 00:00:00 2001
+From: Nikolay Turpitko <nikolay@turpitko.com>
+Date: Sat, 24 Mar 2018 23:18:19 +0700
+Subject: [PATCH] Allow to list affected filesystems in recurse
+
+---
+ overlayroot/etc/overlayroot.conf            | 14 +++++++++----
+ overlayroot/scripts/init-bottom/overlayroot | 32 +++++++++++++++++++----------
+ overlayroot/usr/sbin/overlayroot-chroot     |  2 +-
+ 3 files changed, 32 insertions(+), 16 deletions(-)
+
+diff --git a/overlayroot/etc/overlayroot.conf b/overlayroot/etc/overlayroot.conf
+index 3d4e167..00f6047 100644
+--- a/overlayroot/etc/overlayroot.conf
++++ b/overlayroot/etc/overlayroot.conf
+@@ -83,13 +83,19 @@
+ #     Swap *files* are always disabled, independent of this setting.
+ #
+ #   * recurse: default: 1
+-#     allowed values: 0, 1
+-#     indicate if all mounts should be made read-only, or just /.
+-#     if set to 1, then all filesystems will be mounted read-only.
+-#     if set to 0, only root will be set to read-only, and changes
++#     allowed values: 0, 1, string
++#     indicate if all mounts should be made read-only, some subset of them,
++#     or just /.
++#     If set to 1, then all filesystems will be mounted read-only.
++#     If set to 0, only root will be set to read-only, and changes
+ #     to other filesystems will be permenant.  For example, if
+ #     /home is on a separate partition from / and recurse set to 0
+ #     then changes to /home will go through to the original device.
++#     If set to string other then "0" or "1", then this string is used
++#     as a regular expression to match filesystem name, which (besides /)
++#     should be made read-only. For example, value of "recurse=/boot|/backup"
++#     allows to made /, /boot and /backup read-only. Starting string with
++#     "not:" negates whole expression: "recurse=not:cdrom|/home|/var/log".
+ #
+ #  * debug: default: 0
+ #     allowed values: 0, 1
+diff --git a/overlayroot/scripts/init-bottom/overlayroot b/overlayroot/scripts/init-bottom/overlayroot
+index 9098b57..f055901 100755
+--- a/overlayroot/scripts/init-bottom/overlayroot
++++ b/overlayroot/scripts/init-bottom/overlayroot
+@@ -300,7 +300,7 @@ get_workdir() {
+ }
+ 
+ overlayrootify_fstab() {
+-	# overlayrootify_fstab(input, root_ro, root_rw, dir_prefix, recurse, swap)
++	# overlayrootify_fstab(input, root_ro, root_rw, dir_prefix, recurse, swap, fstype)
+ 	# read input fstab file, write an overlayroot version to stdout
+ 	# also returns (_RET) a list of directories that will need to be made
+ 	local input="$1" root_ro="${2:-/media/root-ro}"
+@@ -309,7 +309,17 @@ overlayrootify_fstab() {
+ 	local hash="#" oline="" ospec="" upper="" dirs="" copy_opts=""
+ 	local spec file vfstype opts pass freq line ro_line
+ 	local workdir="" use_orig="" relfile="" needs_workdir=false noauto=""
+-	
++
++	local recurse_grep_opt
++	case "$recurse" in
++		not:*)
++			recurse_grep_opt="-v"
++			recurse="${recurse#not:}"
++			;;
++		*)
++			;;
++	esac
++
+ 	[ -f "$input" ] || return 1
+ 
+ 	needs_workdir && needs_workdir=true || needs_workdir=false
+@@ -373,13 +383,15 @@ overlayrootify_fstab() {
+ 			fi
+  			oline="${oline} $pass $freq"
+ 
+-			if [ "$recurse" != "0" -o "$file" = "/" ]; then
+-				if [ "$file" = "/" ]; then
+-					# this can confuse systemd (LP: #1723183)
+-					echo "#$ro_line"
+-				else
+-					echo "$ro_line"
+-				fi
++			if [ "$file" = "/" ]; then
++				# this can confuse systemd (LP: #1723183)
++				echo "#$ro_line"
++				echo "$oline"
++				dirs="${dirs} ${upper}"
++			elif [ "$recurse" == "0" ]; then
++				echo "$line"
++			elif [ "$recurse" = "1" ] || { echo "$file" | grep $recurse_grep_opt -qE "$recurse"; }; then
++				echo "$ro_line"
+ 				echo "$oline"
+ 				dirs="${dirs} ${upper}"
+ 			else
+@@ -670,8 +682,6 @@ debug "device=$device mode=$mode driver=${overlayroot_driver}"
+ 
+ [ "$swap" = "0" -o "$swap" = "1" ] ||
+ 	fail "invalid setting for swap: $swap. must be '0' or '1'"
+-[ "$recurse" = "0" -o "$recurse" = "1" ] ||
+-	fail "invalid setting for recurse: $recurse. must be '0' or '1'"
+ 
+ log_warn "configuring overlayroot with driver=${overlayroot_driver} mode=$mode opts='$opts' per $used_desc"
+ 
+diff --git a/overlayroot/usr/sbin/overlayroot-chroot b/overlayroot/usr/sbin/overlayroot-chroot
+index 6c37962..c7746a2 100755
+--- a/overlayroot/usr/sbin/overlayroot-chroot
++++ b/overlayroot/usr/sbin/overlayroot-chroot
+@@ -69,7 +69,7 @@ recurse_mps=$(awk '$1 ~ /^\/dev\// && $2 ~ starts { print $2 }' \
+ 	starts="^$lowerdir/" /proc/mounts)
+ 
+ mounts=
+-for d in proc run sys; do
++for d in proc run sys var; do
+ 	if ! mountpoint "${lowerdir}/${d}" >/dev/null; then
+ 		mount -o bind "/${d}" "${lowerdir}/${d}" || fail "Unable to bind /${d}"
+ 		mounts="$mounts $lowerdir/$d"
+-- 
+2.14.3 (Apple Git-98)
+

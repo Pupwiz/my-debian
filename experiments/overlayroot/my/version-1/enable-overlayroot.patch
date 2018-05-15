@@ -1,0 +1,106 @@
+--- a/debian/control
++++ b/debian/control
+@@ -43,22 +43,22 @@
+  In this case, with this package installed, you can automatically use
+  the new space without requiring a reboot to re-read the partition table.
+ 
+-#Package: overlayroot
+-#Architecture: all
+-#Depends: cryptsetup,
+-#         cryptsetup-bin,
+-#         initramfs-tools,
+-#         ${misc:Depends},
+-#         ${shlibs:Depends}
+-#Suggests: haveged
+-#Description: use an overlayfs on top of a read-only root filesystem
+-# This package adds functionality to an initramfs built by initramfs-tools.
+-# When installed and configured, the initramfs will mount an overlayfs
+-# filesystem on top of a read-only root volume.
+-# .
+-# The changes can be written to a in-memory temporary filesystem, a
+-# filesystem on an existing block device, or a dmcrypt encrypted block
+-# device.
++Package: overlayroot
++Architecture: all
++Depends: cryptsetup,
++         cryptsetup-bin,
++         initramfs-tools,
++         ${misc:Depends},
++         ${shlibs:Depends}
++Suggests: haveged
++Description: use an overlayfs on top of a read-only root filesystem
++ This package adds functionality to an initramfs built by initramfs-tools.
++ When installed and configured, the initramfs will mount an overlayfs
++ filesystem on top of a read-only root volume.
++ .
++ The changes can be written to a in-memory temporary filesystem, a
++ filesystem on an existing block device, or a dmcrypt encrypted block
++ device.
+ 
+ Package: cloud-initramfs-dyn-netconf
+ Architecture: all
+--- a/overlayroot/hooks/overlayroot
++++ b/overlayroot/hooks/overlayroot
+@@ -15,7 +15,7 @@
+ copy_exec /sbin/cryptsetup /sbin
+ copy_exec /sbin/mke2fs /sbin
+ 
+-manual_add_modules overlayfs
++manual_add_modules overlay
+ manual_add_modules dm_mod
+ manual_add_modules dm_crypt
+ egrep -qswo "aes" /proc/cpuinfo && manual_add_modules aesni_intel || true
+--- a/overlayroot/scripts/init-bottom/overlayroot
++++ b/overlayroot/scripts/init-bottom/overlayroot
+@@ -311,7 +311,7 @@
+ 			[ "${opts#*nobootwait*}" != "${opts}" ] &&
+ 				copy_opts=",nobootwait"
+ 			upper="${root_rw%/}/${dir_prefix%/}${file%/}"
+-			oline="${ospec} ${file} overlayfs "
++			oline="${ospec} ${file} overlay "
+ 			oline="${oline}lowerdir=${root_ro}${file},"
+ 			oline="${oline}upperdir=${upper}${copy_opts} $pass $freq"
+ 
+@@ -545,13 +545,16 @@
+ 
+ # overlayroot_driver *could* be defined in one of the configs above
+ # but we're not documenting that.
+-overlayroot_driver=${overlayroot_driver:-overlayfs}
++overlayroot_driver=${overlayroot_driver:-overlay}
+ 
+ # settings based on overlayroot_driver
++workdir=""
+ case "${overlayroot_driver}" in
+-	overlayfs)
+-		mount_type="overlayfs"
++	overlay)
++		mount_type="overlay"
+ 		mount_opts="-o lowerdir=${root_ro},upperdir=${root_rw}/${dir_prefix}"
++		workdir="${dir_prefix%/}-workdir"
++		mount_opts="${mount_opts},workdir=${root_rw}/${workdir}"
+ 		mount_opts="${mount_opts} overlayroot ${ROOTMNT}"
+ 		;;
+ 	aufs)
+@@ -588,7 +591,10 @@
+ fi
+ 
+ mkdir -p "${root_rw}/${dir_prefix}" ||
+-	fail "failed to create ${dir_prefix} on ${device}"
++    fail "failed to create ${dir_prefix} on ${device}"
++
++[ -z "$workdir" ] || mkdir -p "$root_rw/${workdir}" ||
++    fail "failed to create workdir '$workdir' on ${device}"
+ 
+ # root is mounted on ${ROOTMNT}, move it to ${ROOT_RO}.
+ mount --move "${ROOTMNT}" "${root_ro}" ||
+--- a/overlayroot/usr/sbin/overlayroot-chroot
++++ b/overlayroot/usr/sbin/overlayroot-chroot
+@@ -31,7 +31,7 @@
+ }
+ 
+ get_lowerdir() {
+-	overlay=$(grep -m1 "^overlayroot / overlayfs " /proc/mounts) || overlay=
++	overlay=$(grep -m1 "^overlayroot / overlay " /proc/mounts) || overlay=
+ 	if [ -n "${overlay}" ]; then
+ 		lowerdir=${overlay##*lowerdir=}
+ 		lowerdir=${lowerdir%%,*}
