@@ -4,8 +4,10 @@
 # Notice --adopt option! Existing files will be moved into local working copy of
 # the repository, you may need to use git to resolve conflicts manually.
 
-dir="$HOME/Projects/my-debian/dotfiles/"
+function stow-dir() {
+    find "$1" -mindepth 1 -maxdepth 1 -not -path '*/\.*' -type d -printf "%P\n" \
+        | xargs stow --adopt --no-folding -d "$1" -t ~
+}
 
-ls "$dir" | \
-    xargs stow --adopt --no-folding -d "$dir" -t ~
-
+stow-dir "$HOME/Projects/my-debian/dotfiles/"
+stow-dir "$HOME/Projects/private-dotfiles/"

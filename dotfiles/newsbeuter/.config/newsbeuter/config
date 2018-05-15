@@ -1,6 +1,6 @@
 download-path ~/Downloads/podcasts/%n
 player cmus
-browser links
+browser lynx
 
 auto-reload yes
 reload-time 15
