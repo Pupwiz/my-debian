@@ -18,5 +18,7 @@ stow -vv --no-folding \
     -d "$(go env GOPATH)/src/github.com/nikolay-turpitko" \
     -t "$HOME/bin" --ignore=".*\..*" elapsed
 
+$TORIFY go get -u github.com/nikolay-turpitko/x-newsbeuter-scripts/cmd/...
+
 # Finished installing Go packages into $GOPATH within /home dir.
 
