@@ -36,11 +36,13 @@ for more information and sources.
    repository or you may want to check and amend your repository settings in
    `~/.mrconfig` file. Put there URLs of your own forks or repositories. After
    that you may choose to pull all or some of those repositories to the local
-   system (`man mr`).
+   system (`man mr`). Don't forget `ssh-add`, or you'll have to enter password
+   many times.
 
         vim ~/.mrconfig
         cd ~
-        mr -j 5 checkout
+        ssh-add
+        mr update
 
 3. Create symlinks for downloaded dot files with `stow`. Your dot files will be
    stored in the git repository in the `~/Projects/my-debian/dotfiles` folder.
@@ -69,12 +71,24 @@ for more information and sources.
 
    - updating vim's spell files;
    - updating vim-go's binary dependencies;
+   - installing custom Go packages;
+   - setup weechat and bitlbee;
+   - setup alternatives;
+   - install HP printer;
    - ...
 
    This script depends on manual steps above, such as existance of vim plugins
    or Go environment variables. So, these steps cannot be done automatically
    during installation.
 
+   Note: scripts contain manual steps and print some instructions into console.
+   Check output, don't ignore it. Some tasks as connecting printer or copying
+   code from SMS cannot be done automatically.
+
+   Note: there were occasions when I had connection problems to some
+   repositories or servers, required to setup software, due incorrect routes at
+   my ISP side. For such cases I added option to run scripts via torsocks. Just
+   invoke it like this: `~/.postinst/postinst torify`.
 
 Bonus: i3 configured to use random wallpaper from the `~/Pictures/wallpapers`
 directory at every login.  Only one wallpaper pre-packaged. Run script in the

@@ -54,17 +54,20 @@ chmod 2770 /home/share/family
 mkdir -p /home/share/install
 mkdir -p /home/share/distr
 
-#TODO: chmod, chgrp
 mkdir -p /backup
 
 ## 3rd party packages
 
+# tor is required due to random blockage of innocent software by evil ISP
+tor &
+TOR_PID=$!
+
 # goobook is from stable, but fails to install with simple-cdd
 # firejail is from backports, because version in stable doesn't support newer AppImage format
 
-curl -s "https://www.justwatch.com/gopass/releases/0x0C92225A97F6B666.pub" | apt-key add -
-curl -s "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
-curl -s "http://deb.opera.com/archive.key" | apt-key add -
+torify curl -s "https://www.justwatch.com/gopass/releases/0x0C92225A97F6B666.pub" | apt-key add -
+torify curl -s "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
+torify curl -s "http://deb.opera.com/archive.key" | apt-key add -
 
 # update 3rd party, testing and backports, add all keys above
 apt-get -y clean
@@ -97,6 +100,8 @@ apt-get -y install \
     libreoffice \
     mysql-workbench \
     opera-developer
+
+kill ${TOR_PID}
 
 # already have this
 rm /etc/apt/sources.list.d/opera-developer.list

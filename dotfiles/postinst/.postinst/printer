@@ -2,6 +2,10 @@
 
 set -v
 
+if ! command -v hp-setup; then
+    exit 0
+fi
+
 # Installing HP printer.
 
 # Note: cups web interface: http://localhost:631/

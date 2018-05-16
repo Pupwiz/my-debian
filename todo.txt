@@ -53,6 +53,7 @@ x 2018-05-16 newsbeuter and other private configs
 x 2018-05-16 test building of current projects
 x 2018-05-16 put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
 x 2018-05-16 Review logs in VM before installation onto laptop.
+x 2018-05-16 docker script to automate build
 
 Experiments before migration:
 
@@ -79,7 +80,6 @@ consider creating custom image from 3rd party images and add run internals as re
 consider alias and NORASSWD to save typing sudo and password
 https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
-vagrant (or docker is enough?) script to automate build even more
 
 regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
 change all passwords
