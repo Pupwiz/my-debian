@@ -6,7 +6,7 @@
 # Use $TORIFY=torify env variable to torify downloads.
 
 if [ -n "$TORIFY" ] || [ "$1" = "torify" ]; then
-    TORIFY=torify
+    export TORIFY=torify
 fi
 
 find -L ~/.postinst -executable -not -name postinst -type f -exec {} \;

@@ -37,7 +37,7 @@ function unzip_url_to_home_bin() {
     local url="$1"
     local fname=${url##*/}
     $TORIFY /usr/bin/wget -NP "$CACHE_DIR/zip" "$url"
-    unzip "$CACHE_DIR/zip/$fname" -d /usr/local/bin
+    unzip -o "$CACHE_DIR/zip/$fname" -d /usr/local/bin
 }
 
 install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
