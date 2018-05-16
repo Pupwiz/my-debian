@@ -1,5 +1,32 @@
 #!/bin/sh
 
+# configure console locale
+dpkg-reconfigure console-setup
+dpkg-reconfigure keyboard-configuration
+
+# configure X11
+wrkdir=$(pwd)
+cd /etc/X11/
+Xorg -configure
+cd $wrkdir
+
+# update grub
+update-grub
+
+# fix permissions
+chmod -R o-rwx /home
+
+# shared dir
+mkdir -p /home/share/family
+chgrp -R staff /home/share
+chmod 2750 /home/share
+chmod 2770 /home/share/family
+mkdir -p /home/share/install
+mkdir -p /home/share/distr
+
+mkdir -p /backup
+
+# mount cdrom to copy custom configs
 mount -t auto /media/cdrom
 
 # remove apt sources, to be replaced with custom one
@@ -30,33 +57,7 @@ unpack_tars "/media/hd-media/simple-cdd/cfg"
 # during archiving; so, here only exclusions are listed)
 chmod -R a+r /etc/apt/sources.list.d
 
-# configure console locale
-dpkg-reconfigure console-setup
-dpkg-reconfigure keyboard-configuration
-
-# configure X11
-wrkdir=$(pwd)
-cd /etc/X11/
-Xorg -configure
-cd $wrkdir
-
-# update grub
-update-grub
-
-# fix permissions
-chmod -R o-rwx /home
-
-# shared dir
-mkdir -p /home/share/family
-chgrp -R staff /home/share
-chmod 2750 /home/share
-chmod 2770 /home/share/family
-mkdir -p /home/share/install
-mkdir -p /home/share/distr
-
-mkdir -p /backup
-
-## 3rd party packages
+## install 3rd party / testing / backports packages (using customized sources list)
 
 # tor is required due to random blockage of innocent software by evil ISP
 tor &
@@ -98,7 +99,10 @@ apt-get -y install \
     gopass \
     libguestfs-tools \
     libreoffice \
-    mysql-workbench \
+    mysql-workbench
+
+# sometimes fails
+apt-get -y install \
     opera-developer
 
 kill ${TOR_PID}
