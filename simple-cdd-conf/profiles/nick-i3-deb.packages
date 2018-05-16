@@ -1,4 +1,5 @@
 # General.
+anacron
 apt-src
 apt-transport-https
 aptitude
@@ -118,6 +119,7 @@ libnotify-bin
 mesa-utils
 rofi
 rxvt-unicode-256color
+x11-xserver-utils
 xclip
 xdotool
 xinit

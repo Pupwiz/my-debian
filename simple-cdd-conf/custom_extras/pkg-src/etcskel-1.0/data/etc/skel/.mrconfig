@@ -82,6 +82,9 @@ checkout = git clone 'git@bitbucket.org:nikolay_turpitko/bookmarks.git' 'bookmar
 [Projects/todo]
 checkout = git clone 'git@bitbucket.org:nikolay_turpitko/todo.git' 'todo'
 
+[Projects/current]
+checkout = git clone 'git@bitbucket.org:nikolay_turpitko/current.git' 'current'
+
 [Projects/private-dotfiles]
 checkout = git clone 'git@bitbucket.org:nikolay_turpitko/private-dotfiles.git' 'private-dotfiles'
 

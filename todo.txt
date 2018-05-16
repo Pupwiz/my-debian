@@ -49,21 +49,14 @@ x 2018-04-22 move file-based repos into bitbucket private repos
 x 2018-05-03 bitlbee+libpurple -> hangouts, skype, slack
 x 2018-05-10 setup chromium (bookmarks, extensions)
 x 2018-05-10 https://github.com/gorhill/uBlock#ublock-origin
+x 2018-05-16 newsbeuter and other private configs
+x 2018-05-16 test building of current projects
+x 2018-05-16 put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
+x 2018-05-16 Review logs in VM before installation onto laptop.
 
 Experiments before migration:
 
-newsbeuter config may contain private tokens how to put it to gopass? or just into private repo
-
-building of current projects
-
 reinstall and check in vm
-
-----
-Right before migration:
-
-Review logs in VM before installation onto laptop.
-put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
-
 
 ----
 After migration:
@@ -82,6 +75,7 @@ Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
 docker (run 3rd party containers in VM, it's unsecure to run them on host, it's safe to run dev containers in VM as well)
 do not install docker on the host, only docker client, do not create docker group (alternative: https://askubuntu.com/a/982187)
+consider creating custom image from 3rd party images and add run internals as regular user
 consider alias and NORASSWD to save typing sudo and password
 https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
@@ -89,6 +83,7 @@ vagrant (or docker is enough?) script to automate build even more
 
 regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
 change all passwords
+review & sign commits, make tags
 
 ----
 Some day later:
@@ -100,17 +95,6 @@ upwork - ?
 deezer - ?
 
 
-Some solution for add blocking, caching, alternative routing to github/bitbucket (in case of wrong configuration at provider's side).
-There is a problem with https. There are hacks for squid, sniproxy can work with https without decrypting it.
-What use for caching with sniproxy?
-https://github.com/dlundquist/sniproxy
-user -> squid -> privoxy -> tor
-squid for caching;
-privoxy for adds filtering and routing to tor;
-squid can block adds itself, here (also about ssl): https://wiki.alpinelinux.org/wiki/Setting_up_Explicit_Squid_Proxy
-tor as a alternative route to git (it's possible to have several cache_peer's with weights and probe them in order);
-havp + clamav - for antivirus;
-git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
-https://www.void.gr/kargig/blog/2016/12/12/firejail-with-tor-howto/
-Another way - install mirror for git repositories on the hosting and manually switch to it. Drawbacks: manuall process, works only for git, no add blocking.
-Can be simplified with mr to sync list of repositories.
+Backup (mirror) common project's dependencies from public repositories (github/bitbucket/etc) onto private VPS hosting.
+Hint: mr to sync list or repos. Especially frequently used Go dependencies.
+See also: git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache

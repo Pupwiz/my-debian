@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ev
+
+# Use "Devices > Insert Guest Additions CD Image..." menu in VBox.
+
+pmount cdrom
+
+sudo sh /media/cdrom/VBoxLinuxAdditions.run
