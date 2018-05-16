@@ -1,4 +1,7 @@
-bumblebee-nvidia
+#FIXME: was not able to use contrib packages in simple-cdd, as a workaround, install them manually.
+#bumblebee-nvidia
+#nvidia-driver
+bumblebee
 cheese
 cups-pdf
 gltron
