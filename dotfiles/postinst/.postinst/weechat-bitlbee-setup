@@ -102,6 +102,9 @@ cmd+='/buffer highmon;'
 cmd+='/key bind meta-n /bar toggle nicklist;'
 cmd+='/key bind meta-g /go;'
 
+cmd+='/proxy tor socks5 127.0.0.1 9050;'
+cmd+='/set weechat.network.proxy_curl tor;'
+
 cmd+="/secure passphrase $secure_pass;"
 cmd+="/secure set freenode_pass $freenode_pass;"
 cmd+="/secure set bitlbee_pass $bitlbee_pass;"
@@ -133,10 +136,10 @@ cmd+='/set irc.server.gitter.password \${sec.data.gitter_pass};'
 cmd+='/save;'
 cmd+='/print ;'
 cmd+='/print ### DO NOT EXIT WHILE SCRIPTS ARE INSTALLING ###;'
-cmd+='/print Will exit by timeout (30 sec);'
+cmd+='/print Will exit by timeout (~2min);'
 cmd+='/print ;'
 cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notify_send.pl slack.py urlgrab.py;'
-cmd+='/wait 60 /exit'
+cmd+='/wait 120 /exit'
 
 if [ -n "$TORIFY" ]; then
     TORIFY=torify
