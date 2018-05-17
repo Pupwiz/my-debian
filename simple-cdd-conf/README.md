@@ -167,6 +167,9 @@ X updates. Today I tried to use it again and it did not work, left some binary
 garbage in the text files. Old USB stick, I used with it before, it won't write
 again at all (some IO errors). I ended up with `dd .. of=/dev/diskX`.
 
+FYI: it took ~2.5 hours to complete on Mac OS X without raw disk trick with
+image size ~1G.
+
 ## Installation
 
 Installation starts in a usual way from USB stick or `iso` image mounted to VM.
