@@ -124,39 +124,48 @@ Script will be in `/etc/skel/.bash_profile.postinst`.
 ## Make installation USB stick
 
 Conveniently, `simple-cdd` creates an image suitable to be "burn" to the USB
-drive with just terminal tools. I haven't try to do it in Linux yet, only on
-Mac OS X.
+drive with just terminal tools. I haven't try to do it in Linux yet (this
+particular image), only on Mac OS X.
 
 Both Mac OS X and Linux can use similar method, so if it works on Mac, it
-should work on Linux as well.
+should work on Linux as well (though, [Ubuntu offers convenient GUI tool just
+for it](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0)).
+BTW, Ubuntu has [tutorial for Mac](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0),
+which might work with this image too, but I have not tried it myself.
 
-    # For Linux:
-    sudo dd bs=4M if=input.iso of=/dev/sdX conv=fdatasync
-    # For Mac OS X:
-    sudo dd if=inputfile.img of=/dev/diskX bs=4m && sync
+    # For Linux (replace X with the letter of the disk):
+    lsblk
+    pumount sdX
+    sudo dd bs=4M if=debian-9.4-amd64-DVD-1.iso of=/dev/sdX conv=fdatasync
 
-To check correct device name on Linux, I'd use `lsblk` (and `punmount sdX` to
-unmount it). With Mac OS X it was not so trivial.  When I inserted my USB stick
-into it, it complained that it cannot read it, and gives 3 buttons to choose.
-Correct one was to "Ignore".  My USB had EXT4 partitions, so it could not be
-mounted in Mac OS X. I had to open "Disk Utility" GUI app, to find out correct
-device name.  Console app (`diskutil list`) did not show it, probably, I don't
-know how to use it properly.
+    # For Mac OS X (replace X with the number of the disk):
+    diskutil list
+    diskutil unmountDisk /dev/diskX
+    sudo dd if=debian-9.4-amd64-DVD-1.iso of=/dev/rdiskX bs=4m && sync
+
+With Mac OS X this process can be quite painful.  When Mac detects USB stick
+and shows dialog with 3 buttons, complaining that it cannot use it, correct one
+is to "Ignore".  If `diskutil list` doesn't show disk, "Disk Utility" GUI app
+might help.
 
 Note: `dd` is awfully slow! I used
 [trick](http://daoyuan.li/solution-dd-too-slow-on-mac-os-x/) to complete
-operation faster (notice `rdisk1` instead of `disk1`):
-
-    sudo dd if=debian-9.3-amd64-CD-1.iso of=/dev/rdisk1 bs=4m && sync
-
-It was a lot faster, than my first attempt with `disk1` (and produced working
-bootable USB stick).  Another hint: `Ctrl+T` in the terminal shows some
-progress of the `dd` command.
+operation faster (notice `rdiskX` instead of `diskX`).  It was a lot faster,
+than my first attempt with `disk1` (and produced working bootable USB stick).
+Another hint: `Ctrl+T` in the terminal shows some progress of the `dd` command.
 
 [This link](https://askubuntu.com/questions/220652/is-dd-command-taking-too-long)
 suggests, that for Ubuntu (and Debian, I suppose) `dd` is also slow. Answerer
 recommends to use `pv` instead. I've also seen suggestions to use even `cut`,
 but haven't tested them yet.
+
+See also [this](https://gist.github.com/jordelver/3139365) and
+[this](https://apple.stackexchange.com/questions/270514/macos-sierra-dd-to-usb-is-very-slow-and-cant-seem-to-use-dev-rdisk/270562).
+
+__UPDATE__: Trick above (with raw disk) worked for me once, before some Mac OS
+X updates. Today I tried to use it again and it did not work, left some binary
+garbage in the text files. Old USB stick, I used with it before, it won't write
+again at all (some IO errors). I ended up with `dd .. of=/dev/diskX`.
 
 ## Installation
 
