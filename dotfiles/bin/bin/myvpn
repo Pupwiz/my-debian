@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -e
+#set -x
+
+# Usage: myvpn up|down
+
+if [ "$#" -ne 1 ]; then
+    echo "usage: myvpn up|down"
+fi
+
+function up() {
+    echo "Starting vpn"
+    echo "REMINDER: you may need to setup NAT forwarding rules"
+    echo "see https://en.wikipedia.org/wiki/NAT_traversal#IPsec for port numbers"
+    local VPN_SERVER_IP="$(gopass NET/vpn/vdsina.ru vpn-server-ip)"
+    sudo mkdir -p /var/run/xl2tpd
+    sudo touch /var/run/xl2tpd/l2tp-control
+    sudo service strongswan restart
+    sleep 2
+    sudo service xl2tpd restart
+    sudo ipsec up myvpn
+    echo "c myvpn" | sudo tee -a /var/run/xl2tpd/l2tp-control >/dev/null
+    sleep 10
+    ip link | grep ppp
+    ip route | grep default
+    local dev="$(ip link | egrep -o 'ppp[[:digit:]]')"
+    local olddefgw="$(ip route | grep default | cut -d' ' -f3)"
+    echo $olddefgw | tee "$HOME/.myvpn-olddefgw"
+    sudo ip route delete default
+    sudo ip route add $VPN_SERVER_IP via $olddefgw || true
+    sudo ip route add default dev $dev
+    echo "Done"
+    echo "Current external IP address:"
+    wget -qO- http://ipv4.icanhazip.com
+    echo
+}
+
+function down() {
+    echo "Stopping vpn"
+    local VPN_SERVER_IP="$(gopass NET/vpn/vdsina.ru vpn-server-ip)"
+    local olddefgw="$(cat "$HOME/.myvpn-olddefgw")"
+    echo "d myvpn" | sudo tee -a /var/run/xl2tpd/l2tp-control >/dev/null
+    sudo ipsec down myvpn || true
+    sudo service xl2tpd stop
+    sudo service strongswan stop
+    sudo ip route delete $VPN_SERVER_IP via $olddefgw || true
+    sudo ip route delete default || true
+    sudo ip route add default via $olddefgw
+    echo "Done"
+    echo "Current external IP address:"
+    wget -qO- http://ipv4.icanhazip.com
+    echo
+}
+
+$1

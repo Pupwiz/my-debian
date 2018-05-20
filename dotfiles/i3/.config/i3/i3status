@@ -18,7 +18,9 @@ do
     else
       line=${line::-1}
       i=$(xset -q | grep -A 0 'LED' | cut -c59-67);i=$((10#$i&1000));[[ $i = 0 ]] && i="EN" || i="RU";
-      echo "$line,{\"name\":\"lang\",\"instance\":\"lang\",\"color\":\"#00FF00\",\"full_text\":\"$i\"}, \
+      [ "EN" == "$i" ] && ic="#00FF00" || ic="#DD22FF"
+      echo "$line, \
+{\"name\":\"lang\",\"instance\":\"lang\",\"color\":\"$ic\",\"full_text\":\"$i\"}, \
 {\"name\":\"weather\",\"instance\":\"unbb\",\"color\":\"#FFFFFF\",\"full_text\":\"$t\"}]" || exit 1
     fi
   done
