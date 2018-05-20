@@ -54,10 +54,7 @@ x 2018-05-16 test building of current projects
 x 2018-05-16 put all the settings, packages, utils etc from backups and mac to image + create *.desktop shortcuts for other apps
 x 2018-05-16 Review logs in VM before installation onto laptop.
 x 2018-05-16 docker script to automate build
-
-Experiments before migration:
-
-reinstall and check in vm
+x 2018-05-20 reinstall and check in vm
 
 ----
 After migration:
@@ -65,6 +62,7 @@ After migration:
 Hardware (check/fix):
 Nvidia, optimus - ?, gltron, tint
 sound, input
+wifi
 Yota modem
 keyboard backlight, special keys
 hibernation, battery life

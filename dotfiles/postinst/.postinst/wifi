@@ -1,0 +1,13 @@
+#!/bin/bash
+
+name="wlp3s0"
+ssid="$(gopass show NET/wi-fi ssid)"
+pass="$(gopass show -o NET/wi-fi)"
+psk="$(wpa_passphrase $ssid $pass | egrep -o 'psk=\w+' | cut -d'=' -f2)"
+
+cat <<EOF | sudo tee /etc/network/interfaces.d/$name >/dev/null
+auto $name
+iface $name inet dhcp
+    wpa-ssid $ssid
+    wpa-psk $psk
+EOF
