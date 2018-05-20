@@ -16,3 +16,8 @@ exim4-config exim4/dc_minimaldns boolean true
 # Packages.
 tasksel tasksel/first multiselect standard, ssh-server, laptop
 d-i pkgsel/upgrade select safe-upgrade
+
+# Account.
+d-i passwd/user-default-groups string adm sudo staff cdrom floppy audio dip \
+  video plugdev netdev lp lpadmin scanner systemd-journal mail \
+  bumblebee

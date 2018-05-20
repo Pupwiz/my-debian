@@ -1,15 +1,21 @@
-#FIXME: was not able to use contrib packages in simple-cdd, as a workaround, install them manually.
-#bumblebee-nvidia
-#nvidia-driver
-bumblebee
 cheese
 cups-pdf
 gltron
 hplip
 laptop-mode-tools
-primus
 rng-tools
 strongswan
 system-config-printer
 tint
 xl2tpd
+
+# nvidia driver, bumblebee
+#bumblebee
+bbswitch-dkms
+bumblebee-nvidia
+libgl1-glvnd-nvidia-glx 
+libgl1-nvidia-glvnd-glx
+linux-headers-amd64
+nvidia-driver
+nvidia-driver-libs
+primus

@@ -44,7 +44,16 @@ for more information and sources.
         ssh-add
         mr update
 
-3. Create symlinks for downloaded dot files with `stow`. Your dot files will be
+3. Check installation logs and resolve issues. You may need to manually execute
+   some failed command from postinstallation script, if they fail due network
+   issues, for example. For example, GPG keys or 3rd party repositories may be
+   temporary unavailable during installation. Use project, obtained on previous
+   step to find postinstallation script.
+
+	sudo less /var/log/installer/syslog
+	less ~/Projects/my-debian/simple-cdd-conf/profiles/nick-i3-deb.postinst
+
+4. Create symlinks for downloaded dot files with `stow`. Your dot files will be
    stored in the git repository in the `~/Projects/my-debian/dotfiles` folder.
    You may change them there and commit to the local repository. If you
    amended your `~/.mrconfig` to use your own forks/repositories, you will be
@@ -64,9 +73,14 @@ for more information and sources.
    which means they'll be moved into local working copy of the repository. You
    may need to resolve conflicts manually, using git commands.
 
-4. Re-login.
+   NB: to put sentence above in other words, you may want to do `git checkout 
+   -- [some files]` from console, because you local copy of the file may not be 
+   replaced, but put into project folder instead. It's up to you what version
+   you'd prefer. In particular, check GPG and Midnight Commander settings.
 
-5. Execute `~/.postinst/postinst`. It will guide you through other
+5. Re-login.
+
+6. Execute `~/.postinst/postinst`. It will guide you through other
    semi-automated installation steps. Such as:
 
    - updating vim's spell files;
