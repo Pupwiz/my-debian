@@ -78,6 +78,7 @@ checkout = git clone 'git@bitbucket.org:nikolay_turpitko/pass.git' '.password-st
 
 [Projects/bookmarks]
 checkout = git clone 'git@bitbucket.org:nikolay_turpitko/bookmarks.git' 'bookmarks'
+post_checkout = (cd $MR_REPO && cp -ruvT _git .git && ./make-html)
 
 [Projects/todo]
 checkout = git clone 'git@bitbucket.org:nikolay_turpitko/todo.git' 'todo'

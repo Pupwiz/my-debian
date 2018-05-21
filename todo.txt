@@ -86,6 +86,7 @@ review & sign commits, make tags
 ----
 Some day later:
 
+generate bookmarks from gopass entries (run manually or with hook?)
 time tracking and pomodoro - migrate? (check taskwarrior plugins)
 Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
 themes and plugins for vim, cmus, mutt, etc.

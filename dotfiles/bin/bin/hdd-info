@@ -4,7 +4,7 @@ set -v
 
 # HDD & SSD info
 
-blkid
+sudo blkid
 
 mount
 
@@ -12,21 +12,9 @@ df -h
 
 lsblk
 
-# BTRFS part
+# Backup size
 
-sudo btrfs filesystem show
-
-sudo btrfs filesystem usage /
-
-sudo btrfs filesystem usage /home
-
-sudo btrfs filesystem usage /var
-
-sudo btrfs subvolume list /
-
-sudo btrfs subvolume list /home
-
-sudo btrfs subvolume list /var
+sudo rsnapshot du
 
 # SWAP in use
 
