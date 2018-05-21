@@ -78,9 +78,21 @@ for more information and sources.
    replaced, but put into project folder instead. It's up to you what version
    you'd prefer. In particular, check GPG and Midnight Commander settings.
 
-5. Re-login.
+5. Depending on your workflow, you may need to update all repositories again
+   after previous steps. For example, you may replace bootstrapped copy of 
+   `.mrconfig` with your own, stored in the private repo. In this case, you'd
+   manually edit/replace bootstrapped copy at step 2 for `mr` to checkout all
+   your private repos, one of which could contain your own copy of `.mrconfig`.
+   So, at step 4 you'd resolve repository conflicts and choose to use yours 
+   copy of `.mrconfig`. After that, you may want to issue command to update
+   you repositories again. This a bit complicated at first glance, but allows
+   to keep diverged version of `.mrconfig` under private version control.
 
-6. Execute `~/.postinst/postinst`. It will guide you through other
+        mr update
+
+6. Re-login.
+
+7. Execute `~/.postinst/postinst`. It will guide you through other
    semi-automated installation steps. Such as:
 
    - updating vim's spell files;
@@ -95,14 +107,25 @@ for more information and sources.
    or Go environment variables. So, these steps cannot be done automatically
    during installation.
 
-   Note: scripts contain manual steps and print some instructions into console.
+   **Note**: scripts contain manual steps and print some instructions into 
+   console.
    Check output, don't ignore it. Some tasks as connecting printer or copying
    code from SMS cannot be done automatically.
 
-   Note: there were occasions when I had connection problems to some
+   **Note**: there were occasions when I had connection problems to some
    repositories or servers, required to setup software, due incorrect routes at
    my ISP side. For such cases I added option to run scripts via torsocks. Just
    invoke it like this: `~/.postinst/postinst torify`.
+
+   **Note**: my scripts and configuration heavily dependent on `gopass` tool 
+   and it's ability to store and extract structured pieces of metadata, stored
+   along with passwords. I wouldn't be able to put all this scripts and configs 
+   into public repo without tool like it. You may want to use your own tool 
+   (and will need to heavily refactor all related scripts and configs - related 
+   to mail client, chat, wifi, vpn etc), or you may want to adopt `gopass` 
+   usage (and my conventions of storing metadata, like field names) and migrate 
+   all or some of your passwords to it. Or you may choose to skip this step at 
+   all and manually install all things you need.
 
 Bonus: i3 configured to use random wallpaper from the `~/Pictures/wallpapers`
 directory at every login.  Only one wallpaper pre-packaged. Run script in the

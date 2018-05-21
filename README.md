@@ -15,9 +15,20 @@ It contains scripts, notes, instructions and backup of configuration files for:
 
 - other related notes and memos.
 
-Anyone may use it for their own needs AS IS at their own risk. Just borrow
-pieces you like or make a fork and replace personal data and preference with
-your own.
+I'm heavily use CLI tools, scripts and things like `i3`, `rofi`, `mr`, `stow`, 
+`gopass` (see links below). If it's not your piece of cake, you'd, most likely, 
+won't benefit from this project. But if you happened to like them too, you may 
+find here some ideas (and don't hesitate to bring your own) on how to better 
+organize your OS-related staff in a git project. I picked up many ideas in 
+bunch of different project, articles, Google groups and Stack Overflow answers.  
+Some links are below, some are in the `experiments` and `troubleshooting` 
+folders.  Some are in script files. Many others I forgot to store and don't 
+remember where exactly I borrowed them.
+
+Anyone may use this project for their own needs AS IS at their own risk. Just 
+borrow pieces you like or make a fork and replace personal data and preference 
+with your own. Another option is to amend `.mrconfig` after OS installation to 
+use your own private dotfiles and version of scripts.
 
 Keep in mind, that I'm not able to give any support regarding this project.
 Carefully review all settings, check documentation and think what you are
@@ -41,8 +52,11 @@ they are available.
 - `dotfiles`: backup of my dot files, to be used with `myrepos` and `stow` to
   sync into home folder;
 
-- `apt-repo`: scripts and configs to prepare custom apt repository for packages
-  I prefer to build from sources;
+- `troubleshooting`: notes on trying to overcome different issues, especially 
+  if I don't know how to properly automate them;
+
+- `experiments`: several topics I found interesting or promising, but not yet 
+  ready for everyday use;
 
 ## Instructions
 
@@ -91,3 +105,4 @@ being a lawyer, I'm not sure how to better deal with it.
 26. http://www.bog.pp.ru/hard/UEFI.html
 27. https://wiki.debian.org/BuildingTutorial#Installing_and_testing_the_modified_package
 28. https://wiki.debian.org/apt-src
+29. https://github.com/justwatchcom/gopass
