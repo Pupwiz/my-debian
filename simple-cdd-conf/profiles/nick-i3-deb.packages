@@ -18,6 +18,7 @@ console-setup
 coreutils
 curl
 dialog
+dict
 easytag
 evince
 fbreader
