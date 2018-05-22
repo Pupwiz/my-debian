@@ -6,4 +6,6 @@ set -v
 
 sudo update-alternatives --set x-www-browser /usr/bin/chromium
 
+xdg-mime default evince.desktop application/pdf
+
 # Finished setup custom alternatives (update-alternatives).

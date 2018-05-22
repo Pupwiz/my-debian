@@ -20,5 +20,17 @@ stow -vv --no-folding \
 
 $TORIFY go get -u github.com/nikolay-turpitko/x-newsbeuter-scripts/cmd/...
 
+$TORIFY go get -d github.com/nikolay-turpitko/x-go-templator
+(
+    cd $GOPATH/src/github.com/nikolay-turpitko/x-go-templator
+
+    glide i
+
+    .build/install-icu4c.sh
+    
+    make install
+)
+
+
 # Finished installing Go packages into $GOPATH within /home dir.
 
