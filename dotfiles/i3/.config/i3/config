@@ -127,6 +127,9 @@ bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exec rofi -modi 'power:power' -show power
 
+# quick help
+bindsym $mod+F1 exec --no-startup-id feh /usr/share/doc/i3-wm/keyboard-layer1.png /usr/share/doc/i3-wm/keyboard-layer2.png
+
 # take a screenshot
 bindsym Print exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/$(date +%F-%H%M%S-%N).png
 bindsym Shift+Print exec --no-startup-id import -window root ~/Pictures/screenshot/$(date +%F-%H%M%S-%N).png
@@ -136,8 +139,13 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id x-terminal-emulator -e alsamixer
 
-# quick help
-bindsym $mod+F1 exec --no-startup-id feh /usr/share/doc/i3-wm/keyboard-layer1.png /usr/share/doc/i3-wm/keyboard-layer2.png
+# brightness control
+bindsym XF86KbdBrightnessUp exec --no-startup-id sudo kbdlight-toggle up
+bindsym XF86KbdBrightnessDown exec --no-startup-id sudo kbdlight-toggle down
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo monbrightness up
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo monbrightness down
+
+bindsym XF86Calculator exec --no-startup-id x-terminal-emulator -e qalc
 
 workspace_layout tabbed
 

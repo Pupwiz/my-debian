@@ -1,2 +1,2 @@
 %sudo ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown, /sbin/halt, /bin/systemctl suspend, /bin/systemctl hybrid-sleep
-%sudo ALL=(ALL) NOPASSWD: /usr/local/bin/apt-upgrade, /usr/local/bin/hdd-info, /usr/local/bin/kbdlight-toggle, /usr/local/bin/myvpn
+%sudo ALL=(ALL) NOPASSWD: /usr/local/bin/apt-upgrade, /usr/local/bin/hdd-info, /usr/local/bin/kbdlight-toggle, /usr/local/bin/monbrightness, /usr/local/bin/myvpn

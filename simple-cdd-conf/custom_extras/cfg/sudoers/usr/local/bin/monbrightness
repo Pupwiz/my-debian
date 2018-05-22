@@ -1,0 +1,14 @@
+#!/bin/bash
+
+f=$(cat /sys/class/backlight/intel_backlight/brightness)
+mf=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+if [ -z "$1" ]; then
+	f=$mf
+elif [ "$1" = "up" ]; then
+	f=$((f+50))
+	[ $f -gt $mf ] && f=$mf
+elif [ "$1" = "down" ]; then
+	f=$((f-50))
+	[ $f -lt 0 ] && f=0
+fi
+echo $f > /sys/class/backlight/intel_backlight/brightness

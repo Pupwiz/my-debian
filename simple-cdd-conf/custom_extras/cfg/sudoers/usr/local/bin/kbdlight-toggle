@@ -1,5 +1,12 @@
 #!/bin/bash
 
 f=$(cat /sys/class/leds/asus\:\:kbd_backlight/brightness)
-f=$((1-f))
+if [ -z "$1" ]; then
+	f=$((1-f))
+elif [ "$1" = "up" ]; then
+	f=$((f+1))
+elif [ "$1" = "down" ]; then
+	f=$((f-1))
+	[ $f -lt 0 ] && f=0
+fi
 echo $f > /sys/class/leds/asus\:\:kbd_backlight/brightness
