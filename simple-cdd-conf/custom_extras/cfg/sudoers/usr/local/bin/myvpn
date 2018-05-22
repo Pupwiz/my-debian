@@ -3,17 +3,25 @@
 set -e
 #set -x
 
-# Usage: myvpn up|down
+# Usage: VPN_SERVER_IP=xxx.xxx.xxx.xxx myvpn up|down
 
 function usage() {
-    echo "Usage: $0 up|down"
+    local ip
+    [ -z "$VPN_SERVER_IP" ] && ip="VPN_SERVER_IP=xxx.xxx.xxx.xxx "
+    echo "Usage: ${ip}myvpn up|down"
 }
+
+# file name for old default gateway.
+# default gateway is to be restored on vpn down
+# stored in the /tmp, but shuold be at known place
+tmpdir="$(dirname $(mktemp -u))/myvpn"
+olddefgwfn="$tmpdir/.olddefgw"
+mkdir -p "$tmpdir"
 
 function up() {
     echo "Starting vpn"
     echo "REMINDER: you may need to setup NAT forwarding rules"
     echo "see https://en.wikipedia.org/wiki/NAT_traversal#IPsec for port numbers"
-    local VPN_SERVER_IP="$(gopass NET/vpn/vdsina.ru vpn-server-ip)"
     mkdir -p /var/run/xl2tpd
     touch /var/run/xl2tpd/l2tp-control
     service strongswan restart
@@ -26,7 +34,7 @@ function up() {
     ip route | grep default
     local dev="$(ip link | egrep -o 'ppp[[:digit:]]')"
     local olddefgw="$(ip route | grep default | cut -d' ' -f3)"
-    echo $olddefgw > "$HOME/.myvpn-olddefgw"
+    echo $olddefgw > "$olddefgwfn"
     ip route delete default
     ip route add $VPN_SERVER_IP via $olddefgw || true
     ip route add default dev $dev
@@ -38,8 +46,7 @@ function up() {
 
 function down() {
     echo "Stopping vpn"
-    local VPN_SERVER_IP="$(gopass NET/vpn/vdsina.ru vpn-server-ip)"
-    local olddefgw="$(cat "$HOME/.myvpn-olddefgw")"
+    local olddefgw="$(cat "$olddefgwfn")"
     echo "d myvpn" >> /var/run/xl2tpd/l2tp-control
     ipsec down myvpn || true
     service xl2tpd stop

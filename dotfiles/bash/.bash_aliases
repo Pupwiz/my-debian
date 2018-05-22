@@ -59,7 +59,7 @@ alias apt-upgrade='sudo apt-upgrade'
 
 alias hdd-info='sudo hdd-info'
 alias kbdlight-toggle='sudo kbdlight-toggle'
-alias myvpn='sudo myvpn'
+alias myvpn='sudo VPN_SERVER_IP="$(gopass NET/vpn/vdsina.ru vpn-server-ip)" myvpn'
 
 alias calcurse="calcurse --directory ~/Projects/todo/calcurse/"
 alias weechat='WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) command weechat'
