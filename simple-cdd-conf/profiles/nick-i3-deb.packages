@@ -190,8 +190,6 @@ openjdk-8-jdk
 visualvm
 xmlbeans
 
-
-##  Questionable.
-# pulseaudio
-# timidity
-# timidity-interfaces-extra
+# Some fonts
+ttf-mscorefonts-installer
+fonts-liberation2

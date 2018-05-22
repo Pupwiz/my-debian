@@ -1,5 +1,0 @@
-#!/bin/bash
-
-f=$(sudo cat /sys/class/leds/asus\:\:kbd_backlight/brightness)
-f=$((1-f))
-echo $f | sudo tee /sys/class/leds/asus\:\:kbd_backlight/brightness

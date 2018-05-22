@@ -55,6 +55,11 @@ alias wttr='curl wttr.in/barnaul'
 
 # usage: cat file.list | apt-get-all
 alias apt-get-all='grep -v '^#' | xargs sudo apt-get install -y'
+alias apt-upgrade='sudo apt-upgrade'
+
+alias hdd-info='sudo hdd-info'
+alias kbdlight-toggle='sudo kbdlight-toggle'
+alias myvpn='sudo myvpn'
 
 alias calcurse="calcurse --directory ~/Projects/todo/calcurse/"
 alias weechat='WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) command weechat'

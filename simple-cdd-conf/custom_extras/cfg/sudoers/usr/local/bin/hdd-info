@@ -4,7 +4,7 @@ set -v
 
 # HDD & SSD info
 
-sudo blkid
+blkid
 
 mount
 
@@ -14,7 +14,7 @@ lsblk
 
 # Backup size
 
-sudo rsnapshot du
+rsnapshot du
 
 # SWAP in use
 

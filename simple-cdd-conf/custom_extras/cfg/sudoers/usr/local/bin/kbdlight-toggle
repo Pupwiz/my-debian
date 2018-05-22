@@ -1,0 +1,5 @@
+#!/bin/bash
+
+f=$(cat /sys/class/leds/asus\:\:kbd_backlight/brightness)
+f=$((1-f))
+echo $f > /sys/class/leds/asus\:\:kbd_backlight/brightness
