@@ -15,7 +15,10 @@ fi
 
 read -N 1 -p "Connect HP printer and press any key to continue"
 
-hp-plugin -i
+# it's "not recommended" to run it under "sudo", but then it attempts to run "su" internally,
+# and I prefer to leave root account locked (means cannot "su").
+
+sudo hp-plugin -i
 
 hp-setup -i
 
