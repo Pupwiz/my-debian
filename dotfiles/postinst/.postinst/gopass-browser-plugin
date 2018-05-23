@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# https://github.com/gopasspw/gopassbridge
+# https://github.com/justwatchcom/gopass/blob/master/docs/setup.md#filling-in-passwords-from-browser
+
+gopass --yes jsonapi configure --browser chromium --path $HOME/.config/gopass --global=false --print=false
