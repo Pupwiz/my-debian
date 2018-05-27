@@ -11,12 +11,18 @@ tint
 xl2tpd
 
 # nvidia driver, bumblebee
-#bumblebee
 bbswitch-dkms
+bumblebee
 bumblebee-nvidia
 libgl1-glvnd-nvidia-glx 
 libgl1-nvidia-glvnd-glx
 linux-headers-amd64
 nvidia-driver
+nvidia-driver-bin
 nvidia-driver-libs
+nvidia-kernel-common
+nvidia-kernel-dkms
+nvidia-kernel-support
+nvidia-modprobe
 primus
+xserver-xorg-video-nvidia
