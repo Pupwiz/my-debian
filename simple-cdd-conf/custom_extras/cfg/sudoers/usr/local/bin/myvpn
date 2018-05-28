@@ -34,7 +34,9 @@ function up() {
     ip route | grep default
     local dev="$(ip link | egrep -o 'ppp[[:digit:]]')"
     local olddefgw="$(ip route | grep default | cut -d' ' -f3)"
-    echo $olddefgw > "$olddefgwfn"
+    if [ "$dev" != "$olddefgw" ]; then
+        echo $olddefgw > "$olddefgwfn"
+    fi
     ip route delete default
     ip route add $VPN_SERVER_IP via $olddefgw || true
     ip route add default dev $dev
@@ -46,7 +48,10 @@ function up() {
 
 function down() {
     echo "Stopping vpn"
-    local olddefgw="$(cat "$olddefgwfn")"
+    local olddefgw="enp4s0"
+    if [ -f "$olddefgwfn" ]; then
+        olddefgw="$(cat "$olddefgwfn")"
+    fi
     echo "d myvpn" >> /var/run/xl2tpd/l2tp-control
     ipsec down myvpn || true
     service xl2tpd stop
