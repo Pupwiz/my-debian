@@ -106,3 +106,5 @@ being a lawyer, I'm not sure how to better deal with it.
 27. https://wiki.debian.org/BuildingTutorial#Installing_and_testing_the_modified_package
 28. https://wiki.debian.org/apt-src
 29. https://github.com/justwatchcom/gopass
+30. https://www.chromium.org/administrators/linux-quick-start
+31. https://www.chromium.org/administrators/policy-list-3
