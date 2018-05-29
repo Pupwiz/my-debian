@@ -55,6 +55,7 @@ x 2018-05-16 put all the settings, packages, utils etc from backups and mac to i
 x 2018-05-16 Review logs in VM before installation onto laptop.
 x 2018-05-16 docker script to automate build
 x 2018-05-20 reinstall and check in vm
+x 2018-05-29 docker shouldn't be executed without `sudo`, no option is perfect neither `NOPASSWD`, nor `setfacl` on socket file, nor docker group; leave with sudo.
 
 ----
 After migration:
@@ -72,10 +73,6 @@ vpn client
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
-docker (run 3rd party containers in VM, it's unsecure to run them on host, it's safe to run dev containers in VM as well)
-do not install docker on the host, only docker client, do not create docker group (alternative: https://askubuntu.com/a/982187)
-consider creating custom image from 3rd party images and add run internals as regular user
-consider alias and NORASSWD to save typing sudo and password
 https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
 

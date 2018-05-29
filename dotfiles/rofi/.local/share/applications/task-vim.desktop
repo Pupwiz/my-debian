@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=A command line todo manager.
+Type=Application
+Exec=/usr/bin/vim +TW
+Name=Task in Vim (TaskWarrior for Vim)
+Terminal=true

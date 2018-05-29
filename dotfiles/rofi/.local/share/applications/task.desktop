@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=A command line todo manager.
+Type=Application
+Exec=x-terminal-emulator -hold -T task -e "/usr/bin/task"
+Name=Task (TaskWarrior)
+Terminal=true
