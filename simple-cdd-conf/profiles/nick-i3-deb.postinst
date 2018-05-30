@@ -66,7 +66,6 @@ TOR_PID=$!
 # goobook is from stable, but fails to install with simple-cdd
 # firejail is from backports, because version in stable doesn't support newer AppImage format
 
-torify curl -s "https://www.justwatch.com/gopass/releases/0x0C92225A97F6B666.pub" | apt-key add -
 torify curl -s "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
 torify curl -s "http://deb.opera.com/archive.key" | apt-key add -
 torify curl -s "https://repo.skype.com/data/SKYPE-GPG-KEY" | sudo apt-key add -
@@ -98,7 +97,6 @@ apt-get -y install \
     goobook \
     google-cloud-sdk \
     google-cloud-sdk-app-engine-go \
-    gopass \
     libguestfs-tools \
     libreoffice \
     mysql-workbench \

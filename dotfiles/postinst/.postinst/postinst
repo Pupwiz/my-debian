@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Entry point to post installation scripts.
 # Executes all other executables within this folder.
@@ -9,4 +9,4 @@ if [ -n "$TORIFY" ] || [ "$1" = "torify" ]; then
     export TORIFY=torify
 fi
 
-find -L ~/.postinst -executable -not -name postinst -type f -exec {} \;
+xargs -n 1 -a <(find -L ~/.postinst -executable -not -name postinst -type f | sort) /bin/bash
