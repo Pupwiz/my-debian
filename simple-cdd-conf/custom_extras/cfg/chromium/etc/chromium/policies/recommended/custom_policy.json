@@ -1,5 +1,5 @@
 {
-    "DefaultDownloadDirectory": "/home/${user_name}/Downloaded",
+    "DefaultDownloadDirectory": "/home/${user_name}/Downloads",
     "PasswordManagerEnabled": false
 }
 
