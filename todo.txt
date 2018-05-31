@@ -56,20 +56,16 @@ x 2018-05-16 Review logs in VM before installation onto laptop.
 x 2018-05-16 docker script to automate build
 x 2018-05-20 reinstall and check in vm
 x 2018-05-29 docker shouldn't be executed without `sudo`, no option is perfect neither `NOPASSWD`, nor `setfacl` on socket file, nor docker group; leave with sudo.
-
-----
-After migration:
-
-Hardware (check/fix):
-Nvidia, optimus - ?, gltron, tint
-sound, input
-wifi
-Yota modem
-keyboard backlight, special keys
-hibernation, battery life
-printer, scanner
-camera (+ tool to switch it off)
-vpn client
+x 2018-05-31 Nvidia, optimus - ?, gltron, tint
+x 2018-05-31 sound, input
+x 2018-05-31 wifi
+x 2018-05-31 Yota modem
+x 2018-05-31 keyboard backlight, special keys
+x 2018-05-31 hibernation, battery life
+x 2018-05-31 printer, scanner
+x 2018-05-31 camera (+ tool to switch it off)
+x 2018-05-31 vpn client
+x 2018-05-31 generate bookmarks from gopass entries (run manually or with hook?)
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
@@ -83,7 +79,6 @@ review & sign commits, make tags
 ----
 Some day later:
 
-generate bookmarks from gopass entries (run manually or with hook?)
 time tracking and pomodoro - migrate? (check taskwarrior plugins)
 Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
 themes and plugins for vim, cmus, mutt, etc.

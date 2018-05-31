@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Comment=A tron-like 3D lightcycle game
+Exec=/usr/bin/optirun /usr/games/gltron
+Name=GLTron

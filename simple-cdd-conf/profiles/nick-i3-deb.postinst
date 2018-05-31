@@ -63,6 +63,9 @@ chmod -R a+r /etc/apt/sources.list.d
 tor &
 TOR_PID=$!
 
+# some time for tor to start
+sleep 5
+
 # goobook is from stable, but fails to install with simple-cdd
 # firejail is from backports, because version in stable doesn't support newer AppImage format
 
@@ -75,6 +78,10 @@ apt-get -y clean
 apt-key update
 apt-get -y update
 
+# NOTE: every 3rd party repo may fail at any time, better to split apt-get by related repos.
+
+# backports
+
 apt-get -y -t stretch-backports install \
     firejail \
     firejail-profiles \
@@ -83,26 +90,40 @@ apt-get -y -t stretch-backports install \
     torbrowser-launcher \
     virtualbox
 
-# currently fails
 apt-get -y -t stretch-backports install \
     virtualbox-ext-pack
 
+# testing
+
 apt-get -y -t testing install \
     docker-doc \
-    docker.io \
+    docker.io
+
+apt-get -y -t testing install \
     golang \
     golang-golang-x-tools
 
+# stable or 3rd party
+
 apt-get -y install \
-    goobook \
     google-cloud-sdk \
-    google-cloud-sdk-app-engine-go \
-    libguestfs-tools \
-    libreoffice \
-    mysql-workbench \
+    google-cloud-sdk-app-engine-go
+
+apt-get -y install \
+    goobook
+
+apt-get -y install \
+    libguestfs-tools
+
+apt-get -y install \
+    libreoffice
+
+apt-get -y install \
+    mysql-workbench
+
+apt-get -y install \
     skypeforlinux
 
-# sometimes fails
 apt-get -y install \
     opera-developer
 

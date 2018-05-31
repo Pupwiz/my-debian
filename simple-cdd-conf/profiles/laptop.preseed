@@ -21,3 +21,6 @@ d-i pkgsel/upgrade select safe-upgrade
 d-i passwd/user-default-groups string adm sudo staff cdrom floppy audio dip \
   video plugdev netdev lp lpadmin scanner systemd-journal mail \
   bumblebee
+
+# Suppress strongswan note.
+strongswan-starter strongswan/runlevel_changes note
