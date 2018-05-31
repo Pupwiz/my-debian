@@ -1,4 +1,15 @@
-# This is a stub file. It has been put into the git so that stow be able to
-# adopt it.  You may want to replace it with your local copy, created by
-# installer.  Use `~/bin/stow-all`, or `stow --adopt ...` to take your local
-# copy under version control and commit changes into git.
+# TNL: custom .bash_profile, invokes .profile and starts X (on the first console).
+
+# Execution chain: .bash_profile -> .profile -> .bashrc -> .bash_custom.
+# Currently `.profile`, installed with bash, invokes `.bashrc` automatically.
+
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
+
+clear
+
+if [[ ! ${DISPLAY} && ${XDG_VTNR} == 1 ]]; then
+    exec startx -- -nolisten tcp
+fi
+
