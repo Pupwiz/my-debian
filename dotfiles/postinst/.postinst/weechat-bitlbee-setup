@@ -24,9 +24,13 @@ PRIVMSG &bitlbee :register $bitlbee_pass
 PRIVMSG &bitlbee :account add skypeweb $skype_login $skype_pass
 PRIVMSG &bitlbee :account add hangouts $hangouts_work_login
 PRIVMSG &bitlbee :account hangouts set tag hangouts-work
+PRIVMSG &bitlbee :account hangouts-work set nick_format %full_name
 PRIVMSG &bitlbee :account add hangouts $hangouts_personal_login
 PRIVMSG &bitlbee :account hangouts set tag hangouts-personal
+PRIVMSG &bitlbee :account hangouts-personal set nick_format %full_name
 PRIVMSG &bitlbee :account add telegram $telegram_login
+PRIVMSG &bitlbee :account telegram set nick_format %full_name
+PRIVMSG &bitlbee :set utf8_nicks true
 PRIVMSG &bitlbee :account list
 PRIVMSG &bitlbee :save
 EOF

@@ -2,7 +2,7 @@
 
 # random slideshow from family photos
 
-feh /home/shared/photo/ \
+feh /home/share/family/photo/ \
     --scale-down \
     --geometry 1920x1080 \
     --slideshow-delay 5 \
