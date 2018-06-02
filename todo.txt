@@ -72,20 +72,15 @@ KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
 https://blog.scottlowe.org/2017/11/24/using-docker-machine-kvm-libvirt/
 Andorid
 
-regenerate all the ssh keys, backup them, copy to the local systems, replace on github/bitbuket/vdsina (create script to use next time, restrict keys' lifetime)
-change all passwords
-review & sign commits, make tags
-
 ----
 Some day later:
 
 time tracking and pomodoro - migrate? (check taskwarrior plugins)
 Install customized overlayroot package to mount /,/boot, /var as overlayfs. Need to solve an issue with apt.
-themes and plugins for vim, cmus, mutt, etc.
 upwork - ?
 deezer - ?
 
 
-Backup (mirror) common project's dependencies from public repositories (github/bitbucket/etc) onto private VPS hosting.
+Backup (mirror) common projects' dependencies from public repositories (github/bitbucket/etc) onto private VPS hosting.
 Hint: mr to sync list or repos. Especially frequently used Go dependencies.
 See also: git-only cache: https://github.com/jonasmalacofilho/git-cache-http-server, https://github.com/sitaramc/gitpod in the docker or VM, https://github.com/Seb35/git-cache
