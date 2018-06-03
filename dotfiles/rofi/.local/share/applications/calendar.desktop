@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Displays a calendar and the weather forecast
-Exec=x-terminal-emulator -hold -T calendar -e "bin/calendar"
+Exec=x-terminal-emulator -hold -T calendar -e ncal -y -M
 Name=Calendar
 Type=Application
 Terminal=false
