@@ -33,7 +33,7 @@ function up() {
     ip link | grep ppp
     ip route | grep default
     local dev="$(ip link | egrep -o 'ppp[[:digit:]]')"
-    local olddefgw="$(ip route | grep default | cut -d' ' -f3)"
+    local olddefgw="$(ip route | grep "default via" | cut -d' ' -f3)"
     if [ "$dev" != "$olddefgw" ]; then
         echo $olddefgw > "$olddefgwfn"
     fi

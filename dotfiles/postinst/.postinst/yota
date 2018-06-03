@@ -3,6 +3,6 @@
 name="enp0s20u4"
 
 cat <<EOF | sudo tee /etc/network/interfaces.d/$name >/dev/null
-auto $name
+#auto $name
 iface $name inet dhcp
 EOF

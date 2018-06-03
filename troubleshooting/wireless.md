@@ -41,7 +41,7 @@ https://wiki.debian.org/WiFi/HowToUse
 
     # sudo cat /etc/network/interfaces.d/enp0s20u4
     # example content of the file
-    auto enp0s20u4
+    ##auto enp0s20u4
     iface enp0s20u4 inet dhcp
 
     # command to start interface (not part of file above)

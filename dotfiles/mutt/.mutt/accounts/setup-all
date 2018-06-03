@@ -22,7 +22,7 @@ colors=(
 c=0
 sz=${#colors[@]}
 
-for acc in $(gopass ls -f -s email-and-im/google.com | cut -d/ -f1 | sort -u); do
+for acc in $(gopass ls -f -s email-and-im/mail.google.com | cut -d/ -f1 | sort -u); do
   d=""
   if [ -z "$dft" ] || [ "$1" = "$acc" ]; then
     d="default"

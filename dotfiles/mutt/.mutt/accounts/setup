@@ -11,8 +11,8 @@ mbx=`printf "      %s" "${1^^}"`
 
 cat << EOF
 
-set my_$1_login = "\`gopass show email-and-im/google.com/$1 username\`"
-set my_$1_pass = "\`gopass show -o email-and-im/google.com/$1\`"
+set my_$1_login = "\`gopass show email-and-im/mail.google.com/$1 username\`"
+set my_$1_pass = "\`gopass show -o email-and-im/mail.google.com/$1\`"
 
 alias my-$1 \$my_$1_login
 
