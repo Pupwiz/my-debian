@@ -142,7 +142,7 @@ cmd+='/print ;'
 cmd+='/print ### DO NOT EXIT WHILE SCRIPTS ARE INSTALLING ###;'
 cmd+='/print Will exit by timeout (~2min);'
 cmd+='/print ;'
-cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notify_send.pl slack.py urlgrab.py;'
+cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notifym.pl slack.py urlgrab.py;'
 cmd+='/wait 120 /exit'
 
 if [ -n "$TORIFY" ]; then
