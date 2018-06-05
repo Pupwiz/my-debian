@@ -60,10 +60,10 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 
 au FileType go setlocal noexpandtab
 
-au FileType mail setlocal spell spelllang=en_us
+au FileType mail setlocal spell spelllang=en_us,ru_ru
 au FileType mail setlocal fo+=aw
-au FileType markdown setlocal spell spelllang=en_us
-au FileType markdown setlocal fo+=aw
+au FileType markdown setlocal spell spelllang=en_us,ru_ru
+"au FileType markdown setlocal fo+=aw
 au FileType javascript setlocal equalprg=js-beautify\ -f\ -\ -j\ -k
 au FileType gitcommit setlocal spell textwidth=72
 au FileType java set omnifunc=javacomplete#Complete
