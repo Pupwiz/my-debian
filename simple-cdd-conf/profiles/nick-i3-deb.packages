@@ -122,6 +122,7 @@ libnotify-bin
 mesa-utils
 rofi
 rxvt-unicode-256color
+unclutter
 x11-xserver-utils
 xclip
 xdotool
@@ -175,6 +176,7 @@ mercurial
 nim
 packer
 python-dev
+python3-pip
 qemu-kvm
 qemu-system
 ruby-dev

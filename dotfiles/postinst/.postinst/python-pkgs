@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# It's really awful to run it with sudo.
+
+sudo pip3 install jsbeautifier
+
+sudo chmod a+r /usr/local/bin/js-beautify

@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically start unclutter
+
+[Service]
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/nick/.Xauthority"
+ExecStart=/usr/bin/unclutter -idle 10
+
+[Install]
+WantedBy=graphical.target
