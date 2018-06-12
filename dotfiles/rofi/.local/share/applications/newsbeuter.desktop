@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=An RSS/Atom feed reader for text terminals
+Exec=/usr/bin/newsbeuter
+Type=Application
+Name=NewsBeuter
+Terminal=true
