@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=feh
+Type=Application
+Exec=/usr/local/bin/feh
+Terminal=true

@@ -8,6 +8,9 @@ sudo update-alternatives --set x-www-browser /usr/bin/chromium
 
 xdg-settings set default-web-browser chromium.desktop
 
-xdg-mime default evince.desktop application/pdf
+xdg-mime default zathura.desktop application/pdf
+
+xdg-mime default feh.desktop image/jpeg
+xdg-mime default feh.desktop image/png
 
 # Finished setup custom alternatives (update-alternatives).

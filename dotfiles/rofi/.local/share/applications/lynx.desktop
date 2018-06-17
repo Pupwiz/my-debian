@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Lynx
-Exec=/usr/bin/lynx
+Exec=/usr/local/bin/lynx
 Type=Application
 Comment=A general purpose distributed information browser for the World Wide Web
 Terminal=true
