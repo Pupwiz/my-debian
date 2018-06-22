@@ -66,8 +66,7 @@ x 2018-05-31 printer, scanner
 x 2018-05-31 camera (+ tool to switch it off)
 x 2018-05-31 vpn client
 x 2018-05-31 generate bookmarks from gopass entries (run manually or with hook?)
-
-pinta became default image handler, don't know yet is it ok for me, or change it to feh. change via xdg-mime and *.desktop file for feh.
+x 2018-06-22 pinta became default image handler, don't know yet is it ok for me, or change it to feh. change via xdg-mime and *.desktop file for feh.
 
 Virualization:
 KVM (or VBox? KVM is Linux-only, scripts won't work on Mac)
