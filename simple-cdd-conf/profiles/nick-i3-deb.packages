@@ -159,6 +159,7 @@ android-tools-adb
 avahi-utils
 bridge-utils
 checkinstall
+closure-compiler
 docker-compose
 gcc
 git
