@@ -81,6 +81,7 @@ wget
 wkhtmltopdf
 xpdf
 xtightvncviewer
+xul-ext-ublock-origin
 zathura
 
 # Security, privacy.
