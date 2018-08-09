@@ -25,3 +25,7 @@ macro index S \
     "<save-message>+[Gmail]/Spam<enter>"  \
     "mark message as spam"
 
+macro index,pager A \
+    "<save-message>+[Gmail]/All Mail<enter><enter>" \
+    "Archive"
+
