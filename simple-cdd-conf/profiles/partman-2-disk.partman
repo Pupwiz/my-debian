@@ -73,7 +73,7 @@ two-disks ::
             use_filesystem{ }
             $default_filesystem{ }
             mountpoint{ /var } .
-    200000 200000 200000 $default_filesystem
+    300000 300000 300000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg01 }
@@ -83,7 +83,7 @@ two-disks ::
             use_filesystem{ }
             $default_filesystem{ }
             mountpoint{ /home } .
-    200000 200000 200000 $default_filesystem
+    100000 100000 100000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg01 }
