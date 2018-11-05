@@ -56,6 +56,7 @@ parallel
 pinta
 pmount
 poppler-utils
+python3-csvkit
 qalc
 rsnapshot
 rsync
@@ -181,6 +182,8 @@ python-dev
 python3-pip
 qemu-kvm
 qemu-system
+qt5-default
+qtcreator
 ruby-dev
 tig
 tmate
