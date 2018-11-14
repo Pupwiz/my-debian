@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export TRELLO_USER=$(gopass show JOB/trello.com username)
+export TRELLO_KEY=$(gopass show JOB/trello.com app-key)
+export TRELLO_TOKEN=$(gopass show JOB/trello.com 3llo-token)
+
+~/.ruby/bin/3llo

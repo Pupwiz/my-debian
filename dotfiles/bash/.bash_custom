@@ -5,7 +5,8 @@ export GPG_TTY=$(tty)
 eval "$(lesspipe)"
 
 export GOPATH="$HOME/go"
+export GEM_HOME=~/.ruby
 
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH:$GEM_HOME/bin"
 
 source <(gopass completion bash)
