@@ -8,6 +8,7 @@ https://wiki.debian.org/WiFi/HowToUse
 	man ifup
     man iw
     sudo iw help
+    man iwlist
 
     sudo iw list
     sudo iw dev
@@ -19,7 +20,7 @@ https://wiki.debian.org/WiFi/HowToUse
     # sudo cat /etc/network/interfaces.d/wlp3s0
     # example content of the file
 	# wpa-psk is a string from wpa_passhprase output
-	auto wlp3s0
+	allow-hotplug wlp3s0
 	iface wlp3s0 inet dhcp
         wpa-ssid xxxx
 		wpa-psk xxx...xxx
@@ -36,16 +37,17 @@ https://wiki.debian.org/WiFi/HowToUse
     # this lists device, find it's name to create config for it
     sudo ip link
 
-    # I've got `enp0s20u4` at previous step
-    sudo vim /etc/network/interfaces.d/enp0s20u4
+    # I've got `enp0s20u2` at previous step
+    # NOTE: it may be different (and may change over time).
+    sudo vim /etc/network/interfaces.d/enp0s20u2
 
-    # sudo cat /etc/network/interfaces.d/enp0s20u4
+    # sudo cat /etc/network/interfaces.d/enp0s20u2
     # example content of the file
-    ##auto enp0s20u4
-    iface enp0s20u4 inet dhcp
+    allow-hotplug enp0s20u2
+    iface enp0s20u2 inet dhcp
 
     # command to start interface (not part of file above)
-    sudo ifup enp0s20u4
+    sudo ifup enp0s20u2
 
 # Switching between interfaces
 

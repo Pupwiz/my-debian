@@ -1,8 +1,8 @@
 #!/bin/bash
 
-name="enp0s20u4"
+name="enp0s20u2"
 
 cat <<EOF | sudo tee /etc/network/interfaces.d/$name >/dev/null
-#auto $name
+allow-hotplug $name
 iface $name inet dhcp
 EOF
