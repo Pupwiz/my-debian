@@ -97,6 +97,7 @@ auditd
 dirmngr
 fail2ban
 logwatch
+obfs4proxy
 pinentry-curses
 pinentry-qt
 tor
