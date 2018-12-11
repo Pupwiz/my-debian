@@ -55,3 +55,28 @@ https://wiki.debian.org/WiFi/HowToUse
     # `fn+F2` keystroke # and then restart networking as follows.
     # Restart without disabling hardware lid to Wi-Fi interface went up.
     sudo systemctl restart networking
+
+# TOR
+
+Recently I started to experience problems connecting to Tor network.  I
+experimented with VPN and Tor Browser and found that using bridges may mitigate
+the issue.  Usage of bridges with Tor Browser is well documented (basically, I
+just used link below and added its output to the browser settings).
+
+To use bridges in Tor service (torsocks proxy), I had to modify default
+`/etc/tor/torrc` file as follows:
+
+    UseBridges 1  
+    Bridge obfs4 xx.xx.xx.xx:xxxx XXXXXXXX cert=XXXXXXXXXX iat-mode=0
+    Bridge obfs4 xx.xx.xx.xx:xxxx XXXXXXXX cert=XXXXXXXXXX iat-mode=0
+    Bridge obfs4 xx.xx.xx.xx:xxxx XXXXXXXX cert=XXXXXXXXXX iat-mode=0
+    ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy --enableLogging
+
+Actual bridge settings should be obtained at [tor project
+page](https://bridges.torproject.org/bridges?transport=obfs4).
+
+New settings didn't work with current stable tor package version, so I had to
+install version from backports as in the command below. Obviously, more recent
+version should work too.
+
+    sudo apt-get -t stretch-backports install tor=0.3.4.9-5~bpo9+1
