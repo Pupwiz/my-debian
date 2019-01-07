@@ -1,0 +1,7 @@
+# converted by firecfg
+[Desktop Entry]
+Version=1.0
+Name=Deezer in Chromium
+Exec=chromium --profile-directory="Profile 1" --app="https://www.deezer.com"
+Terminal=false
+Type=Application
