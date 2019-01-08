@@ -109,7 +109,8 @@ apt-get -y install \
     google-cloud-sdk \
     google-cloud-sdk-app-engine-go \
     google-cloud-sdk-app-engine-python \
-    google-cloud-sdk-datastore-emulator
+    google-cloud-sdk-datastore-emulator \
+    google-cloud-sdk-cloud-build-local
 
 apt-get -y install \
     goobook
