@@ -201,6 +201,13 @@ openjdk-8-jdk
 visualvm
 xmlbeans
 
+# For Android Studio
+gcc-multilib
+g++-multilib
+libc6-dev-i386
+qemu-kvm
+mesa-utils
+
 # Some fonts
 ttf-mscorefonts-installer
 fonts-liberation2

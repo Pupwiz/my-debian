@@ -33,17 +33,20 @@ function install_bin_from_url() {
 }
 
 # $1 - url of zip file with binary in it
-function unzip_url_to_home_bin() {
+# $2 - path (dir) where to store file
+function unzip_url_to_dir() {
     local url="$1"
     local fname=${url##*/}
     $TORIFY /usr/bin/wget -NP "$CACHE_DIR/zip" "$url"
-    unzip -o "$CACHE_DIR/zip/$fname" -d /usr/local/bin
+    unzip -o "$CACHE_DIR/zip/$fname" -d "$2"
 }
 
 install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
 install_debs_from_github "BurntSushi/ripgrep"
 install_debs_from_github "nikolay-turpitko/my-purple-plugins"
-unzip_url_to_home_bin "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+unzip_url_to_dir "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" "/usr/local/bin"
+unzip_url_to_dir "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip" "/opt"
+ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
 
 #TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
 
