@@ -7,10 +7,15 @@ if [ -n "$TORIFY" ]; then
 fi
 
 # $1 - url of deb file
+# $2 - file name (optional)
 function install_deb_from_url() {
     local url="$1"
     local fname=${url##*/}
     $TORIFY /usr/bin/wget -NP "$CACHE_DIR/deb" "$url"
+    if [ -n "$2" ]; then
+        mv "$CACHE_DIR/deb/$fname" "$CACHE_DIR/deb/$2"
+        fname="$2"
+    fi
     gdebi -n "$CACHE_DIR/deb/$fname"
 }
 
@@ -24,29 +29,59 @@ function install_debs_from_github() {
 }
 
 # $1 - url of executable file
+# $2 - file name (optional)
 function install_bin_from_url() {
     local url="$1"
     local fname=${url##*/}
     $TORIFY /usr/bin/wget -NP "$CACHE_DIR/bin" "$url"
+    if [ -n "$2" ]; then
+        mv "$CACHE_DIR/bin/$fname" "$CACHE_DIR/bin/$2"
+        fname="$2"
+    fi
     chmod +x "$CACHE_DRI/$fname"
     exec "$CACHE_DIR/bin/$fname"
 }
 
 # $1 - url of zip file with binary in it
-# $2 - path (dir) where to store file
+# $2 - file name (optional)
+# $3 - path (dir) where to store file
 function unzip_url_to_dir() {
     local url="$1"
     local fname=${url##*/}
     $TORIFY /usr/bin/wget -NP "$CACHE_DIR/zip" "$url"
-    unzip -o "$CACHE_DIR/zip/$fname" -d "$2"
+    if [ -n "$2" ]; then
+        mv "$CACHE_DIR/zip/$fname" "$CACHE_DIR/zip/$2"
+        fname="$2"
+    fi
+    mkdir -p "$3"
+    chmod a+rx "$3"
+    unzip -o "$CACHE_DIR/zip/$fname" -d "$3"
+}
+
+# $1 - url of tar.gz file with binary in it
+# $2 - file name (optional)
+# $3 - path (dir) where to store file
+function untar_url_to_dir() {
+    local url="$1"
+    local fname=${url##*/}
+    $TORIFY /usr/bin/wget -NP "$CACHE_DIR/tar" "$url"
+    if [ -n "$2" ]; then
+        mv "$CACHE_DIR/tar/$fname" "$CACHE_DIR/tar/$2"
+        fname="$2"
+    fi
+    mkdir -p "$3"
+    chmod a+rx "$3"
+    tar -xf "$CACHE_DIR/tar/$fname" -C "$3"
 }
 
 install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
 install_debs_from_github "BurntSushi/ripgrep"
 install_debs_from_github "nikolay-turpitko/my-purple-plugins"
-unzip_url_to_dir "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" "/usr/local/bin"
-unzip_url_to_dir "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip" "/opt"
+unzip_url_to_dir "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" "" "/usr/local/bin"
+unzip_url_to_dir "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip" "" "/opt"
 ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
+untar_url_to_dir "https://dl.pstmn.io/download/latest/linux64" "postman.tar.gz" "/opt"
+ln -s /opt/Postman/app/Postman /usr/local/bin/postman
 
 #TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
 
