@@ -1,2 +1,2 @@
-#deb https://packages.cloud.google.com/apt cloud-sdk-stretch main
-deb tor+https://packages.cloud.google.com/apt cloud-sdk-stretch main
+#deb https://packages.cloud.google.com/apt cloud-sdk-buster main
+deb tor+https://packages.cloud.google.com/apt cloud-sdk-buster main

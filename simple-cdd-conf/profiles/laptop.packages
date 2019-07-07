@@ -17,12 +17,12 @@ bumblebee-nvidia
 libgl1-glvnd-nvidia-glx 
 libgl1-nvidia-glvnd-glx
 linux-headers-amd64
-nvidia-driver
-nvidia-driver-bin
-nvidia-driver-libs
+nvidia-legacy-390xx-driver
+nvidia-legacy-390xx-driver-bin
+nvidia-legacy-390xx-driver-libs
 nvidia-kernel-common
-nvidia-kernel-dkms
-nvidia-kernel-support
+nvidia-legacy-390xx-kernel-dkms
+nvidia-legacy-390xx-kernel-support
 nvidia-modprobe
 primus
 xserver-xorg-video-nvidia
