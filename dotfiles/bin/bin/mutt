@@ -3,4 +3,4 @@
 # wrapper to run mutt with correct env
 
 export GPG_TTY=$(tty)
-/usr/bin/mutt
+/usr/bin/mutt "$@"
