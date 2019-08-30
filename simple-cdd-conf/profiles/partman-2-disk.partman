@@ -28,7 +28,15 @@ two-disks ::
             device{ /dev/sdb }
             vg_name{ vg01 } .
 
-    50000 50000 50000 $default_filesystem
+    16500 16500 16500 linux-swap
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg00 }
+            lv_name{ swap }
+            $primary{ }
+            method{ swap }
+            format{ } .
+    150000 150000 150000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg00 }
@@ -45,45 +53,7 @@ two-disks ::
             in_vg{ vg00 }
             lv_name{ free0 } .
 
-    200% 10000 200% linux-swap
-            $defaultignore{ }
-            $lvmok{ }
-            in_vg{ vg01 }
-            lv_name{ swap }
-            $primary{ }
-            method{ swap }
-            format{ } .
-    400% 10000 400% $default_filesystem
-            $defaultignore{ }
-            $lvmok{ }
-            in_vg{ vg01 }
-            lv_name{ tmp }
-            method{ format }
-            format{ }
-            use_filesystem{ }
-            $default_filesystem{ }
-            mountpoint{ /tmp } .
-    60000 60000 60000 $default_filesystem
-            $defaultignore{ }
-            $lvmok{ }
-            in_vg{ vg01 }
-            lv_name{ var }
-            method{ format }
-            format{ }
-            use_filesystem{ }
-            $default_filesystem{ }
-            mountpoint{ /var } .
-    300000 300000 300000 $default_filesystem
-            $defaultignore{ }
-            $lvmok{ }
-            in_vg{ vg01 }
-            lv_name{ home }
-            method{ format }
-            format{ }
-            use_filesystem{ }
-            $default_filesystem{ }
-            mountpoint{ /home } .
-    100000 100000 100000 $default_filesystem
+    150000 150000 150000 $default_filesystem
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg01 }
@@ -93,6 +63,16 @@ two-disks ::
             use_filesystem{ }
             $default_filesystem{ }
             mountpoint{ /backup } .
+    500000 500000 500000 $default_filesystem
+            $defaultignore{ }
+            $lvmok{ }
+            in_vg{ vg01 }
+            lv_name{ home }
+            method{ format }
+            format{ }
+            use_filesystem{ }
+            $default_filesystem{ }
+            mountpoint{ /home } .
     1 1 -1 free
             $defaultignore{ }
             $lvmok{ }

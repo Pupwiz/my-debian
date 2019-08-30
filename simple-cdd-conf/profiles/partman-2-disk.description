@@ -1,2 +1,2 @@
-[One of kind is required] SDD (sda) + HDD (sdb) drives. Separate partitions.
+[One of kind is required] 2 SSD (sda & sdb). Separate partitions (/home & /backup on sdb).
 

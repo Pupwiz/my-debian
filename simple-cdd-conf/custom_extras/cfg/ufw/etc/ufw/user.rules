@@ -21,9 +21,13 @@
 -A ufw-user-input -p tcp --dport 22 -s 10.0.2.0/24 -j ACCEPT
 -A ufw-user-input -p udp --dport 22 -s 10.0.2.0/24 -j ACCEPT
 
-### tuple ### allow any 22 0.0.0.0/0 any 192.168.2.0/24 in
--A ufw-user-input -p tcp --dport 22 -s 192.168.2.0/24 -j ACCEPT
--A ufw-user-input -p udp --dport 22 -s 192.168.2.0/24 -j ACCEPT
+### tuple ### allow any 22 0.0.0.0/0 any 192.168.100.0/24 in
+-A ufw-user-input -p tcp --dport 22 -s 192.168.100.0/24 -j ACCEPT
+-A ufw-user-input -p udp --dport 22 -s 192.168.100.0/24 -j ACCEPT
+
+### tuple ### allow any 8080 0.0.0.0/0 any 192.168.100.0/24 in
+-A ufw-user-input -p tcp --dport 8080 -s 192.168.100.0/24 -j ACCEPT
+-A ufw-user-input -p udp --dport 8080 -s 192.168.100.0/24 -j ACCEPT
 
 ### END RULES ###
 
