@@ -1,0 +1,2 @@
+#deb https://packages.microsoft.com/repos/vscode stable main
+deb tor+https://packages.microsoft.com/repos/vscode stable main
