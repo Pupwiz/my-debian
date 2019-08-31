@@ -38,14 +38,6 @@ log-output -t "$tag" rm -rf /target/boot/efi/*
 #TODO: check, should it be /dev/sda1, will grub installation erase file, should it stay mounted
 echo '\EFI\debian\grubx64.efi' > /target/boot/efi/startup.nsh
 
-log-output -t "$tag" mkdir /target/var
-log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-var /target/var
-log-output -t "$tag" rm -rf /target/var/*
-
-log-output -t "$tag" mkdir /target/tmp
-log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-tmp /target/tmp
-log-output -t "$tag" rm -rf /target/tmp/*
-
 log-output -t "$tag" mkdir /target/home
 log-output -t "$tag" mount -t ext4 /dev/mapper/vg01-home /target/home
 
@@ -62,6 +54,4 @@ log-output -t "$tag" sed -e '/\dev\/sr0/ s/^#*/#/' -i /target/etc/fstab
 echo '/dev/sr0 /media/cdrom/ udf,iso9660 user,noauto 0 0' >> /target/etc/fstab
 
 logger -t "$tag" "Finished"
-
-
 

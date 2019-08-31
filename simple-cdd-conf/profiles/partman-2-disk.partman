@@ -28,7 +28,7 @@ two-disks ::
             device{ /dev/sdb }
             vg_name{ vg01 } .
 
-    16500 16500 16500 linux-swap
+    17500 17500 17500 linux-swap
             $defaultignore{ }
             $lvmok{ }
             in_vg{ vg00 }

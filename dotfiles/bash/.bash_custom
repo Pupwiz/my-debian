@@ -4,6 +4,9 @@
 export GPG_TTY=$(tty)
 eval "$(lesspipe)"
 
+#export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_STYLE_OVERRIDE=Adwaita
+
 export GOPATH="$HOME/go"
 export GEM_HOME=~/.ruby
 

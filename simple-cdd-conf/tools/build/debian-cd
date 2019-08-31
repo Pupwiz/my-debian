@@ -22,6 +22,18 @@ export PATH="$debian_cd_dir/tools:$PATH"
 # copy debian-cd files into working dir
 rsync --delete -aWHr $debian_cd_dir/. $BASEDIR/
 
+# Patch debian-cd apt configuration to allow unsigned repositories.
+# https://bugs.debian.org/879642
+if ! grep -q -i 'acquire::allowinsecurerepositories=true' $BASEDIR/tools/apt-selection ; then
+    sed -i -e 's,^options=",options=" -o Acquire::AllowInsecureRepositories=true,g ' $BASEDIR/tools/apt-selection
+fi
+
+# Enable ARCHIVE_UNSIGNED=1 if debian-cd supports it
+# https://bugs.debian.org/896638
+if grep -q ARCHIVE_UNSIGNED $BASEDIR/tools/apt-selection ; then
+    export ARCHIVE_UNSIGNED=1
+fi
+
 # update the tasks files
 cd $BASEDIR/tasks
 for a in generate_di_list generate_di+k_list ; do
@@ -108,6 +120,12 @@ if [ -f "$grubcfg" ]; then
     if [ -n "$BOOT_TIMEOUT" ]; then
         SEC_TIMEOUT=$(( $BOOT_TIMEOUT / 10 ))
         echo "set timeout=$SEC_TIMEOUT" >> $grubcfg
+    fi
+    # workaround for https://bugs.debian.org/884552
+    if [ -n "$KERNEL_PARAMS" ]; then
+        if ! grep -q "$KERNEL_PARAMS" $grubcfg ; then
+            sed -i -e "s|/vmlinuz |/vmlinuz $KERNEL_PARAMS" $grubcfg
+        fi
     fi
 fi
 

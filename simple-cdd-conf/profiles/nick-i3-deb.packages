@@ -27,6 +27,8 @@ firefox-esr
 gdebi
 gimp
 gnupg2
+# FIXME: simple-cdd won't install it currently
+#goobook
 gstreamer1.0-plugins-bad
 gstreamer1.0-plugins-bad-doc
 gstreamer1.0-plugins-base
@@ -43,6 +45,7 @@ info
 inkscape
 jq
 libavcodec-extra
+libreoffice
 libsasl2-modules
 lynx
 mc
@@ -53,7 +56,8 @@ newsbeuter
 p7zip-full
 pandoc
 parallel
-pinta
+# FIXME: unstable currently
+#pinta
 pmount
 poppler-utils
 python3-csvkit
@@ -63,6 +67,7 @@ rsync
 shotwell
 stow
 taskwarrior
+telegram-desktop
 transmission
 tree
 ufraw
@@ -96,21 +101,21 @@ apt-transport-tor
 auditd
 dirmngr
 fail2ban
-logwatch
+# FIXME: simple-cdd won't install it currently
+#logwatch
 obfs4proxy
 pinentry-curses
 pinentry-qt
 tor
 torsocks
 ufw
-# currently installed from backports via postinst
-# change it later to install from stable (version >=0.9.52)
-#firejail
-#firejail-profiles
+firejail
+firejail-profiles
 
 # X, i3, themes, dbus, notifications
 adwaita-qt
-adwaita-qt4
+# FIXME: removed?
+#adwaita-qt4
 alsa-utils
 dbus
 dbus-user-session
@@ -144,7 +149,8 @@ xserver-xorg-video-all
 # For building custom packages and installation images.
 build-essential
 debconf-utils
-devscripts
+# FIXME: simple-cdd won't install it currently
+#devscripts
 dh-make
 dosfstools
 fakeroot
@@ -155,7 +161,8 @@ simple-cdd
 etcskel
 
 # Development.
-#golang # will install from testing
+golang
+golang-golang-x-tools
 #debian-vm-builder
 #libvirt-bin
 android-tools-adb
@@ -164,8 +171,12 @@ bridge-utils
 checkinstall
 closure-compiler
 docker-compose
+docker-doc
+docker.io
 gcc
 git
+# FIXME: simple-cdd won't install it currently
+#libguestfs-tools
 liblua5.2-dev
 libncurses5-dev
 libperl-dev
@@ -177,6 +188,8 @@ make
 make-doc
 meld
 mercurial
+# FIXME: unstable currently
+#mysql-workbench
 nim
 packer
 python-dev
@@ -185,6 +198,7 @@ qemu-kvm
 qemu-system
 qt5-default
 qtcreator
+ripgrep
 ruby-dev
 tig
 tmate
@@ -195,9 +209,10 @@ virt-manager
 # Java Development.
 android-sdk
 gradle
-icedtea-plugin
+# FIXME: removed?
+#icedtea-plugin
 maven
-openjdk-8-jdk
+openjdk-11-jdk
 visualvm
 xmlbeans
 

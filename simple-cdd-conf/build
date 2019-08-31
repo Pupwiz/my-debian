@@ -13,7 +13,7 @@ if [ -d "$custom_extras/pkg-src" ]; then
     for file in "$custom_extras"/pkg-src/* ; do
         PKG=$(basename $file)
         PKG_SHORT=$(echo "$PKG" | sed 's/-.\+$//')
-        reprepro -b "$mirror_dir" remove stretch "$PKG_SHORT"
+        reprepro -b "$mirror_dir" remove buster "$PKG_SHORT"
         mkdir -p $TMP_PKGS/$PKG
         cd $TMP_PKGS/$PKG
         dh_make -n -i -y
