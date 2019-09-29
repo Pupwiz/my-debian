@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=An RSS/Atom feed reader for text terminals
-Exec=/usr/bin/newsbeuter
+Exec=/usr/bin/newsboat
 Type=Application
-Name=NewsBeuter
+Name=NewsBoat
 Terminal=true
