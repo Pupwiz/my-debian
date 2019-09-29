@@ -74,6 +74,8 @@ function untar_url_to_dir() {
     tar -xf "$CACHE_DIR/tar/$fname" -C "$3"
 }
 
+# FIXME: Current version I use is 1.8.4, get it from debian repo, when it be there.
+install_debs_from_github "gopasspw/gopass"
 # skype and ripgrep installed from repo now
 #install_deb_from_url "https://go.skype.com/skypeforlinux-64.deb"
 #install_debs_from_github "BurntSushi/ripgrep"
