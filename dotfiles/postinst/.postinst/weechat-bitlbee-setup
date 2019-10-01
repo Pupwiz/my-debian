@@ -9,8 +9,8 @@ nick=$freenode_user
 skype_login=`gopass show telephony/manager.skype.com username`
 skype_pass=`gopass show -o telephony/manager.skype.com`
 
-hangouts_work_login=`gopass show email-and-im/google.com/work username`
-hangouts_personal_login=`gopass show email-and-im/google.com/personal username`
+hangouts_work_login=`gopass show email-and-im/mail.google.com/work username`
+hangouts_personal_login=`gopass show email-and-im/mail.google.com/personal username`
 
 telegram_login=`gopass show email-and-im/telegram username`
 
@@ -142,7 +142,7 @@ cmd+='/print ;'
 cmd+='/print ### DO NOT EXIT WHILE SCRIPTS ARE INSTALLING ###;'
 cmd+='/print Will exit by timeout (~2min);'
 cmd+='/print ;'
-cmd+='/script install buffers.pl iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notifym.pl slack.py urlgrab.py;'
+cmd+='/script install iset.pl go.py colorize_nicks.py bitlbee_completion.py autosort.py highmon.pl atcomplete.pl notifym.pl slack.py urlgrab.py;'
 cmd+='/wait 120 /exit'
 
 if [ -n "$TORIFY" ]; then

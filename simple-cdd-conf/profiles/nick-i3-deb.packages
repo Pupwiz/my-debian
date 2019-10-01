@@ -165,6 +165,7 @@ pmount
 poppler-utils
 procps
 psmisc
+python-pip
 python3
 python3-asn1crypto
 python3-cachetools
@@ -259,7 +260,9 @@ vim-gtk3
 weather-util
 weather-util-data
 weechat
+weechat-perl
 weechat-plugins
+weechat-python
 weechat-scripts
 
 # Desktop environment and tools.
@@ -307,6 +310,7 @@ hugo
 imagemagick
 inkscape
 libreoffice
+pinta
 shotwell
 telegram-desktop
 transmission
@@ -381,8 +385,6 @@ etcskel
 #FIXME
 # FIXME: removed?
 #icedtea-plugin
-# FIXME: unstable currently
-#pinta
 # FIXME: unstable currently
 #mysql-workbench
 # FIXME: unmet dependencies
