@@ -9,19 +9,28 @@ This instruction can be found in the file `~/README.md` on the installed system.
 Visit [project's Github page](https://github.com/nikolay-turpitko/my-debian)
 for more information and sources.
 
+Notice, these instructions I wrote for myself. These steps are not mandatory
+for OS to work, but I usually perform them on a new system to sync my settings,
+download my current projects, etc.
+
 ## Manual steps to complete installation
+
+At first login to i3wm choose to use defaults. You'll download custom i3wm
+settings from the dot files during following steps and you'd want to avoid
+conflicts in configuration files.
 
 1. Restore from backup your keys and passwords into:
 
   - `.ssh`;
   - `.gnupg`;
 
-   Keys may be required at the next steps to clone repositories with write
-   access or private repositories. You may skip this step and change
-   `~/.mrconfig` to use `https://` schema for read-only access. It may be
-   enough for temporary VM installations, if you do not plan to make backups of
-   dot files from this system, or if you want to manually setup remote servers
-   for each repository later.
+   These keys are required at the next steps. Particularly, to access private
+   repositories, or to clone owned repositories with write privileges. 
+    
+   You may skip this step and change `~/.mrconfig` to use `https://` schema for
+   read-only access. It may be enough for temporary VM installations, if you do
+   not plan to make backups of dot files from this system, or if you want to
+   manually setup remote servers for each repository later.
 
    Sample command to restore parts from tar backup:
 
@@ -31,29 +40,28 @@ for more information and sources.
                  files/home/nick/.ssh \
                  files/home/nick/.gnupg
 
-2. Update dot files and other projects from remote repositories.  This step
-   doesn't run automatically because you may need private keys to access your
-   repository or you may want to check and amend your repository settings in
-   `~/.mrconfig` file. Put there URLs of your own forks or repositories. After
-   that you may choose to pull all or some of those repositories to the local
-   system (`man mr`). Don't forget `ssh-add`, or you'll have to enter password
-   many times.
+2. Check and amend your repository settings in `~/.mrconfig` file. Put there
+   URLs of your own forks or repositories (you may have no access to mine).
 
         vim ~/.mrconfig
+
+3. Update dot files and other projects from remote repositories.  Don't forget
+   `ssh-add`, or you'll have to enter password many times.
+
         cd ~
         ssh-add
         mr update
 
-3. Check installation logs and resolve issues. You may need to manually execute
-   some failed command from postinstallation script, if they fail due network
-   issues, for example. For example, GPG keys or 3rd party repositories may be
-   temporary unavailable during installation. Use project, obtained on previous
-   step to find postinstallation script.
+4. Check installation logs and resolve issues. You may need to manually execute
+   some failed command from post-installation script, if they fail due network
+   issues, for example. For instance, TOR network, GPG keys or 3rd party
+   repositories may be temporary unavailable during installation. Use project,
+   obtained on previous step to find post-installation script.
 
 	sudo less /var/log/installer/syslog
 	less ~/Projects/my-debian/simple-cdd-conf/profiles/nick-i3-deb.postinst
 
-4. Create symlinks for downloaded dot files with `stow`. Your dot files will be
+5. Create symlinks for downloaded dot files with `stow`. Your dot files will be
    stored in the git repository in the `~/Projects/my-debian/dotfiles` folder.
    You may change them there and commit to the local repository. If you
    amended your `~/.mrconfig` to use your own forks/repositories, you will be
@@ -78,22 +86,22 @@ for more information and sources.
    replaced, but put into project folder instead. It's up to you what version
    you'd prefer. In particular, check GPG and Midnight Commander settings.
 
-5. Depending on your workflow, you may need to update all repositories again
+6. Depending on your workflow, you may need to update all repositories again
    after previous steps. For example, you may replace bootstrapped copy of 
    `.mrconfig` with your own, stored in the private repo. In this case, you'd
    manually edit/replace bootstrapped copy at step 2 for `mr` to checkout all
    your private repos, one of which could contain your own copy of `.mrconfig`.
-   So, at step 4 you'd resolve repository conflicts and choose to use yours 
+   So, at step 5 you'd resolve repository conflicts and choose to use yours 
    copy of `.mrconfig`. After that, you may want to issue command to update
    you repositories again. This a bit complicated at first glance, but allows
    to keep diverged version of `.mrconfig` under private version control.
 
         mr update
 
-6. Re-login.
+7. Re-login (use `Alt+Shift+E` to exit i3wm).
 
-7. Execute `~/.postinst/postinst`. It will guide you through other
-   semi-automated installation steps. Such as:
+8. Execute `~/.postinst/postinst torify`. It will guide you through
+   other semi-automated installation steps. Such as:
 
    - updating vim's spell files;
    - updating vim-go's binary dependencies;
@@ -107,10 +115,9 @@ for more information and sources.
    or Go environment variables. So, these steps cannot be done automatically
    during installation.
 
-   **Note**: scripts contain manual steps and print some instructions into 
-   console.
-   Check output, don't ignore it. Some tasks as connecting printer or copying
-   code from SMS cannot be done automatically.
+   **Note**: scripts contain manual steps and print some instructions into
+   console.  Check output, don't ignore it. Some tasks (such as connecting
+   printer or copying code from SMS) cannot be done automatically.
 
    **Note**: there were occasions when I had connection problems to some
    repositories or servers, required to setup software, due incorrect routes at
