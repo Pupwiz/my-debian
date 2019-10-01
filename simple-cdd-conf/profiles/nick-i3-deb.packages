@@ -310,7 +310,6 @@ hugo
 imagemagick
 inkscape
 libreoffice
-pinta
 shotwell
 telegram-desktop
 transmission
@@ -387,6 +386,7 @@ etcskel
 #icedtea-plugin
 # FIXME: unstable currently
 #mysql-workbench
+#pinta
 # FIXME: unmet dependencies
 #goobook
 #python3-cryptography
