@@ -113,6 +113,7 @@ kill ${TOR_PID}
 
 # already have this
 rm /etc/apt/sources.list.d/opera-developer.list
+rm /etc/apt/sources.list.d/vscode.list
 
 # firejail, apparmor
 aa-enforce firejail-default
