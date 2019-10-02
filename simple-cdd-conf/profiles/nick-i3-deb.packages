@@ -240,6 +240,7 @@ ufw
 # Services, simple and console apps.
 bitlbee-libpurple
 bitlbee-plugin-otr
+bsd-mailx
 calcurse
 cmus
 cmus-plugin-ffmpeg
