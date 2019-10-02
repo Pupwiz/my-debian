@@ -2,6 +2,9 @@
 
 set -v
 
+# required for slack plugin
+pip install wheel websocket websocket-client
+
 bitlbee_pass=`gopass show -o email-and-im/bitlbee`
 freenode_user=`gopass show email-and-im/freenode.net username`
 nick=$freenode_user
