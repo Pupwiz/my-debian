@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "Test mail to root" | mailx -s "Welcome" root

@@ -301,6 +301,7 @@ xserver-xorg-video-all
 
 # Desktop apps.
 chromium
+chromium-sandbox
 easytag
 evince
 fbreader
