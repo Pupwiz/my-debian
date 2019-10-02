@@ -64,7 +64,7 @@ tor &
 TOR_PID=$!
 
 # some time for tor to start
-sleep 5
+sleep 20
 
 torify curl -sSL "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | apt-key add -
 torify curl -sSL "http://deb.opera.com/archive.key" | apt-key add -
@@ -97,7 +97,6 @@ apt-get -y install \
     google-cloud-sdk \
     google-cloud-sdk-app-engine-go \
     google-cloud-sdk-app-engine-python \
-    google-cloud-sdk-datastore-emulator \
     google-cloud-sdk-cloud-build-local
 
 apt-get -y install \
