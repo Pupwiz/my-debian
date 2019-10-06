@@ -1,3 +1,5 @@
 #!/bin/bash
 
-firecfg --fix
+#firecfg --fix
+
+sudo firecfg
