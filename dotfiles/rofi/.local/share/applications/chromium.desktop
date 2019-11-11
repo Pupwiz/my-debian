@@ -137,4 +137,4 @@ Icon=chromium.png
 Categories=Network;WebBrowser;
 StartupWMClass=chromium
 StartupNotify=true
-MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;
+MimeType=x-scheme-handler/mailto;x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;
