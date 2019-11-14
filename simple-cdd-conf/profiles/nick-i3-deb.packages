@@ -379,6 +379,8 @@ mesa-utils
 # Some fonts
 ttf-mscorefonts-installer
 fonts-liberation2
+fonts-inconsolata
+fonts-firacode
 
 # Custom.
 etcskel
