@@ -1,6 +1,5 @@
 ! URxvt.font:             xft: Dejavu Sans Mono:autohint=true:antialias=true:size=10
-URxvt*font:             xft:Inconsolata:style=Medium:size=14:antialias=true:hinting=slight
-URxvt*boldFont:         xft:Inconsolata:style=bold:size=14:antialias=true:hinting=slight
+URxvt*font:             xft:Inconsolata:size=14:antialias=true:hinting=slight
 URxvt.background:       black
 URxvt.foreground:       white
 URxvt.scrollBar:        false
