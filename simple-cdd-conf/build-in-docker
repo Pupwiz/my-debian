@@ -9,5 +9,5 @@ chmod 777 tmp
 chmod 777 images
 
 TAG="build-custom-debain-iso"
-docker build --tag="${TAG}" .
-docker run --rm -v $(pwd)/images:/build-iso/images -v $(pwd)/tmp:/build-iso/tmp "${TAG}"
+sudo docker build --tag="${TAG}" .
+sudo docker run --rm -v $(pwd)/images:/build-iso/images -v $(pwd)/tmp:/build-iso/tmp "${TAG}"
