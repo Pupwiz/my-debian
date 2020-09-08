@@ -81,10 +81,11 @@ install_debs_from_github "gopasspw/gopass"
 #install_debs_from_github "BurntSushi/ripgrep"
 install_debs_from_github "nikolay-turpitko/my-purple-plugins"
 unzip_url_to_dir "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" "" "/usr/local/bin"
-unzip_url_to_dir "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip" "" "/opt"
-ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
+#unzip_url_to_dir "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip" "" "/opt"
+untar_url_to_dir "https://r1---sn-n8v7knez.gvt1.com/edgedl/android/studio/ide-zips/4.0.1.0/android-studio-ide-193.6626763-linux.tar.gz" "" "/opt"
+ln -f -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
 untar_url_to_dir "https://dl.pstmn.io/download/latest/linux64" "postman.tar.gz" "/opt"
-ln -s /opt/Postman/app/Postman /usr/local/bin/postman
+ln -f -s /opt/Postman/app/Postman /usr/local/bin/postman
 
 #TODO: Overlayroot conflicts with apt. Apt hooks should be combined with overlayroot-chroot.
 
