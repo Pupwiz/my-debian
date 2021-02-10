@@ -127,6 +127,20 @@ nvidia-xconfig/stable,stable,stable,testing,testing,testing,unstable,unstable,un
 xserver-xorg-video-nvidia-legacy-390xx/stable,stable,stable,now 390.116-1 amd64 [installed]
 ```
 
+## Update about legacy driver
+
+After some time I found that `optirun glxinfo` doesn't work. To make it work again I had to install following packages:
+
+    sudo apt install xserver-xorg-input-mouse
+    sudo apt install xserver-xorg-input-kbd
+    sudo apt install nvidia-legacy-390xx-kernel-dkms
+    sudo apt reinstall nvidia-legacy-390xx-kernel-dkms
+
+Reinstalling last one is important, because it was installed but didn't update initramfs for some reason.
+
+Also I had to manually change `/etc/bumblebee` config to use legacy driver.
+I also deleted `/etc/X11/xorg.conf`, as it works without it.
+
 # Remove Nvidia drivers
 
  # apt-get purge nvidia. (don't forget the "." dot) It erases every package with "nvidia" on its name
