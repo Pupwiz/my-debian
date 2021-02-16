@@ -28,7 +28,7 @@ source ~/.mutt/sidebar
 # apps (https://support.google.com/accounts/answer/6010255)
 # and folders should be enabled for IMAP access (GMail/Settings/Labels/Show in IMAP).
 
-source "~/.mutt/accounts/setup-all personal |"
+source "~/.mutt/accounts/setup-all work |"
 
 mailboxes "      LOCAL"
 mailboxes /var/mail/nick
