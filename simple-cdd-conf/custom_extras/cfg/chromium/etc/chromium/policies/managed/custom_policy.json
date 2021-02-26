@@ -1,15 +1,15 @@
 {
       "ExtensionInstallForcelist": [
-	      "lopabhfecdfhgogdbojmaicoicjekelh;https://clients2.google.com/service/update2/crx",
-	      "nnbmlagghjjcbdhgmkedmbmedengocbn;https://clients2.google.com/service/update2/crx",
-	      "jfchnphgogjhineanplmfkofljiagjfb;https://clients2.google.com/service/update2/crx",
-	      "dgmanlpmmkibanfdgjocnabmcaclkmod;https://clients2.google.com/service/update2/crx",
-	      "ohlencieiipommannpdfcmfdpjjmeolj;https://clients2.google.com/service/update2/crx",
+	      "akdbimilobjkfhgamdhneckaifceicen;https://clients2.google.com/service/update2/crx",
 	      "cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx",
 	      "dbepggeogbaibhgnhhndojpepiihcmeb;https://clients2.google.com/service/update2/crx",
-	      "akdbimilobjkfhgamdhneckaifceicen;https://clients2.google.com/service/update2/crx",
+	      "dgmanlpmmkibanfdgjocnabmcaclkmod;https://clients2.google.com/service/update2/crx",
 	      "ijaobnmmgonppmablhldddpfmgpklbfh;https://clients2.google.com/service/update2/crx",
-	      "kkhfnlkhiapbiehimabddjbimfaijdhk;https://clients2.google.com/service/update2/crx"
+	      "jfchnphgogjhineanplmfkofljiagjfb;https://clients2.google.com/service/update2/crx",
+	      "lopabhfecdfhgogdbojmaicoicjekelh;https://clients2.google.com/service/update2/crx",
+	      "nnbmlagghjjcbdhgmkedmbmedengocbn;https://clients2.google.com/service/update2/crx",
+	      "ohlencieiipommannpdfcmfdpjjmeolj;https://clients2.google.com/service/update2/crx",
+	      "bkdgflcldnnnapblkhphbgpggdiikppg;https://clients2.google.com/service/update2/crx"
       ],
       "ManagedBookmarks": [{"url": "file:///home/nick/Projects/bookmarks/html", "name": "My Bookmarks"}]
 }
