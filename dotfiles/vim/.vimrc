@@ -11,9 +11,10 @@ set hlsearch
 nnoremap <silent> <cr> :nohlsearch<cr><cr>
 
 set foldmethod=syntax
-set foldlevelstart=1
+"set foldlevelstart=1
+set foldnestmax=1
 set foldminlines=5
-set nofoldenable
+set foldenable
 
 filetype plugin indent on
 set autoindent
