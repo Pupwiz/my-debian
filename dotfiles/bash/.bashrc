@@ -10,7 +10,8 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignorespace:erasedups
+HISTIGNORE="ls:ll:mc:exit:vim +Ex:rm *:gopass *:dict *:task *:tig:wttr:clean:qalc:ssh-add"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
