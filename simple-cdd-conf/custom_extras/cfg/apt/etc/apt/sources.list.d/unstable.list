@@ -1,5 +1,5 @@
-deb http://mirror.truenetwork.ru/debian unstable main contrib non-free
-deb-src http://mirror.truenetwork.ru/debian unstable main contrib non-free
+deb https://mirror.truenetwork.ru/debian unstable main contrib non-free
+deb-src https://mirror.truenetwork.ru/debian unstable main contrib non-free
 deb http://ftp.ru.debian.org/debian unstable main contrib non-free
 deb-src http://ftp.ru.debian.org/debian unstable main contrib non-free
 deb tor+http://vwakviie2ienjx6t.onion/debian unstable main contrib non-free
