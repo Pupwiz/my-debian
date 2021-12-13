@@ -10,6 +10,9 @@ export QT_STYLE_OVERRIDE=Adwaita
 export GOPATH="$HOME/go"
 export GEM_HOME=~/.ruby
 
-export PATH="$GOPATH/bin:$PATH:$GEM_HOME/bin"
+export ANDROID_SDK_ROOT=/home/nick/Android/SDK
+export CHROME_EXECUTABLE=/usr/local/bin/chromium
+
+export PATH="$GOPATH/bin:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH:$GEM_HOME/bin"
 
 source <(gopass completion bash)
