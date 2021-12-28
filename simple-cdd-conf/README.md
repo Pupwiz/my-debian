@@ -1,23 +1,5 @@
 # Simple-cdd configuration for custom Debian iso image with X11, i3 and software development tools.
 
-## Status
-
-Currently I use this repo only to store some configuration files and
-troubleshooting notes. After several mainstream Debian upgrades my customized
-build scripts seems to broke and I had no time to fix them. I myself haven't
-installed this customized system from scratch for a while (just upgraded
-installed system in place). This project was an interesting experiment, but it
-proved to be a bit more heavy then I wanted. Currently I'm (once again)
-thinking about upgrading my approach to organize system settings, configuration
-files, package lists etc. Storing them under the source control with help of
-tools such as `stow` and `mr` seems to be convenient. But building and
-supporting customized `iso` seems to be an overkill. I'm looking onto Fedora
-Silverblue, with small Anaconda installer script, which allows me to do what I
-really need: customized partitioning and preset some installation options. It's
-approach to transactional upgrades is also very appealing. With some small
-post-install scripts I can have useful customized system. I only still had no
-enough time to make it my main system for everyday use.
-
 ## Motivation
 
 This is my custom configuration of `simple-cdd` Debian tool. It's for my own
