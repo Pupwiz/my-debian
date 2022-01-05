@@ -26,14 +26,14 @@ function tz-convert() {
 	tzl="UTC$(date +%z)"
 	case $1 in
 		from)
-			date -d"$3$itz"
+			date -R -d"$3$itz"
 			;;
 
 		to)
-			TZ=$2 date -d"$3$tzl"
+			TZ=$2 date -R -d"$3$tzl"
 			;;
 		in)
-			TZ=$2 date
+			TZ=$2 date -R
 			;;
 		*)
 			echo -e $usage
@@ -43,8 +43,8 @@ function tz-convert() {
 	esac
 }
 
-alias now='date; tz-convert in "Europe/Moscow"; tz-convert in "Asia/Jerusalem"'
-alias tz-convert-to-msk='tz-convert to "Eurpoe/Moscow"'
+alias now='date -R; tz-convert in "Europe/Moscow"; tz-convert in "Asia/Jerusalem"'
+alias tz-convert-to-msk='tz-convert to "Europe/Moscow"'
 alias tz-convert-from-msk='tz-convert from "Europe/Moscow"'
 alias tz-convert-to-ist='tz-convert to "Asia/Jerusalem"'
 alias tz-convert-from-ist='tz-convert from "Asia/Jerusalem"'
@@ -63,3 +63,4 @@ alias myvpn='sudo VPN_SERVER_IP="$(gopass NET/vpn-vdsina.ru vpn-server-ip)" myvp
 
 alias calcurse="calcurse --directory ~/Projects/todo/calcurse/"
 alias weechat='WEECHAT_PASSPHRASE=$(gopass show -o email-and-im/weechat) command weechat'
+alias tw='/usr/bin/task'
